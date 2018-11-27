@@ -1,0 +1,135 @@
+
+<ion-header class="header" no-border>
+    
+  <ion-navbar color="darkprimary">
+    <ion-buttons style="display: flex; direction: row;" right>
+      <button ion-button menuToggle>
+          <!-- <ion-icon name="menu"></ion-icon> -->
+          <img class="avatar-menu-icon" [src]="this.thumb == null ? 'assets/img/avatar.png' : this.thumb" onerror="src = 'assets/img/avatar.png'">
+
+      </button>
+    </ion-buttons>
+    <ion-title>{{ 'AUTH_CREATE_PAGE' | translate:param }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content dir="{{direcR}}" scroll="true">
+  <div class="formCreate">
+    <form [formGroup]="create" (ngSubmit)="createForm()">
+        <h6>{{ 'AUTH_BASIC_INFO' | translate:param }}</h6>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-item no-lines>
+              <ion-label>{{ 'AUTH_FIRST_NAME' | translate:param }}</ion-label>
+              <ion-input type="text" formControlName="first_name" ></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item no-lines>
+              <ion-label>{{ 'AUTH_LAST_NAME' | translate:param }}</ion-label>
+              <ion-input type="text" formControlName="last_name"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item no-lines>
+              <ion-label>{{ 'AUTH_EMAIL' | translate:param }}</ion-label>
+              <ion-input type="email" formControlName="email"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item no-lines>
+              <ion-label>{{ 'AUTH_PASSWORD' | translate:param }}</ion-label>
+              <ion-input type="password" formControlName="password"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row *ngIf="dir === 'rtl'">
+          <ion-col>
+            <ion-item dir="{{dir}}" no-lines>
+              <ion-label>{{ 'AUTH_COUNTRY' | translate:param }}</ion-label>
+                <ion-select (ionChange)="change_city('ar')" formControlName="country_id">
+                  <ion-option *ngFor="let c of country_list; let i = index" [value]="c.id">{{ c.name_ar }}</ion-option>
+                </ion-select>
+              </ion-item>
+            </ion-col>
+        </ion-row> 
+        <ion-row *ngIf="dir === 'ltr'">
+          <ion-col>
+            <ion-item dir="{{dir}}" no-lines>
+              <ion-label>{{ 'AUTH_COUNTRY' | translate:param }}</ion-label>
+                <ion-select (ionChange)="change_city('ar')" formControlName="country_id">
+                  <ion-option *ngFor="let c of country_list; let i = index" [value]="c.id">{{ c.name_en }}</ion-option>
+                </ion-select>
+              </ion-item>
+            </ion-col>
+        </ion-row> 
+        
+        <ion-row *ngIf="dir === 'rtl'">
+          <ion-col>
+            <ion-item dir="{{dir}}" class="selectDiv titleDiv" no-lines>
+              <ion-label>{{ 'AUTH_CITY' | translate:param }}</ion-label>
+              <ion-select formControlName="city_id">
+                <ion-option *ngFor="let c of city_list; let i = index" [value]="c.id">{{ c.name_ar }}</ion-option>
+              </ion-select>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+      <ion-row *ngIf="dir === 'ltr'">
+        <ion-col>
+          <ion-item dir="{{dir}}" class="selectDiv titleDiv" no-lines>
+            <ion-label>{{ 'AUTH_CITY' | translate:param }}</ion-label>
+            <ion-select formControlName="city_id">
+              <ion-option *ngFor="let c of city_list; let i = index" [value]="c.id">{{ c.name_en }}</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item no-lines>
+              <ion-label>{{ 'AUTH_PHONE' | translate:param }}</ion-label>
+              <ion-input type="text" formControlName="phone"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <h6>{{ 'AUTH_GENDER' | translate:param }}</h6>
+        <ion-row radio-group formControlName="gender">
+          <ion-col>
+              <ion-item no-lines>
+                <ion-label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="assets/icon/icon-male.png"></ion-label>
+                <ion-radio checked="true" value="1"></ion-radio>
+              </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item no-lines>
+              <ion-label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="assets/icon/icon-female.png"></ion-label>
+              <ion-radio checked="false" value="0"></ion-radio>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item no-lines>
+              <ion-label>{{ 'AUTH_BIRTHDATE' | translate:param }}</ion-label>
+              <ion-datetime displayFormat="YYYY-M-DD" formControlName="age"></ion-datetime>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <div class="buttonSubmit">
+          <button ion-button type="submit" [disabled]="!create.valid">{{ 'AUTH_SUBMIT' | translate:param }}</button>
+      </div>
+    </form>
+  </div>
+</ion-content>
+    

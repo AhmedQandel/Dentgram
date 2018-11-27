@@ -1,0 +1,28 @@
+{
+    "items": [
+        {
+            "name": "الملف الشخصي",
+            "en": "My Profile",
+            "ctrl": 0,
+            "id": "AccInfoPage"
+        },
+        {
+            "name": "عناويني",
+            "en": "My Addresses",
+            "ctrl": 99,
+            "id": "AccAddressPage"
+        },
+        {
+            "name": "مفضلتي",
+            "en": "Favorites",
+            "ctrl": 99,
+            "id": "FavPage"
+        },
+        {
+            "name": "طلباتي",
+            "en": "Orders",
+            "ctrl": 99,
+            "id": "AccOrdersPage"
+        }
+    ]
+}

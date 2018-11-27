@@ -1,0 +1,216 @@
+<ion-header class="header"  dir="{{direc}}" no-border>
+
+  <ion-navbar color="darkprimary">
+    <ion-buttons style="display: flex; direction: row;" left>
+      <button ion-button *ngIf="this.mainFunc.manuno8 == false" (tap)="openCartPage2()">
+          <ion-badge color="danger" *ngIf="mainFunc.getCartItemsNumber()" item-end>{{mainFunc.getCartItemsNumber()}}</ion-badge>
+          <ion-icon name="md-cart" *ngIf="this.mainFunc.manuno8 == false"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title><span class="des" style="border: 0px;" [innerHTML]="name"> {{ name }}</span></ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <div *ngIf="isDataAvilable">
+    <div class="sliderDiv" dir="ltr">
+      <ion-slides speed="500" loop="true" spaceBewteen = "15" pager class="slider">
+          <ion-slide *ngFor="let sl of slides_list; let i = index">
+            <div class="img-container" (click)="openImage(sl.url.full)">
+              <img [src]="mainFunc.encoder(sl.url.full)">
+            </div>
+          </ion-slide>
+      </ion-slides> 
+    </div>
+
+    <div class="itemScrollFavBuy" [class.itemScrollFavBuyList]="!isGrid">
+      <div *ngIf="!mainFunc.checkItemInFav(id)" class="itemScrollFav" [class.itemScrollFavList]="!isGrid">
+        <img src="assets/icon/icon-favo.png"  (tap)="addToFav(id)">
+      </div>
+      <div *ngIf="mainFunc.checkItemInFav(id)" class="itemScrollFav" [class.itemScrollFavList]="!isGrid">
+        <img src="assets/icon/icon-favo-on.png" (tap)="removeFromFav(id)">
+      </div>
+      
+      <div *ngIf="!mainFunc.checkItemInCart(id) && can_order" class="itemScrollBuy"  [class.itemScrollBuyList]="!isGrid" (tap)="addToCart(id, item)"><img src="assets/icon/icon-carto.png"></div>
+      <div *ngIf="mainFunc.checkItemInCart(id) && can_order" class="itemScrollBuy" [class.itemScrollBuyList]="!isGrid"  (tap)="deleteFromCart(id)"><img src="assets/icon/icon-carto-on.png"></div>
+      <div *ngIf="!can_order" class="itemScrollBuyStock" [class.itemScrollBuyStockList]="!isGrid"  (tap)="deleteFromCart(id)"><img src="assets/icon/icon-carto-canot.png"></div>
+    </div>
+
+    
+    <div class="titleDiv fontNormal"  dir="{{direc}}">
+      
+      <div class="cate_display_name">
+        {{ category_display_name }}
+      </div>
+      <div class="name_title">
+        {{ name }}
+      </div>
+      <!-- Price Section -->
+      <div></div>
+      <div class="itemScrollPriceafter" [class.itemScrollPriceListafter]="!isGrid">{{ mainFunc.financial(price) }} {{ currency | translate:param }}</div>
+      <span class="des" style="border: 0px;" [innerHTML]="description"> {{ description }}</span>
+    </div>
+
+    
+
+
+    <div class="titleDiv fontNormal"  dir="{{direc}}">
+
+      
+      <div class="fontBig fontBold">{{ 'ITEM_DETAILS_DESCRIPTION' | translate:param }}</div>
+      
+
+      <div class="openTable" *ngIf="model != null" dir="{{direc}}">
+        <div class="sectionHead itemName" dir="{{direc}}">
+            {{ 'ITEM_DETAILS_MODEL' | translate:param }}
+        </div>
+        <div class="sectionHead itemNameSep" dir="{{direc}}">
+            :
+        </div>
+        <div class="sectionHead itemValue" dir="{{direc}}">
+            {{ model }}
+        </div>
+      </div>
+
+      <div class="openTable" *ngIf="length != null" dir="{{direc}}">
+        <div class="sectionHead itemName" dir="{{direc}}">
+            {{ 'ITEM_DETAILS_LENGTH' | translate:param }}
+        </div>
+        <div class="sectionHead itemNameSep" dir="{{direc}}">
+            :
+        </div>
+        <div class="sectionHead itemValue" dir="{{direc}}">
+            {{ length }}
+        </div>
+      </div>
+
+      
+      <div class="openTable" *ngIf="width != null" dir="{{direc}}">
+        <div class="sectionHead itemName" dir="{{direc}}">
+            {{ 'ITEM_DETAILS_WIDTH' | translate:param }}
+        </div>
+        <div class="sectionHead itemNameSep" dir="{{direc}}">
+            :
+        </div>
+        <div class="sectionHead itemValue" dir="{{direc}}">
+            {{ width }}
+        </div>
+      </div>
+      
+
+      <div class="openTable" *ngIf="height != null" dir="{{direc}}">
+        <div class="sectionHead itemName" dir="{{direc}}">
+            {{ 'ITEM_DETAILS_HEIGHT' | translate:param }}
+        </div>
+        <div class="sectionHead itemNameSep" dir="{{direc}}">
+            :
+        </div>
+        <div class="sectionHead itemValue" dir="{{direc}}">
+            {{ height }}
+        </div>
+      </div>
+
+
+      <div class="openTable" *ngIf="weight != null" dir="{{direc}}">
+        <div class="sectionHead itemName" dir="{{direc}}">
+            {{ 'ITEM_DETAILS_WEIGHT' | translate:param }}
+        </div>
+        <div class="sectionHead itemNameSep" dir="{{direc}}">
+            :
+        </div>
+        <div class="sectionHead itemValue" dir="{{direc}}">
+            {{ weight }}
+        </div>
+      </div>
+
+
+      <div class="separateSpace fontBig fontBold">{{ 'ITEM_DETAILS_ATTRIBUTES' | translate:param }}</div>
+      <div *ngFor="let att of attributes; let i = index">
+
+        <div *ngIf="this.platform.dir() === 'rtl'">
+          <div class="fontBold">{{ att.name_ar }}</div>
+          <div *ngFor="let sub_att of att.attributes; let j = index">
+
+              <div class="openTable" dir="{{direc}}">
+                <div class="sectionHead itemName" dir="{{direc}}">
+                    {{ sub_att.name_ar }}
+                </div>
+                <div class="sectionHead itemNameSep" dir="{{direc}}">
+                    :
+                </div>
+                <div class="sectionHead itemValue" dir="{{direc}}">
+                    {{ sub_att.value_ar }}
+                </div>
+              </div>
+          </div>
+        </div>
+
+        
+        <div *ngIf="this.platform.dir() === 'ltr'">
+          <div class="fontBold">{{ att.name_en }}</div>
+          <div *ngFor="let sub_att of att.attributes; let j = index">
+
+              <div class="openTable" dir="{{direc}}">
+                <div class="sectionHead itemName" dir="{{direc}}">
+                    {{ sub_att.name_en }}
+                </div>
+                <div class="sectionHead itemNameSep" dir="{{direc}}">
+                    :
+                </div>
+                <div class="sectionHead itemValue" dir="{{direc}}">
+                    {{ sub_att.value_en }}
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="man_main">
+        <div class="man_image"><img [src]="man_icon_thumb" onError="this.src='assets/img/img_not_avilable.png';"/></div>
+          
+        <div class="man_name">{{ 'ITEM_DETAILS_MAN_NAME' | translate:param }} <br> {{ man_name }}</div>
+      </div>
+
+  <div class="titleDiv fontBold" dir="{{this.platform.dir()}}">
+      {{ 'SIMILAR' | translate:param }}
+  </div>
+    <div class="slideScrolls" [class.slideScrollsList]="!isGrid" dir="{{direcR}}">
+      <div class="itemScroll" [class.itemScrollList]="!isGrid" *ngFor="let item of bestrecommended; let i = index" dir="{{direcR}}">
+          <div (tap)="openItemStoreDetails(item.id)" [class.class1]="!isGrid">
+            <div class="itemScrollImage" [class.itemScrollImageList]="!isGrid"><img [src]="item.image"></div>
+            <div [class.class2]="!isGrid">
+              <div class="itemScrollName" [class.itemScrollNameList]="!isGrid">{{item.name}}</div>
+              <div *ngIf="item.discount != '0'" class="class2">
+                <div class="itemScrollPrice discountSign" [class.itemScrollPriceList]="!isGrid">{{item.price | number}} {{ item.currency | translate:param }}</div>
+                <div class="itemScrollPriceafter" [class.itemScrollPriceListafter]="!isGrid">  {{item.price_discount | number}} {{ item.currency | translate:param }}  </div>
+              </div>
+              <div *ngIf="item.discount == '0'" class="itemScrollPriceafter" [class.itemScrollPriceListafter]="!isGrid">{{item.price | number}} {{ item.currency | translate:param }}</div>
+            </div>
+          </div>
+            <div class="itemScrollFavBuy" [class.itemScrollFavBuyList]="!isGrid">
+              <div *ngIf="!mainFunc.checkItemInFav(item.id)" class="itemScrollFav" [class.itemScrollFavList]="!isGrid">
+                <img src="assets/icon/icon-favo.png"  (tap)="addToFav(item.id)">
+              </div>
+              <div *ngIf="mainFunc.checkItemInFav(item.id)" class="itemScrollFav" [class.itemScrollFavList]="!isGrid">
+                <img src="assets/icon/icon-favo-on.png" (tap)="removeFromFav(item.id)">
+              </div>
+              <div *ngIf="item.premium" class="starItem" [class.starItemList]="!isGrid"><img src="assets/img/starItem.png"></div>
+              <div *ngIf="!item.premium" class="starItem" [class.starItemList]="!isGrid"></div>
+              <div *ngIf="!mainFunc.checkItemInCart(item.id) && item.can_order" class="itemScrollBuy"  [class.itemScrollBuyList]="!isGrid" (tap)="addToCart(item.id, item)"  [@addButton]="item.addButtonState" (@addButton.done)="addToCartFinished(item)"><img src="assets/icon/icon-carto.png"></div>
+              <div *ngIf="mainFunc.checkItemInCart(item.id) && item.can_order" class="itemScrollBuy" [class.itemScrollBuyList]="!isGrid"  (tap)="deleteFromCart(item.id)"><img src="assets/icon/icon-carto-on.png"></div>
+              <div *ngIf="!item.can_order" class="itemScrollBuyStock" [class.itemScrollBuyStockList]="!isGrid"  (tap)="deleteFromCart(item.id)"><img src="assets/icon/icon-carto-canot.png"></div>
+            </div>
+        </div>
+      </div>
+</div>
+<div>
+  &nbsp;
+</div>
+<div class="footerz" *ngIf="!isDataAvilable">
+  <ion-spinner></ion-spinner>
+</div>
+
+</ion-content>

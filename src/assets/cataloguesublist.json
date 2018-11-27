@@ -1,0 +1,83 @@
+{
+    "slider": [
+        {
+            "name": "1",
+            "img": "assets/img/slider/cover_img1.png"
+        },
+        {
+            "name": "2",
+            "img": "assets/img/slider/cover_img2.png"
+        },
+        {
+            "name": "3",
+            "img": "assets/img/slider/cover_img3.png"
+        },
+        {
+            "name": "4",
+            "img": "assets/img/slider/cover_img4.png"
+        },
+        {
+            "name": "5",
+            "img": "assets/img/slider/cover_img5.png"
+        }
+        ],
+
+    "categories": [
+        {
+            "name_ar": "أدوات الفحص",
+            "name_en": "Examination instruments",
+            "id": "1",
+            "back_back": "",
+            "img": "assets/img/catalogue/img-1.png"
+        },
+        {
+            "name_ar": "تخدير موضعي",
+            "name_en": "Local anesthesia",
+            "id": "2",
+            "back_back": "",
+            "img": "assets/img/catalogue/img-1.png"
+        },
+        {
+            "name_ar": "الأدوات اليدوية",
+            "name_en": "Dental handpieces",
+            "id": "3",
+            "back_back": "",
+            "img": "assets/img/catalogue/img-1.png"
+        },
+        {
+            "name_ar": "ليزر الأسنان",
+            "name_en": "Dental laser",
+            "id": "4",
+            "back_back": "",
+            "img": "assets/img/catalogue/img-1.png"
+        },
+        {
+            "name_ar": "أدوات تقويم الأسنان",
+            "name_en": "Dental torque wrench",
+            "id": "5",
+            "back_back": "",
+            "img": "assets/img/catalogue/img-1.png"
+        },
+        {
+            "name_ar": "الأدوات التصليحية",
+            "name_en": "Restorative instruments",
+            "id": "6",
+            "back_back": "",
+            "img": "assets/img/catalogue/img-1.png"
+        },
+        {
+            "name_ar": "الأدوات الجراحية",
+            "name_en": "surgical instruments",
+            "id": "7",
+            "back_back": "",
+            "img": "assets/img/catalogue/img-1.png"
+        },
+        {
+            "name_ar": "أدوات التعويضية",
+            "name_en": "Prosthodontic instruments",
+            "id": "8",
+            "back_back": "",
+            "img": "assets/img/catalogue/img-1.png"
+        }
+    ]
+}

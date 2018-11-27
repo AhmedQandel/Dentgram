@@ -1,0 +1,32 @@
+{
+    "items": [
+        {
+            "name_ar": "تعديل البيانات",
+            "name": "MENU_ACC_EDIT_PROFILE",
+            "id": "1",
+            "back_back": "bg10",
+            "img": "assets/img/account-menu/img-menu-profile.png"
+        },
+        {
+            "name_ar": "",
+            "name": "MENU_ACC_COUNTRY",
+            "id": "2",
+            "back_back": "bg10",
+            "img": "assets/img/account-menu/img-menu-country.png"
+        },
+        {
+            "name_ar": "",
+            "name": "MENU_ACC_PASSWORD",
+            "id": "3",
+            "back_back": "bg10",
+            "img": "assets/img/account-menu/img-menu-password.png"
+        },
+        {
+            "name_ar": "",
+            "name": "MENU_ACC_CONTACT_US",
+            "id": "4",
+            "back_back": "bg10",
+            "img": "assets/img/account-menu/img-menu-contact.png"
+        }
+    ]
+}

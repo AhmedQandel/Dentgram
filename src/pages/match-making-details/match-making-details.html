@@ -1,0 +1,79 @@
+<ion-header class="header"  dir="{{direc}}" no-border>
+
+    <ion-navbar color="darkprimary">
+      <ion-buttons style="display: flex; direction: row;" left>
+        <button ion-button>
+            <ion-badge color="danger" *ngIf="mainFunc.getCartItemsNumber()" item-end>{{mainFunc.getCartItemsNumber()}}</ion-badge>
+            <ion-icon name="md-cart" *ngIf="this.mainFunc.manuno8 == false"></ion-icon>
+        </button>
+      </ion-buttons>
+      <ion-title>{{ title }}</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  
+  <ion-content> 
+  <div *ngIf="isDataAvilable">
+    <img class="imgMainDetails" [src]="imageMain" onError="this.src='assets/img/course_img_not_avilable.png';"/>
+
+      <div class="pageTitle" style="font-weight: bold;">{{ title }}</div>
+      
+      <ion-row no-padding>
+        <ion-col>
+          <button ion-button clear color="danger" icon-start>
+            <!-- <ion-icon name='md-calendar'></ion-icon> -->
+            <img *ngIf="country_icon_thumb != null" class="country_icon" [src]="country_icon_thumb">
+            <ion-icon *ngIf="country_icon_thumb == null" name="pin" class="store_icon"></ion-icon>
+              <div style="color: #555555;">{{ country_name }}</div>
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button clear color="danger" icon-end>
+            <!-- <ion-icon name='md-calendar'></ion-icon> -->
+            <img *ngIf="store_icon_thumb != null" class="country_icon" [src]="store_icon_thumb">
+              <div style="color: #555555;">{{ store_name }}</div>
+          </button>
+        </ion-col>
+      </ion-row>
+
+      <div class="titleDiv fontNormal"  dir="{{direc}}">
+
+        <div class="cate_display_name">
+          {{ category_display_name }}
+        </div>
+        <span class="des" style="border: 0px;" [innerHTML]="short_description"> {{ short_description }}</span>
+        <div></div>
+        <span class="des" style="border: 0px;" [innerHTML]="description"> {{ description }}</span>
+      </div>
+
+      <div class="contactDiv">
+        <div class="cl1">
+          <div *ngIf="can_call == 1" class="canCall" (tap)="showData('phone')">
+            <img src="assets/img/can_call.png">
+            <a href="tel:{{ contact_no }}" id="phone" style="display: none">{{ contact_no }}</a>
+          </div>
+        </div>
+        <div (tap)="applyForAJob(id)" class="cl1">
+          <div class="canApply">
+            <img src="assets/img/can_apply.png">
+            <div class="applytitle">{{ 'APPLY' | translate:param }}</div>
+          </div>
+        </div>
+        <div class="cl1">
+          <div *ngIf="can_email == 1" class="canMessage" (tap)="showData('email')">
+            <img src="assets/img/can_email.png">
+            <a href="mailto:{{ contact_email }}" id="email" style="display: none">{{ contact_email }}</a>
+          </div>
+        </div>
+      </div>
+      <div>
+        &nbsp;
+      </div>
+  </div>  
+      <div class="footerz" *ngIf="!isDataAvilable">
+        <ion-spinner></ion-spinner>
+      </div>
+      
+  </ion-content>
+  

@@ -1,0 +1,150 @@
+<ion-menu *ngIf="this.platform.dir() === 'rtl'" [content]="content" side="right" class="ion-menu">
+<!-- <ion-menu *ngIf="this.platform.dir() === 'ltr'" [content]="content" side="left" class="ion-menu"> -->
+  <ion-content>
+    <!-- <ion-list>
+      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+        {{p.title}}
+      </button>
+    </ion-list> -->
+    <div *ngIf="isLogged == false" menuToggle (click)="openLoginScreen()" class="avatarDiv" dir="{{direcR}}">
+      <ion-item no-lines no-border>
+        <ion-avatar item-start>
+          <img [src]="this.thumb == null ? 'assets/img/avatar.png' : this.thumb" onerror="src = 'assets/img/avatar.png'">
+        </ion-avatar>
+      </ion-item>
+      <div class="avatarName">
+        <div class="avatarNameWelcome">
+          {{ 'WELCOME' | translate:param }}
+        </div>
+        <div class="avatarNameName">
+          {{ 'LOGIN' | translate:param }}
+        </div>
+      </div>
+    </div>
+    <div *ngIf="isLogged == true" menuToggle (click)="goAccount()" class="avatarDiv" dir="{{direcR}}">
+      <ion-item no-lines no-border>
+        <ion-avatar item-start>
+            <img [src]="this.thumb == null ? 'assets/img/avatar.png' : this.thumb" onerror="src = 'assets/img/avatar.png'">
+        </ion-avatar>
+      </ion-item>
+      <div class="avatarName">
+        <div class="avatarNameWelcome">
+          {{ 'WELCOME' | translate:param }}
+        </div>
+        <div class="avatarNameName">
+          {{ this.username }}
+          <span class="avatar_opt"><ion-icon name="settings"></ion-icon> {{ 'SETTINGS' | translate:param }}</span>
+        </div>
+      </div>
+    </div>
+    <div class="menu">
+      <div class="menuItemcolum" *ngFor="let item of menuData; let i = index">
+        <div *ngIf="showIt(item.logged,item.ctrl)" class="menuItem" (click)="menuClick(item.sub,item.pagename)" detail-none [class.activehighlight]="checkActive(item.pagename)" [ngClass]="{'menuItem-active': item.open, 'menuItem': !item.open}">
+            <div class="menuIcon"><img [src]="item.icon"></div>
+            <div *ngIf="this.platform.dir() === 'rtl' " class="menuTitle {{ item.class }}" [class.activehighlightText]="checkActive(item.pagename)">{{item.ar}}</div>
+            <div *ngIf="this.platform.dir() === 'ltr'" class="menuTitle {{ item.class }}" [class.activehighlightText]="checkActive(item.pagename)">{{item.en}}</div>
+            <div *ngIf="this.platform.dir() === 'rtl' && item.sub" class="menuArrow">
+                <ion-icon *ngIf="!checkActive(item.pagename)" name="md-arrow-dropright"></ion-icon>
+                <ion-icon *ngIf="checkActive(item.pagename)" name="md-arrow-dropdown"></ion-icon>
+            </div>
+            <div *ngIf="this.platform.dir() === 'ltr' && item.sub" class="menuArrowrtl">
+              <ion-icon *ngIf="!checkActive(item.pagename)" name="md-arrow-dropright"></ion-icon>
+              <ion-icon *ngIf="checkActive(item.pagename)" name="md-arrow-dropdown"></ion-icon>
+            </div>
+            <div class="menuFavBadge" *ngIf="item.pagename === 'FavPage' && mainFunc.getFavItemsNumber() > 0">
+                <ion-badge color="danger" item-end>{{mainFunc.getFavItemsNumber()}}</ion-badge>
+            </div>
+        </div>
+        <div class="menuCat" *ngIf="item.sub && openCat">
+          <div *ngFor="let cat of categorys; let i = index">
+            <div *ngIf="this.platform.dir() === 'rtl'" class="menuCatItem" menuToggle (click)="menuClick(false,cat.id)">
+              {{cat.name}}
+            </div>
+            <div *ngIf="this.platform.dir() === 'ltr'" class="menuCatItem" menuToggle (click)="menuClick(false,cat.id)">
+              {{cat.name}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-menu>
+
+
+<ion-menu *ngIf="this.platform.dir() === 'ltr'" [content]="content" side="left" class="ion-menu">
+    <!-- <ion-menu *ngIf="this.platform.dir() === 'ltr'" [content]="content" side="left" class="ion-menu"> -->
+      <ion-content>
+        <!-- <ion-list>
+          <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+            {{p.title}}
+          </button>
+        </ion-list> -->
+        <div *ngIf="isLogged == false" menuToggle (click)="openLoginScreen()" class="avatarDiv">
+          <ion-item no-lines no-border>
+            <ion-avatar item-start>
+              <img [src]="this.thumb == null ? 'assets/img/avatar.png' : this.thumb" onerror="src = 'assets/img/avatar.png'">
+            </ion-avatar>
+          </ion-item>
+          <div class="avatarName">
+            <div class="avatarNameWelcome">
+              {{ 'WELCOME' | translate:param }}
+            </div>
+            <div class="avatarNameName">
+              {{ 'LOGIN' | translate:param }}
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="isLogged == true" (click)="goAccount()" menuToggle class="avatarDiv">
+          <ion-item no-lines no-border>
+            <ion-avatar item-start>
+                <img [src]="this.thumb" onerror="src = 'assets/img/avatar.png'">
+            </ion-avatar>
+          </ion-item>
+          <div class="avatarName">
+            <div class="avatarNameWelcome">
+              {{ 'WELCOME' | translate:param }}
+            </div>
+            <div class="avatarNameName">
+              {{ this.Dfirst_name }}
+              <span class="avatar_opt"><ion-icon name="settings"></ion-icon> {{ 'SETTINGS' | translate:param }}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu">
+          <div class="menuItemcolum" *ngFor="let item of menuData; let i = index">
+            <div *ngIf="showIt(item.logged,item.ctrl)" class="menuItem" (tap)="menuClick(item.sub,item.pagename)" detail-none [class.activehighlight]="checkActive(item.pagename)" [ngClass]="{'menuItem-active': item.open, 'menuItem': !item.open}">
+                <div class="menuIcon"><img [src]="item.icon"></div>
+                <!-- <div *ngIf="this.platform.dir() === 'rtl' && item.logged === true && isLogged" class="menuTitle {{ item.class }}" [class.activehighlightText]="checkActive(item.pagename)">{{item.ar}}</div>
+                <div *ngIf="this.platform.dir() === 'ltr' && item.logged === true && isLogged" class="menuTitle {{ item.class }}" [class.activehighlightText]="checkActive(item.pagename)">{{item.en}}</div> -->
+                <div *ngIf="this.platform.dir() === 'rtl'" class="menuTitle {{ item.class }}" [class.activehighlightText]="checkActive(item.pagename)">{{item.ar}}</div>
+                <div *ngIf="this.platform.dir() === 'ltr'" class="menuTitle {{ item.class }}" [class.activehighlightText]="checkActive(item.pagename)">{{item.en}}</div>
+                <div *ngIf="this.platform.dir() === 'rtl' && item.sub" class="menuArrow">
+                    <ion-icon *ngIf="!checkActive(item.pagename)" name="md-arrow-dropright"></ion-icon>
+                    <ion-icon *ngIf="checkActive(item.pagename)" name="md-arrow-dropdown"></ion-icon>
+                </div>
+                <div *ngIf="this.platform.dir() === 'ltr' && item.sub" class="menuArrowrtl">
+                  <ion-icon *ngIf="!checkActive(item.pagename)" name="md-arrow-dropright"></ion-icon>
+                  <ion-icon *ngIf="checkActive(item.pagename)" name="md-arrow-dropdown"></ion-icon>
+                </div>
+                <div class="menuFavBadge" *ngIf="item.pagename === 'FavPage' && mainFunc.getFavItemsNumber() > 0">
+                    <ion-badge color="danger" item-end>{{mainFunc.getFavItemsNumber()}}</ion-badge>
+                </div>
+            </div>
+            <div class="menuCat" *ngIf="item.sub && openCat">
+              <div *ngFor="let cat of categorys; let i = index">
+                <div *ngIf="this.platform.dir() === 'rtl' && showIt(false,cat.ctrl)" class="menuCatItem" menuToggle (click)="menuClick(false,cat.id)">
+                  {{cat.name}}
+                </div>
+                <div *ngIf="this.platform.dir() === 'ltr' && showIt(false,cat.ctrl)" class="menuCatItem" menuToggle (click)="menuClick(false,cat.id)">
+                  {{cat.en}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ion-content>
+    </ion-menu>
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav class="forceHeight" [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

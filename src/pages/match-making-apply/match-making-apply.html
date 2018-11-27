@@ -1,0 +1,95 @@
+<ion-header class="header"  dir="{{direc}}" no-border>
+
+  <ion-navbar color="darkprimary">
+    <!-- <ion-buttons style="display: flex; direction: row;" left>
+      <button ion-button >
+          <ion-badge color="danger" *ngIf="mainFunc.getCartItemsNumber()" item-end>{{mainFunc.getCartItemsNumber()}}</ion-badge>
+          <ion-icon name="md-cart" *ngIf="this.mainFunc.manuno8 == false"></ion-icon>
+      </button>
+    </ion-buttons> -->
+    <ion-title>{{ 'APPLY_JOB_TITLE' | translate:param }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <div *ngIf="!isLoadingNow" class="formCreate">
+    <form [formGroup]="validateForm" (ngSubmit)="uploadApplication()">
+        <h6>{{ 'APPLY_FOR_JOB' | translate:param }}</h6>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-item no-lines>
+              <ion-label>{{ 'APPLY_FULL_NAME' | translate:param }}</ion-label>
+              <ion-input type="text" formControlName="fullname" ></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item no-lines>
+              <ion-label>{{ 'USED_AD_PHONE' | translate:param }}</ion-label>
+              <ion-input type="tel" formControlName="phone" ></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item no-lines>
+              <ion-label>{{ 'AUTH_EMAIL' | translate:param }}</ion-label>
+              <ion-input type="email" formControlName="email"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <!-- <ion-item no-lines>
+              <ion-label>{{ 'APPLY_CV' | translate:param }}</ion-label>
+              <ion-input type="file">{{ 'APPLY_UPLOAD_CV' | translate:param }}</ion-input>
+            </ion-item> -->
+            <!-- <ion-item>
+              <ion-label stacked>{{ 'APPLY_CV' | translate:param }}</ion-label> -->
+              <!-- <ion-input type="file" accept="image/*" (change)="changeListener($event)"></ion-input> -->
+              <!-- <ion-input type="file" accept="image/*"></ion-input>
+            </ion-item> -->
+            <div (tap)="selectFile()" class="canApply">
+              <img src="assets/img/select_cv.png">
+              <div class="applytitle">{{ 'APPLY_UPLOAD_CV' | translate:param }}</div>
+            </div>
+            <!-- <div class="applytitle">{{ filename }}</div> -->
+            <!-- <button ion-button block>{{ 'APPLY_UPLOAD_CV' | translate:param }}</button>
+            <ion-label></ion-label> -->
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item no-lines>
+                <ion-label>{{ filename }}</ion-label>
+            </ion-item>   
+            <!-- <div class="canApply">
+              <div class="applytitle"></div>
+            </div> -->
+          </ion-col>
+        </ion-row>
+
+        <h6>{{ 'ACC_TITLE_ADDRESSES' | translate:param }}</h6>
+        <ion-row>
+          <ion-col>
+            <ion-item no-lines>
+              <!-- <ion-label>{{ 'CONTACT_US_MASSAGE' | translate:param }}</ion-label> -->
+              <ion-textarea type="text" formControlName="address" ></ion-textarea>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        
+      </ion-grid>
+      <div class="buttonSubmit">
+          <button ion-button type="submit" [disabled]="!validateForm.valid">{{ 'APPLY_SUBMIT' | translate:param }}</button>
+      </div>
+    </form>
+  </div>
+  <div class="footerz" *ngIf="isLoadingNow">
+    <ion-spinner></ion-spinner>
+  </div>
+  <div>{{ listenToAdd() }}</div>
+</ion-content>

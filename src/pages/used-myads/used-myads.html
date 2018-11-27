@@ -1,0 +1,64 @@
+<ion-header class="header" dir="{{direc}}" no-border>
+    
+  <ion-navbar color="darkprimary">
+    <ion-buttons right>
+        <span *ngIf="this.platform.dir() === 'ltr' && this.mainFunc.manuno8 == false">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>  
+      <button ion-button icon-only (tap)="dismissview()">
+        <ion-icon *ngIf="this.platform.dir() === 'rtl'" name="ios-arrow-back"></ion-icon>
+        <ion-icon *ngIf="this.platform.dir() === 'ltr'" name="ios-arrow-forward"></ion-icon>
+      </button>
+          
+    </ion-buttons>
+
+    <ion-buttons style="display: flex; direction: row;" left>
+      
+      <button ion-button icon-only>
+        <ion-badge color="danger" *ngIf="mainFunc.getCartItemsNumber()" item-end>{{mainFunc.getCartItemsNumber()}}</ion-badge>
+        <ion-icon name="md-cart" *ngIf="this.mainFunc.manuno8 == false"></ion-icon>
+      </button>
+      <span *ngIf="this.platform.dir() === 'rtl' && this.mainFunc.manuno8 == false">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    </ion-buttons>
+    <ion-title text-center>{{ 'USED_TITLE_MYADS' | translate:param }}</ion-title>
+    
+        <!-- <div>&nbsp;&nbsp;&nbsp;</div> -->
+      
+    
+  </ion-navbar>
+</ion-header>
+
+<ion-content dir="{{direcR}}">
+
+  <div class="slideScrolls" dir="{{direcR}}">
+    <div class="itemScroll" *ngFor="let item of bestrecommended; let i = index" dir="{{direcR}}">
+      <div>
+        <div class="itemScrollImage"><img [src]="item.image"></div>
+        <div class="itemScrollDetails">
+          <div class="itemScrollName">{{item.name}}</div>
+          <div class="itemScrollPriceafter">{{ mainFunc.financial(item.price) }} {{ item.currency | translate:param }}</div>
+          <!-- <div class="city_div"><ion-icon name="md-map"></ion-icon><div class="city_name">  {{ item.city_en }}</div></div> -->
+        </div>
+        <div class="itemStatus">
+          <div *ngIf="item.approved == '0'" style="color:gold;font-weight: 700;" class="itemScrollName">Pending Approval</div>
+          <div *ngIf="item.approved == '1'" style="color:green;font-weight: 700;" class="itemScrollName">Approved</div>
+          <div *ngIf="item.approved == '2'" style="color:red;font-weight: 700;" class="itemScrollName">Rejected</div>
+          <div *ngIf="item.approved == '2'">{{ item.message }}</div>
+        </div>
+        <div>
+          <button (tap)="openItemDetails(item.id)" ion-button outline icon-only color="light" small>
+            <ion-icon name="eye"></ion-icon>
+          </button>
+          <button (tap)="deleteAdConfirm(item.id,i)" ion-button outline icon-only color="danger" small>
+            <ion-icon name="trash"></ion-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footerz" *ngIf="!isDataAvilable">
+    <img src="assets/img/nodata.png">
+  </div>
+  <div class="footerz" *ngIf="!bestrecommended?.length > 0 && isDataAvilable">
+    <ion-spinner></ion-spinner>
+  </div>
+</ion-content>
+  

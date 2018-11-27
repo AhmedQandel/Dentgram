@@ -1,0 +1,76 @@
+{
+    "items": [
+    {
+        "name": "Bein Air",
+        "id": "1",
+        "cet": true,
+        "img": "assets/img/brand/brand_img1.png"
+    },
+    {
+        "name": "LG Care",
+        "id": "2",
+        "cet": true,
+        "img": "assets/img/brand/brand_img2.png"
+    },
+    {
+        "name": "Glaxo Smith Kline",
+        "id": "3",
+        "cet": true,
+        "img": "assets/img/brand/brand_img3.png"
+    },
+    {
+        "name": "Ivoclar Vivadent",
+        "id": "4",
+        "cet": true,
+        "img": "assets/img/brand/brand_img4.png"
+    },
+    {
+        "name": "Other Brand Name",
+        "id": "5",
+        "cet": false,
+        "img": "assets/img/brand/brand_img5.png"
+    },
+    {
+        "name": "Other Brand Name",
+        "id": "6",
+        "cet": false,
+        "img": "assets/img/brand/brand_img6.png"
+    },
+    {
+        "name": "Other Brand Name",
+        "id": "7",
+        "cet": false,
+        "img": "assets/img/brand/brand_img7.png"
+    },
+    {
+        "name": "Other Brand Name",
+        "id": "8",
+        "cet": false,
+        "img": "assets/img/brand/brand_img8.png"
+    },
+    {
+        "name": "Other Brand Name",
+        "id": "9",
+        "cet": false,
+        "img": "assets/img/brand/brand_img9.png"
+    },
+    {
+        "name": "Other Brand Name",
+        "id": "10",
+        "cet": false,
+        "img": "assets/img/brand/brand_img10.png"
+    },
+    {
+        "name": "Other Brand Name",
+        "id": "11",
+        "cet": false,
+        "img": "assets/img/brand/brand_img11.png"
+    },
+    {
+        "name": "Other Brand Name",
+        "id": "12",
+        "cet": false,
+        "img": "assets/img/brand/brand_img12.png"
+    }
+    ]
+}

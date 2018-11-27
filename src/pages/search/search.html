@@ -1,0 +1,482 @@
+<ion-header *ngIf="this.platform.dir() === 'rtl'" class="header" dir="ltr" no-border>
+  <ion-navbar class="ion-navbar" hideBackButton="true" color="darkprimary" *ngIf="!isSearchToggle">
+    <ion-buttons style="display: flex; direction: row;" left>
+
+      <button ion-button *ngIf="this.mainFunc.manuno8 == false" (tap)="openCartPage2()">
+        <ion-icon name="md-cart" *ngIf="this.mainFunc.manuno8 == false" [@cartBadge]="cartBadgeState"></ion-icon>
+        <ion-badge color="danger" *ngIf="mainFunc.getCartItemsNumber()" [@flyInOut]="cartBadgeState" item-end>{{mainFunc.getCartItemsNumber()}}</ion-badge>
+      </button>
+      <!-- <button ion-button (tap)="showSearchBar()">
+          <ion-icon name="search"></ion-icon>
+      </button> -->
+    </ion-buttons>
+    <ion-title>{{ 'SEARCH' | translate:param }}</ion-title>
+    <!-- <img class="homeLogo" src="assets/img/homelogo.png"> -->
+    <ion-buttons style="display: flex; direction: row;" right>
+      <button ion-button menuToggle>
+        <!-- <ion-icon name="menu"></ion-icon> -->
+        <img [src]="this.thumb == null ? 'assets/img/avatar.png' : this.thumb" onerror="src = 'assets/img/avatar.png'" class="avatar-menu-icon">
+      </button>
+
+
+      <span *ngIf="this.platform.dir() === 'rtl' && this.mainFunc.manuno8 == false">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      <span *ngIf="this.platform.dir() === 'ltr' && this.mainFunc.manuno8 == false">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      <button ion-button icon-only (tap)="dismissview()">
+        <ion-icon *ngIf="this.platform.dir() === 'rtl'" name="ios-arrow-back"></ion-icon>
+        <ion-icon *ngIf="this.platform.dir() === 'ltr'" name="ios-arrow-forward"></ion-icon>
+      </button>
+     
+    </ion-buttons>
+    
+  </ion-navbar>
+  <!-- <ion-toolbar class="toolbar" color="primary">
+    <ion-searchbar class="toolbar" placeholder="بحث" dir="rtl" (input)="getItems($event)"></ion-searchbar>
+  </ion-toolbar>
+ -->
+
+  <!-- <div class="serachDiv" dir= "{{direcR}}" *ngIf="isSearchToggle">
+    <ion-searchbar class="toolbarSearch" cancle-button="true" placeholder="بحث" (input)="searchBar($event)"></ion-searchbar>
+    <div class="searchButton">
+      <button ion-button color="fontWhite" (tap)="showSearchBar()" clear>
+          <ion-icon *ngIf="direc === 'ltr'" name="md-arrow-round-forward"></ion-icon>
+          <ion-icon *ngIf="direc === 'rtl'" name="md-arrow-round-back"></ion-icon>
+      </button>
+    </div>
+
+  </div> -->
+</ion-header>
+
+<ion-header *ngIf="this.platform.dir() === 'ltr'" dir="rtl" class="header" no-border>
+  <ion-navbar class="ion-navbar" hideBackButton="true" color="darkprimary" *ngIf="!isSearchToggle">
+    <ion-buttons style="display: flex; direction: row;" left>
+      <button ion-button *ngIf="this.mainFunc.manuno8 == false" (tap)="openCartPage2()">
+        <ion-icon name="md-cart" *ngIf="this.mainFunc.manuno8 == false" [@cartBadge]="cartBadgeState"></ion-icon>
+        <ion-badge color="danger" *ngIf="mainFunc.getCartItemsNumber()" [@flyInOut]="cartBadgeState" item-end>{{mainFunc.getCartItemsNumber()}}</ion-badge>
+      </button>
+      <!-- 
+        <button ion-button (tap)="showSearchBar()">
+            <ion-icon name="search"></ion-icon>
+        </button> -->
+    </ion-buttons>
+    <ion-title>{{ 'SEARCH' | translate:param }}</ion-title>
+    <!-- <img class="homeLogo" src="assets/img/homelogo.png"> -->
+    <ion-buttons style="display: flex; direction: row;" right>
+
+      <span *ngIf="this.platform.dir() === 'ltr' && this.mainFunc.manuno8 == false">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      <button ion-button icon-only (tap)="dismissview()">
+        <ion-icon *ngIf="this.platform.dir() === 'rtl'" name="ios-arrow-back"></ion-icon>
+        <ion-icon *ngIf="this.platform.dir() === 'ltr'" name="ios-arrow-forward"></ion-icon>
+      </button>
+    </ion-buttons>
+
+  </ion-navbar>
+
+</ion-header>
+
+
+
+<ion-content>
+  <ion-row class="filterrow" no-lines no-padding>
+      <ion-col col-10 no-lines no-padding>
+          <ion-searchbar no-lines [(ngModel)]="searchTerm" placeholder="{{ 'SEARCH' | translate:param }}" [formControl]="searchControl"
+          (search)="openSearchResultPage()" (ionInput)="onSearchInput()"></ion-searchbar>
+        </ion-col>
+
+    <ion-col no-lines col-2 no-padding *ngIf="showFilter">
+        <button class="filterbutton" ion-button icon-only (click)="doFilter()">
+            <ion-icon ios="ios-funnel" md="ios-funnel"></ion-icon>
+          </button>
+      <ion-item   [hidden]="true" dir="{{dir}}" class="selectDiv titleDiv" no-lines>
+        <ion-label class="bg10">{{ 'FILTER_BY' | translate:param }}</ion-label>
+        <ion-select  #sectionSelect interface="popover" class="bg10" dir="{{dir}}" (ionChange)="onFilterByChange($event)" [(ngModel)]="filterBy">
+          <ion-option *ngFor="let op of filterOptions" [value]="op">{{ op | translate:param }}</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-col>
+
+    <!-- <ion-col col-12  *ngIf="filterBy == 'LOCATION_FILTER'">
+      <ion-item dir="{{dir}}" class="selectDiv titleDiv" no-lines>
+        <ion-label class="bg10">{{ 'CHOOSE_CITY' | translate:param }}</ion-label>
+        <ion-select interface="popover" class="bg10" dir="{{dir}}" (ionChange)="onFilterByValueChange($event)" [(ngModel)]="filterByValue">
+          <ion-option *ngFor="let c of city_list; let i = index" [value]="c.id">{{ platform.dir() === 'ltr'? c.name_en: c.name_ar }}</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-col> -->
+    <ion-col col-12  *ngIf="filterBy == 'LOCATION_FILTER'">
+      <ion-item dir="{{dir}}" class="selectDiv titleDiv" no-lines>
+        <ion-label class="bg10">{{ 'WRITE_CITY' | translate:param }}</ion-label>
+        <ion-input class="bg10" dir="{{dir}}" [(ngModel)]="filterByValue" (keyup.enter)="onFilterByValueChange($event)"></ion-input>
+      </ion-item>
+    </ion-col>
+
+
+  <ion-col col-12  *ngIf="filterBy == 'COUNTRY_FILTER'">
+    <ion-item dir="{{dir}}" class="selectDiv titleDiv" no-lines>
+      <ion-label class="bg10">{{ 'COUNTRY_FILTER' | translate:param }}</ion-label>
+      <ion-select interface="popover" class="bg10" dir="{{dir}}" (ionChange)="onFilterByValueChange($event)" [(ngModel)]="filterByValue">
+        <ion-option *ngFor="let c of country_list; let i = index" [value]="c.id">{{ platform.dir() === 'ltr'? c.name_en: c.name_ar }}</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-col>
+
+
+    <ion-col col-12  *ngIf="filterBy == 'CATEGORY_FILTER'">
+      <ion-item dir="{{dir}}" class="selectDiv titleDiv" no-lines>
+        <ion-label class="bg10">{{ 'CHOOSE_CATEGORY' | translate:param }}</ion-label>
+        <ion-select interface="popover" class="bg10" dir="{{dir}}" (ionChange)="onFilterByValueChange($event)" [(ngModel)]="filterByValue">
+          <ion-option *ngFor="let c of category_list; let i = index" [value]="c.id">{{ platform.dir() === 'ltr'? c.name_en: c.name_ar }}</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-col>
+
+    <ion-col col-12  *ngIf="filterBy == 'COURSE_PROVIDER_FILTER'">
+      <ion-item dir="{{dir}}" class="selectDiv titleDiv" no-lines>
+        <ion-label class="bg10">{{ 'CHOOSE_COURSE_PROVIDER' | translate:param }}</ion-label>
+        <ion-input class="bg10" dir="{{dir}}" [(ngModel)]="filterByValue" (keyup.enter)="onFilterByValueChange($event)"></ion-input>
+      </ion-item>
+    </ion-col>
+
+    <ion-col  col-12  *ngIf="filterBy == 'DATE_FILTER' &&( secretid=='for_event' || secretid=='event')">
+      <ion-item dir="{{dir}}" class="selectDiv titleDiv" no-lines>
+        <ion-label class="bg10">{{ 'CHOOSE_DATE' | translate:param }}</ion-label>
+        <ion-datetime class="bg10" dir="{{dir}}" displayFormat="MM/YYYY" [(ngModel)]="filterByValue" cancelText="{{ 'CANCEL' | translate:param }}"
+          doneText="{{ 'OK' | translate:param }}" (ionChange)="onFilterByValueChange($event)"></ion-datetime>
+      </ion-item>
+    </ion-col>
+
+    <ion-col  col-12  *ngIf="filterBy == 'DATE_FILTER' && (secretid=='for_course' || secretid=='course')">
+      <ion-item dir="{{dir}}" class="selectDiv titleDiv" no-lines>
+        <ion-label class="bg10">{{ 'CHOOSE_DATE' | translate:param }}</ion-label>
+        <ion-datetime class="bg10" dir="{{dir}}" displayFormat="DD/MM/YYYY" [(ngModel)]="filterByValue" cancelText="{{ 'CANCEL' | translate:param }}"
+          doneText="{{ 'OK' | translate:param }}" (ionChange)="onFilterByValueChange($event)"></ion-datetime>
+      </ion-item>
+    </ion-col>
+  
+  </ion-row>
+
+  <div *ngIf="!search">
+
+  <!-- <ion-row *ngIf="dir === 'rtl'">
+    <ion-col>
+      <ion-item dir="{{dir}}" class="selectDiv titleDiv" no-lines>
+        <ion-label class="bg10">{{lab_city}}</ion-label>
+        <ion-select class="bg10" formControlName="city_selected_ar" dir="{{dir}}">
+          <ion-option *ngFor="let c of city_list; let i = index" [value]="c.id" dir="{{dir}}">{{ c.name_en }}</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-col>
+  </ion-row> -->
+
+  <div *ngIf="searching" class="spinner-container">
+    <ion-spinner></ion-spinner>
+  </div>
+
+  <div class="itemDiv searchDivTitle" *ngIf='histSearchWords.length > 0 && histSearchWords != null && searchTerm.length < 2'>
+    <div class="icon_left">
+      <ion-icon name="md-timer" item-start></ion-icon>
+    </div>
+    <div class="title_center">{{ 'SEARCH_HISTORY' | translate:param }}</div>
+    <div class="icon_right" (tap)="showDeleteHistoryConfirm()">
+      <ion-icon name="ios-trash" item-start></ion-icon>
+    </div>
+  </div>
+  <ion-list *ngIf='histSearchWords.length > 0 && histSearchWords != null && searchTerm.length < 2' no-lines no-padding>
+    <ion-item *ngFor="let item of histSearchWords">
+      <div class="itemDiv">
+        <div>
+          <ion-icon name="md-time" item-start></ion-icon>
+        </div>
+        <div (tap)="openSearchResultPageSpacefic(item)">{{ item }}</div>
+      </div>
+    </ion-item>
+  </ion-list>
+
+  <ion-list *ngIf='type != "career" && type != "used_item"' no-lines no-padding>
+    <ion-item *ngFor="let item of items">
+      <div class="itemDiv">
+        <div>
+          <ion-icon name="md-search" item-start></ion-icon>
+        </div>
+        <div (tap)="openSearchResultPageSpacefic(item.name_en)" *ngIf="this.platform.dir() === 'ltr'">{{ item.name_en }}</div>
+        <div (tap)="openSearchResultPageSpacefic(item.name_ar)" *ngIf="this.platform.dir() === 'rtl'">{{ item.name_ar }}</div>
+      </div>
+    </ion-item>
+  </ion-list>
+  <ion-list *ngIf='type === "career"' no-lines no-padding>
+    <ion-item *ngFor="let item of items">
+      <ion-icon name="md-search" item-start></ion-icon>
+      <div (tap)="openSearchResultPageSpacefic(item.title)">{{item.title}}</div>
+    </ion-item>
+  </ion-list>
+  <ion-list *ngIf='type === "used_item"' no-lines no-padding>
+    <ion-item *ngFor="let item of items">
+      <ion-icon name="md-search" item-start></ion-icon>
+      <div (tap)="openSearchResultPageSpacefic(item.name)">{{item.name}}</div>
+    </ion-item>
+  </ion-list>
+
+
+</div>
+<!-- ///////////////////////////////////////////////////////////////////////////////// -->
+<div *ngIf="search">
+
+  <!-- Catalogue Section -->
+  <div *ngIf="secretid === 'product'" class="slideScrolls" [class.slideScrollsList]="!isGrid" dir="{{direcR}}">
+      <div class="itemScroll" [class.itemScrollList]="!isGrid" *ngFor="let item of homemenu; let i = index" dir="{{direcR}}">
+        <div (tap)="openItemDetails(item.id)" [class.class1]="!isGrid">
+          <div class="itemScrollImage" [class.itemScrollImageList]="!isGrid"><img [src]="item.image"></div>
+          <div [class.class2]="!isGrid">
+            <div class="itemScrollName" [class.itemScrollNameList]="!isGrid">{{item.name}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  
+  
+  
+    <!-- Buy & Sell Section -->
+    <div *ngIf="secretid === 'item'" class="slideScrolls" [class.slideScrollsList]="!isGrid" dir="{{direcR}}">
+      <div class="itemScroll" [class.itemScrollList]="!isGrid" *ngFor="let item of homemenu; let i = index" dir="{{direcR}}">
+        <div (tap)="openItemStoreDetails(item.id)" [class.class1]="!isGrid">
+          <div class="itemScrollImage" [class.itemScrollImageList]="!isGrid"><img [src]="item.image"></div>
+          <div [class.class2]="!isGrid">
+            <div class="itemScrollName" [class.itemScrollNameList]="!isGrid">{{item.name}}</div>
+            <div *ngIf="item.discount != '0' && item.discount != null" class="class2">
+              <div class="itemScrollPrice discountSign" [class.itemScrollPriceList]="!isGrid">{{ mainFunc.financial(item.price) }} {{ item.currency | translate:param }}</div>
+              <div class="itemScrollPriceafter" [class.itemScrollPriceListafter]="!isGrid">  {{ mainFunc.financial(item.price_discount) }} {{ item.currency | translate:param }}  </div>
+            </div>
+            <div *ngIf="item.discount === '0' || item.discount === null" class="itemScrollPriceafter" [class.itemScrollPriceListafter]="!isGrid">{{ mainFunc.financial(item.price_discount) }} {{ item.currency | translate:param }}</div>
+          </div>
+        </div>
+          <div class="itemScrollFavBuy" [class.itemScrollFavBuyList]="!isGrid">
+            <div *ngIf="!mainFunc.checkItemInFav(item.id)" class="itemScrollFav" [class.itemScrollFavList]="!isGrid">
+              <img src="assets/icon/icon-favo.png"  (tap)="addToFav(item.id)">
+            </div>
+            <div *ngIf="mainFunc.checkItemInFav(item.id)" class="itemScrollFav" [class.itemScrollFavList]="!isGrid">
+              <img src="assets/icon/icon-favo-on.png" (tap)="removeFromFav(item.id)">
+            </div>
+            <div *ngIf="item.premium" class="starItem" [class.starItemList]="!isGrid"><img src="assets/img/starItem.png"></div>
+            <div *ngIf="!item.premium" class="starItem" [class.starItemList]="!isGrid"></div>
+            <div *ngIf="!mainFunc.checkItemInCart(item.id) && item.can_order" class="itemScrollBuy"  [class.itemScrollBuyList]="!isGrid" (tap)="addToCart(item.id, item)"  [@addButton]="item.addButtonState" (@addButton.done)="addToCartFinished(item)"><img src="assets/icon/icon-carto.png"></div>
+            <div *ngIf="mainFunc.checkItemInCart(item.id) && item.can_order" class="itemScrollBuy" [class.itemScrollBuyList]="!isGrid"  (tap)="deleteFromCart(item.id)"><img src="assets/icon/icon-carto-on.png"></div>
+            <div *ngIf="!item.can_order" class="itemScrollBuyStock" [class.itemScrollBuyStockList]="!isGrid"  (tap)="deleteFromCart(item.id)"><img src="assets/icon/icon-carto-canot.png"></div>
+          </div>
+      </div>
+    </div>
+  
+  
+  
+  
+    <!-- Courses -Events - Library Sections -->
+    <div class="wrapperImage" *ngIf="secretid === 'course' || secretid === 'event' || secretid === 'library' || secretid === 'library-videos'">
+      <div *ngFor="let item of homemenu; let i = index" center>
+        
+  
+        <!-- Courses Section -->
+        <ion-card *ngIf="secretid === 'course'" (tap)="openDetailsPage(item.id)">
+            <div>
+              <img class="imgMainDetails" [src]="item.img" onError="this.src='assets/img/course_img_not_avilable.png';"/>
+            </div>
+  
+            <ion-card-content>
+              <ion-card-title *ngIf="this.platform.dir() === 'rtl'">
+                  {{ item.name_ar }}
+              </ion-card-title>
+              <ion-card-title *ngIf="this.platform.dir() === 'ltr'">
+                  {{ item.name_en }}
+              </ion-card-title>
+  
+            </ion-card-content>
+            <ion-row no-padding>
+              <ion-col>
+                <button ion-button clear small color="danger" icon-start>
+                  <ion-icon name='md-map'></ion-icon>
+                  <div style="color: #555555;">{{ item.location }}</div>
+                </button>
+              </ion-col>
+            </ion-row> 
+            <ion-row no-padding>
+              <ion-col>
+                <button ion-button clear small color="danger" icon-start>
+                  <ion-icon name='md-calendar'></ion-icon>
+                  <div style="color: #555555;">{{ item.start_date | date : "dd MMM y" }}</div>
+                </button>
+              </ion-col>
+              <ion-col text-center>
+                <button ion-button clear small color="danger" icon-start>
+                  <ion-icon name='md-stats'></ion-icon>
+                  <div style="color: #555555;">{{ item.level }}</div>
+                </button>
+              </ion-col>
+  
+            </ion-row>
+        
+        </ion-card>
+  
+  
+  
+  
+        <!-- Events Section -->
+        <ion-card *ngIf="secretid === 'event'" (tap)="openDetailsEventPage(item.id)">
+            <div>
+              <img class="imgMainDetails" [src]="item.img" onError="this.src='assets/img/course_img_not_avilable.png'" />
+            </div>
+  
+            <ion-card-content>
+              <ion-card-title *ngIf="this.platform.dir() === 'rtl'">
+                  {{ item.name_ar }}
+              </ion-card-title>
+              <ion-card-title *ngIf="this.platform.dir() === 'ltr'">
+                  {{ item.name_en }}
+              </ion-card-title>
+  
+            </ion-card-content>
+        
+            <ion-row no-padding>
+              <ion-col>
+                <button ion-button clear small color="danger" icon-start>
+                  <ion-icon name='md-calendar'></ion-icon>
+                  <div style="color: #555555;">{{ item.start_date | date : "dd MMM y" }}</div>
+                </button>
+              </ion-col>
+  
+              <ion-col>
+                <button ion-button clear small color="danger" icon-start>
+                  <ion-icon name='md-map'></ion-icon>
+                  <div style="color: #555555;">{{ item.location }}</div>
+                </button>
+              </ion-col>
+            </ion-row>
+        
+        </ion-card>
+  
+  
+  
+        <!-- Books Section -->
+        <ion-card *ngIf="secretid === 'library'" (tap)="openLibraryItem(item.id)">
+            <div>
+              <img class="imgMainDetails" [src]="item.img" onError="this.src='assets/img/course_img_not_avilable.png';"/>
+            </div>
+  
+            <ion-card-content>
+              <ion-card-title *ngIf="this.platform.dir() === 'rtl'">
+                  {{ item.name_ar }}
+              </ion-card-title>
+              <ion-card-title *ngIf="this.platform.dir() === 'ltr'">
+                  {{ item.name_en }}
+              </ion-card-title>
+  
+            </ion-card-content>
+        
+        </ion-card>
+  
+  
+  
+  
+        <!-- Videos Section -->
+        <ion-card *ngIf="secretid === 'library-videos'" (tap)="openLibraryItem(item.id)">
+            <div>
+              <img class="imgMainDetails" [src]="item.img" onError="this.src='assets/img/course_img_not_avilable.png';"/>
+            </div>
+  
+            <ion-card-content>
+              <ion-card-title *ngIf="this.platform.dir() === 'rtl'">
+                  {{ item.name_ar }}
+              </ion-card-title>
+              <ion-card-title *ngIf="this.platform.dir() === 'ltr'">
+                  {{ item.name_en }}
+              </ion-card-title>
+            </ion-card-content>
+        </ion-card>
+      </div>
+    </div>
+  
+  
+  
+    <!-- Careers Section -->
+    <div class="wrapperImage" *ngIf="secretid === 'career'">
+      <div *ngFor="let item of homemenu; let i = index" center>
+        <ion-card  (tap)="openCareerItem(item.id)" no-padding>
+  
+            <ion-card-content>
+                <h2>{{ item?.name }}</h2>
+            </ion-card-content>
+  
+            
+          <!-- <ion-item>
+            <ion-avatar item-start>
+              <img [src]="item?.img">
+            </ion-avatar>
+            <h2>{{ item?.name }}</h2>
+            <p>{{ item?.location_en }}</p>
+          </ion-item> -->
+        
+          <ion-card-content>
+            <p>{{ item?.short_description }}</p>
+          </ion-card-content>
+        
+          <ion-row>
+            <ion-col>
+              <button ion-button icon-left clear small>
+                <ion-icon name="md-home"></ion-icon>
+                <div style="color: #555555;">{{ item?.store_name }}</div>
+              </button>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+      </div>
+    </div>
+  
+  
+  
+    <!-- Used Item Section -->
+    <div *ngIf="secretid === 'used_item'" class="slideScrollsUsed" [class.slideScrollsUsedList]="!isGrid" dir="{{direcR}}">
+      <div class="itemScroll" [class.itemScrollList]="!isGrid" *ngFor="let item of homemenu; let i = index" dir="{{direcR}}">
+        <div (tap)="openUsedItemDetails(item.id)" [class.class1]="!isGrid">
+          <div class="itemScrollImage" [class.itemScrollImageList]="!isGrid"><img [src]="item.image"></div>
+          <div [class.class2]="!isGrid">
+            <div class="itemScrollName" [class.itemScrollNameList]="!isGrid">{{item.name}}</div>
+            <div class="itemScrollPriceafter" [class.itemScrollPriceListafter]="!isGrid">{{ mainFunc.financial(item.price) }} {{ item.currency | translate:param }}</div>
+            <div class="city_div"><ion-icon name="md-map"></ion-icon><div class="city_name">  {{ item.city_en }}</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
+    <!-- Loading More Results -->
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+      <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+    
+  
+    <!-- No Data Avilable Section -->
+    <div class="footerz" *ngIf="!isDataAvilable">
+      <img src="assets/img/nodata.png">
+    </div>
+    <!-- Loading Spinner Section -->
+    <div class="footerz" *ngIf="!homemenu?.length > 0 && isDataAvilable">
+      <ion-spinner></ion-spinner>
+    </div>
+  
+  
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ion-content>

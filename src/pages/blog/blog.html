@@ -1,0 +1,23 @@
+<ion-header class="header" dir="{{direcR}}" no-border>
+  
+  <ion-navbar color="darkprimary">
+
+    <ion-buttons style="display: flex; direction: row;" left>
+      <button ion-button icon-only>
+        <ion-badge color="danger" *ngIf="mainFunc.getCartItemsNumber()" item-end>{{mainFunc.getCartItemsNumber()}}</ion-badge>
+        <ion-icon name="md-cart" *ngIf="this.mainFunc.manuno8 == false"></ion-icon>
+      </button>
+      <span *ngIf="this.platform.dir() === 'rtl' && this.mainFunc.manuno8 == false">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    </ion-buttons>
+    <ion-title text-center>{{ 'PAGE_BLOG_TITLE' | translate:param }}</ion-title>
+    
+</ion-navbar>
+
+</ion-header>
+
+<ion-content class="ionContent">
+<div class="centerImage">
+    <img src="assets/img/logo.png" />
+  <img src="assets/img/comingsoon.png">
+</div>
+</ion-content>

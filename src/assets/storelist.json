@@ -1,0 +1,76 @@
+{
+    "items": [
+    {
+        "name": "شركة قنديل الطبية",
+        "id": "1",
+        "cet": true,
+        "img": "assets/img/slider/store_img1.png"
+    },
+    {
+        "name": "شركة جيت لمستلزمات طب الاسنان",
+        "id": "2",
+        "cet": true,
+        "img": "assets/img/slider/store_img2.png"
+    },
+    {
+        "name": "زيتون لمستلزمات طب الأسنان",
+        "id": "3",
+        "cet": true,
+        "img": "assets/img/slider/store_img3.png"
+    },
+    {
+        "name": "ابن سينا للمستلزمات الطبية",
+        "id": "4",
+        "cet": true,
+        "img": "assets/img/slider/store_img4.png"
+    },
+    {
+        "name": "ادفانسيد دينتال برودكتس",
+        "id": "5",
+        "cet": false,
+        "img": "assets/img/slider/store_img5.png"
+    },
+    {
+        "name": "اراب دانت",
+        "id": "6",
+        "cet": false,
+        "img": "assets/img/slider/store_img6.png"
+    },
+    {
+        "name": "ارزينج لمستلزمات طب الأسنان",
+        "id": "7",
+        "cet": false,
+        "img": "assets/img/slider/store_img7.png"
+    },
+    {
+        "name": "اسم الشركة",
+        "id": "8",
+        "cet": false,
+        "img": "assets/img/slider/store_img8.png"
+    },
+    {
+        "name": "اسم الشركة",
+        "id": "9",
+        "cet": false,
+        "img": "assets/img/slider/store_img9.png"
+    },
+    {
+        "name": "اسم الشركة",
+        "id": "10",
+        "cet": false,
+        "img": "assets/img/slider/store_img10.png"
+    },
+    {
+        "name": "اسم الشركة",
+        "id": "11",
+        "cet": false,
+        "img": "assets/img/slider/store_img11.png"
+    },
+    {
+        "name": "اسم الشركة",
+        "id": "12",
+        "cet": false,
+        "img": "assets/img/slider/store_img12.png"
+    }
+    ]
+}

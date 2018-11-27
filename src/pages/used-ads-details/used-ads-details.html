@@ -1,0 +1,94 @@
+<ion-header class="header" dir="{{direcR}}" no-border>
+
+  <ion-navbar color="darkprimary">
+
+      <ion-buttons style="display: flex; direction: row;" left>
+        <button ion-button *ngIf="this.mainFunc.manuno8 == false" (tap)="openCartPage2()" >
+          <ion-icon name="md-cart" *ngIf="this.mainFunc.manuno8 == false" [@cartBadge]="cartBadgeState"></ion-icon>
+          <ion-badge color="danger" *ngIf="mainFunc.getCartItemsNumber()" [@flyInOut]="cartBadgeState" item-end>{{mainFunc.getCartItemsNumber()}}</ion-badge>
+      </button>
+      </ion-buttons>
+      <ion-title text-center>{{name}}</ion-title>
+      
+          <!-- <div>&nbsp;&nbsp;&nbsp;</div> -->
+        
+      
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content dir="{{direcR}}">
+
+  <div *ngIf="isDataAvilable">
+    <div class="sliderDiv" dir="ltr">
+      <ion-slides speed="500" loop="true" spaceBewteen = "15" pager class="slider">
+          <ion-slide *ngFor="let sl of slides_list; let i = index">
+            <div class="img-container" (click)="openImage(sl.url.full)">
+              <img [src]="mainFunc.encoder(sl.url.full)">
+            </div>
+          </ion-slide>
+      </ion-slides> 
+    </div>
+
+
+    <div class="titleDiv fontNormal"  dir="{{direc}}">
+      
+      <div class="cate_display_name">
+        {{ category_display_name }}
+      </div>
+      <div class="name_title">
+        {{ name }}
+      </div>
+      <!-- Price Section -->
+      <div></div>
+      <div class="itemScrollPriceafter" [class.itemScrollPriceListafter]="!isGrid">{{ mainFunc.financial(price) }} {{ currency | translate:param }}</div>
+      <span class="des" style="border: 0px;" [innerHTML]="description"> {{ description }}</span>
+    </div>
+
+
+    <div class="contactDiv">
+      <div class="cl1">
+        <div *ngIf="can_call == 1" class="canCall" (tap)="showData('phone')">
+          <img src="assets/img/can_call.png">
+            <a href="tel:{{ phone }}" id="phone" style="display: none">{{ phone }}</a>
+        </div>
+      </div>
+      <div class="cl1">
+        <div *ngIf="can_message == 1" class="canMessage"  (tap)="showData(id)">
+          <img src="assets/img/can_message.png">
+            <!-- <a href="mailto:{{ contact_email }}" id="email" style="display: none">{{ contact_email }}</a> -->
+        </div>
+      </div>
+
+      <div class="cl1" >
+          <button class="canMessage"  ion-button clear small icon-start (click)="Share( name +'   '+ description, mainFunc.encoder(slides_list[0].url.full))">
+              <ion-icon class="hearicon" name ="md-share" ></ion-icon>
+          </button>
+      </div> 
+
+      <div class="cl1" *ngIf="ifIsLogged">
+
+          <button class="canMessage" ion-button clear small icon-start *ngIf="!isFavourite" (click)="addToFav(product_id, flag)">
+              <ion-icon class="hearicon"  name ="heart-outline" ></ion-icon>
+            </button>
+    
+            <button class="canMessage" ion-button clear small icon-start *ngIf="isFavourite" (click)="addToFav(product_id, flag)">
+                <ion-icon class="hearicon"  name ="md-heart" ></ion-icon>
+            </button>
+
+  
+      </div>
+
+    
+    </div>
+  </div>
+  <div>
+    &nbsp;
+  </div>
+  <div class="footerz" *ngIf="!isDataAvilable">
+    <ion-spinner></ion-spinner>
+  </div>
+
+
+</ion-content>

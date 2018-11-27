@@ -1,0 +1,122 @@
+{
+    "items": [
+        {
+            "ar": "الصفحة الرئيسية",
+            "en": "Home Page",
+            "sub": false,
+            "logged" : false,
+            "ctrl": 0,
+            "icon": "assets/icon/icon-home.png",
+            "pagename": "HomePage"
+        },
+        {
+            "ar": "حسابي",
+            "en": "My Account",
+            "sub": true,
+            "logged" : true,
+            "ctrl": 0,
+            "icon": "assets/icon/icon-account.png",
+            "pagename": "CategoryPage"
+        },
+        {
+            "ar": "الكتالوج",
+            "en": "Catalogue",
+            "sub": false,
+            "logged" : false,
+            "ctrl": 1,
+            "icon": "assets/icon/icon-menu-catalogue.png",
+            "pagename": "MENU_CATALOGUE"
+        },  
+        {
+            "ar": "البيع والشراء",
+            "en": "Buy & Sell",
+            "sub": false,
+            "logged" : false,
+            "ctrl": 2,
+            "icon": "assets/icon/icon-menu-buy.png",
+            "pagename": "MENU_BUY_SELL"
+        },  
+        {
+            "ar": "الكورسات",
+            "en": "Courses",
+            "sub": false,
+            "logged" : false,
+            "ctrl": 3,
+            "icon": "assets/icon/icon-menu-courses.png",
+            "pagename": "MENU_COURSES"
+        },  
+        {
+            "ar": "المكتبة",
+            "en": "Library",
+            "sub": false,
+            "logged" : false,
+            "ctrl": 4,
+            "icon": "assets/icon/icon-menu-library.png",
+            "pagename": "MENU_LIBRARY"
+        },  
+        {
+            "ar": "اجندة المواعيد",
+            "en": "Events",
+            "sub": false,
+            "logged" : false,
+            "ctrl": 5,
+            "icon": "assets/icon/icon-menu-calendar.png",
+            "pagename": "MENU_CALENDAR"
+        },  
+        {
+            "ar": "التوظيف",
+            "en": "Careers",
+            "sub": false,
+            "logged" : false,
+            "ctrl": 6,
+            "icon": "assets/icon/icon-menu-match.png",
+            "pagename": "MENU_MATCH_MAKING"
+        },
+        {
+            "ar": "العلامات التجارية",
+            "en": "Brands",
+            "sub": false,
+            "logged" : false,
+            "ctrl": 0,
+            "icon": "assets/icon/icon-brands.png",
+            "pagename": "BrandsPage"
+        },
+        {
+            "ar": "الاسئلة الشائعة",
+            "en": "FAQ",
+            "sub": false,
+            "logged" : false,
+            "ctrl": 0,
+            "icon": "assets/icon/icon-faq.png",
+            "pagename": "FaqPage"
+        },
+        {
+            "ar": "اتصل بنا",
+            "en": "Contact Us",
+            "sub": false,
+            "logged" : false,
+            "ctrl": 0,
+            "icon": "assets/icon/icon-contactus.png",
+            "pagename": "AccContactUsPage"
+        },
+        {
+            "ar": "English",
+            "en": "اللغة العربية",
+            "sub": false,
+            "logged" : false,
+            "ctrl": 0,
+            "icon": "assets/icon/icon-language.png",
+            "pagename": "ChangeLanguage"
+        },
+        {
+            "ar": "تسجيل خروج",
+            "en": "Signout",
+            "sub": false,
+            "logged" : true,
+            "ctrl": 0,
+            "class" : "menu_logout",
+            "icon": "assets/icon/icon-signout.png",
+            "pagename": "AuthSignoutPage"
+        }
+    ]
+}

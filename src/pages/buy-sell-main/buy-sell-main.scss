@@ -1,0 +1,165 @@
+page-buy-sell-main {
+    .homeLogo {
+        max-height: 36px;
+        height: 32px;
+        text-align: center;
+        margin-left: 60px;
+        margin-right: 60px;
+    }
+    .header {
+        // margin-bottom: 50px;
+        ion-icon {
+            font-size: 24px;
+        }
+    }
+    .ion-navbar{
+        // border-bottom: 5px;
+        // height: 120px;
+    }
+
+    
+    .toolbarSearch {
+        // height: 38px;
+        // border: 0px solid;
+    }
+
+    .serachDiv {
+        display: flex;
+        flex-direction: row;
+        // padding-top: 5px;
+        height: 54px;
+        background-color: color($colors, darkprimary);
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+        ion-searchbar {
+            height: 40px;
+            // border-radius: 15px;
+        }
+        
+    }
+
+    .serachInput {
+        
+        align-self: left;
+        text-align: right;
+        background-color: #ffffff;
+        width: 100%;
+        max-width: 100%;
+        margin-right: 10px;
+        border-radius: 5px;
+
+        ion-searchbar {
+            border-radius: 5px;
+        }
+        ion-input {
+            // text-align: right;
+            width: 100%;
+            background-color: #ffffff;
+            // height: 30px !important;
+        }
+        ion-label {
+            background-color: #ffffff;
+        }
+        ion-icon {
+            background-color: #ffffff;
+        }
+        ion-item {
+            background-color: #ffffff;
+            border-radius: 5px;
+            // height: 30px !important;
+        }
+    }
+    .searchButton {
+        width: 15%;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+        button {
+
+            // color: color($colors,fontDark);    
+        }
+    }
+    .slide-img-size {
+        height: 100%;
+        width: 100%;
+
+        //min-height: 160px;
+        max-height: 230px;
+    }
+    .titleDiv {
+        padding-top: 10px;
+        padding-bottom: 5px;
+        padding-right: 10px;
+        padding-left: 10px;
+        font-size: 16px;
+        opacity: 50%;
+    }
+    .opicity {
+        color: color($colors,fontLight);
+    }
+
+
+
+    .wrapperlist {
+        // margin-top: 5px;
+        grid-template-columns: repeat(auto-fill, minmax(300px,1fr));
+        .boxlist {
+            background: #eee;
+            height: 100px;
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            .box2list{    
+                margin-bottom: 3px; 
+                .subTable1stDivlist {
+                   
+                    img{
+                        max-height: 22px;
+                        
+                    }
+                }
+                .centerVerticallist {
+            
+                }
+            }
+            &.single{
+                height: 50px!important;
+            }
+        }
+      }
+
+
+      @media screen and (min-width: 720px) {
+
+
+        .wrapperlist {
+            padding-top: 15px;
+            margin-top: 5px;
+            grid-template-columns: repeat(auto-fill, minmax(98%,1fr));
+            .boxlist {
+                height: 50px;
+                width: 100%;
+                border-radius: 5px;
+                display: flex;
+                flex-direction: row;
+                .box2list{      
+                    margin: 2px;
+                    .subTable1stDivlist {
+                    
+                        img{
+                            max-height: 25px;
+                        }
+                    }
+                    .centerVerticallist {
+                
+                    }
+                }
+            }
+          }
+    
+
+      }
+    
+}

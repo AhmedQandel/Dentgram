@@ -1,0 +1,116 @@
+page-home {
+    
+
+    .wrapper {
+
+        padding: 14px;
+        padding-top: 10px;
+        padding-bottom: 0px;
+        display: grid;
+        justify-content: center;
+        grid-gap: 15px;
+        grid-template-columns: repeat(auto-fill, minmax(140px,1fr));
+        .box {
+            background-color: #fff!important;
+            box-shadow: 1px 1px 5px rgba(0,0,0,0.22);
+            border: 0px solid color($colors, borderColor2) !important;
+            padding: 9px;  
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            align-self: center;
+            height: 150px;
+            border-radius: 10px;
+            .box2{      
+                padding: 5px;  
+                padding-bottom: 0px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                align-content: center;
+                align-self: center;
+                justify-content: center;
+                height: 100%;
+                .subTable1stDiv {
+
+                    width: fit-content;
+                    img{
+                        max-height: 75px;
+                    }
+                }
+                .centerVertical {
+                    // height: 15px;
+                    padding-top: 5px;
+                    text-align: center;
+                    font-size: 16px;
+                    bottom: 0px;
+                    flex: 1 1 auto;
+                }
+      
+            }
+      
+        }
+      
+      }
+      
+
+
+
+    @media screen and (min-width: 720px) {
+        .wrapper {
+
+            padding: 20px;
+            padding-top: 20px;
+            display: grid;
+            justify-content: center;
+            grid-gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(250px,1fr));
+            .box {
+                background-color: color($colors, fontWhite);
+                border: 0px solid color($colors, borderColor2);
+                padding: 10px;  
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                align-self: center;
+                height: 190px;
+                border-radius: 15px;
+                .box2{      
+                    // background-color: color($colors, MainGrayLevel_4);
+                    padding: 10px;  
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    align-content: center;
+                    align-self: center;
+                    justify-content: center;
+                    height: 100%;
+                    .subTable1stDiv {
+                        // width: 100px;
+                        // align-self: center;
+                        // align-content: center;
+                        // text-align: center;
+                        width: fit-content;
+                        img{
+                            max-height: 105px;
+                        }
+                    }
+                    .centerVertical {
+                        // height: 15px;
+                        padding-top: 15px;
+                        text-align: center;
+                        font-size: 21px;
+                        bottom: 0px;
+                        flex: 1 1 auto;
+                    }
+      
+                }
+      
+            }
+      
+        }
+    }
+    
+}

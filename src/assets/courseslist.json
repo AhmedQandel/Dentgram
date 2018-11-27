@@ -1,0 +1,111 @@
+{
+    "slider": [
+        {
+            "name": "1",
+            "img": "assets/img/slider/cover_img1.png"
+        },
+        {
+            "name": "2",
+            "img": "assets/img/slider/cover_img2.png"
+        },
+        {
+            "name": "3",
+            "img": "assets/img/slider/cover_img3.png"
+        },
+        {
+            "name": "4",
+            "img": "assets/img/slider/cover_img4.png"
+        },
+        {
+            "name": "5",
+            "img": "assets/img/slider/cover_img5.png"
+        }
+        ],
+
+    "categories": [
+        {
+            "name_ar": "مقدمة في مهنة الأسنان",
+            "name_en": "Introduction to the Dental Profession",
+            "id": "1",
+            "back_back": "bg1",
+            "img": "assets/img/courses/img-1.jpg"
+        },
+        {
+            "name_ar": "الوقاية والتغذية",
+            "name_en": "Prevention and Nutrition",
+            "id": "2",
+            "back_back": "bg2",
+            "img": "assets/img/courses/img-2.jpg"
+        },
+        {
+            "name_ar": "صحة الفم والتقنيات الوقائية",
+            "name_en": "Oral Health and Preventative Techniques",
+            "id": "3",
+            "back_back": "bg3",
+            "img": "assets/img/courses/img-3.jpg"
+        },
+        {
+            "name_ar": "علوم الأسنان الأساسية",
+            "name_en": "Basic Dental Sciences",
+            "id": "4",
+            "back_back": "bg4",
+            "img": "assets/img/courses/img-4.jpg"
+        },
+        {
+            "name_ar": "تشريح",
+            "name_en": "Anatomy",
+            "id": "5",
+            "back_back": "bg5",
+            "img": "assets/img/courses/img-5.jpg"
+        },
+        {
+            "name_ar": "مهارات طب الأسنان قبل السريرية",
+            "name_en": "Pre-clinical Dental Skills",
+            "id": "6",
+            "back_back": "bg6",
+            "img": "assets/img/courses/img-6.jpg"
+        },
+        {
+            "name_ar": "علم الاحياء المجهري",
+            "name_en": "Microbiology",
+            "id": "7",
+            "back_back": "bg7",
+            "img": "assets/img/courses/img-7.jpg"
+        },
+        {
+            "name_ar": "مكافحة العدوى",
+            "name_en": "Infection Control",
+            "id": "8",
+            "back_back": "bg1",
+            "img": "assets/img/courses/img-8.jpg"
+        },
+        {
+            "name_ar": "إدارة الصحة والسلامة المهنية",
+            "name_en": "Occupations Health and Safety Administration",
+            "id": "9",
+            "back_back": "bg9",
+            "img": "assets/img/courses/img-1.jpg"
+        },
+        {
+            "name_ar": "التحضير لرعاية المرضى",
+            "name_en": "Preparation for Patient Care",
+            "id": "10",
+            "back_back": "bg2",
+            "img": "assets/img/courses/img-1.jpg"
+        },
+        {
+            "name_ar": "تقويم الأسنان",
+            "name_en": "Dental Charting",
+            "id": "11",
+            "back_back": "bg3",
+            "img": "assets/img/courses/img-1.jpg"
+        },
+        {
+            "name_ar": "علم العقاقير",
+            "name_en": "Pharmacology",
+            "id": "12",
+            "back_back": "bg4",
+            "img": "assets/img/courses/img-1.jpg"
+        }
+    ]
+}

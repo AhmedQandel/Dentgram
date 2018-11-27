@@ -1,0 +1,262 @@
+<ion-header *ngIf="this.platform.dir() === 'rtl'" class="header" dir="ltr" no-border>
+  <ion-navbar class="ion-navbar" hideBackButton="true" color="darkprimary" *ngIf="!isSearchToggle">
+    <ion-buttons style="display: flex; direction: row;" left>
+      
+      <button ion-button *ngIf="this.mainFunc.manuno8 == false" (tap)="openCartPage2()">
+          <ion-icon name="md-cart" *ngIf="this.mainFunc.manuno8 == false" [@cartBadge]="cartBadgeState"></ion-icon>
+          <ion-badge color="danger" *ngIf="mainFunc.getCartItemsNumber()" [@flyInOut]="cartBadgeState" item-end>{{mainFunc.getCartItemsNumber()}}</ion-badge>
+      </button>
+      <button ion-button (tap)="showSearchBar()">
+          <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-buttons>
+    <!-- <ion-title>دانتجرام</ion-title> -->
+    <img class="homeLogo" src="assets/img/homelogo.png">
+    <ion-buttons style="display: flex; direction: row;" right>
+      <button ion-button menuToggle>
+        <!-- <ion-icon name="menu"></ion-icon> -->
+      <img [src]="this.thumb == null ? 'assets/img/avatar.png' : this.thumb" onerror="src = 'assets/img/avatar.png'" class="avatar-menu-icon">
+      </button>
+      
+      
+      <span *ngIf="this.platform.dir() === 'rtl' && this.mainFunc.manuno8 == false">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>  
+      <span *ngIf="this.platform.dir() === 'ltr' && this.mainFunc.manuno8 == false">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      <button ion-button icon-only (tap)="dismissview()">
+        <ion-icon *ngIf="this.platform.dir() === 'rtl'" name="ios-arrow-back"></ion-icon>
+        <ion-icon *ngIf="this.platform.dir() === 'ltr'" name="ios-arrow-forward"></ion-icon>
+      </button>
+      
+    </ion-buttons>
+    
+  </ion-navbar>
+  <!-- <ion-toolbar class="toolbar" color="primary">
+    <ion-searchbar class="toolbar" placeholder="بحث" dir="rtl" (input)="getItems($event)"></ion-searchbar>
+  </ion-toolbar>
+ -->
+
+  <div class="serachDiv" dir= "{{direcR}}" *ngIf="isSearchToggle">
+    <ion-searchbar class="toolbarSearch" cancle-button="true" placeholder="بحث" (input)="searchBar($event)"></ion-searchbar>
+    <div class="searchButton">
+      <button ion-button color="fontWhite" (tap)="showSearchBar()" clear>
+          <ion-icon *ngIf="direc === 'ltr'" name="md-arrow-round-forward"></ion-icon>
+          <ion-icon *ngIf="direc === 'rtl'" name="md-arrow-round-back"></ion-icon>
+      </button>
+    </div>
+
+  </div>
+</ion-header>
+
+<ion-header *ngIf="this.platform.dir() === 'ltr'" dir="rtl" class="header" no-border>
+    <ion-navbar class="ion-navbar" hideBackButton="true" color="darkprimary" *ngIf="!isSearchToggle">
+      <ion-buttons style="display: flex; direction: row;" left>
+        <button ion-button *ngIf="this.mainFunc.manuno8 == false" (tap)="openCartPage2()">
+            <ion-icon name="md-cart" *ngIf="this.mainFunc.manuno8 == false" [@cartBadge]="cartBadgeState"></ion-icon>
+            <ion-badge color="danger" *ngIf="mainFunc.getCartItemsNumber()" [@flyInOut]="cartBadgeState" item-end>{{mainFunc.getCartItemsNumber()}}</ion-badge>
+        </button>
+        <button ion-button (tap)="showSearchBar()">
+            <ion-icon name="search"></ion-icon>
+        </button>
+      </ion-buttons>
+      <!-- <ion-title>دانتجرام</ion-title> -->
+      <img class="homeLogo" src="assets/img/homelogo.png">
+      <ion-buttons style="display: flex; direction: row;" right>
+
+       
+        <span *ngIf="this.platform.dir() === 'ltr' && this.mainFunc.manuno8 == false">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <button ion-button icon-only (tap)="dismissview()">
+          <ion-icon *ngIf="this.platform.dir() === 'rtl'" name="ios-arrow-back"></ion-icon>
+          <ion-icon *ngIf="this.platform.dir() === 'ltr'" name="ios-arrow-forward"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-navbar>
+    <!-- <ion-toolbar class="toolbar" color="primary">
+      <ion-searchbar class="toolbar" placeholder="بحث" dir="rtl" (input)="getItems($event)"></ion-searchbar>
+    </ion-toolbar>
+   -->
+  
+    <div class="serachDiv" dir= "{{direcR}}" *ngIf="isSearchToggle">
+      <ion-searchbar class="toolbarSearch" cancle-button="true" placeholder="{{ 'SEARCH' | translate:param }}" (input)="searchBar($event)"></ion-searchbar>
+      <div class="searchButton">
+        <button ion-button color="fontWhite" (tap)="showSearchBar()" clear>
+            <ion-icon *ngIf="direc === 'ltr'" name="md-arrow-round-forward"></ion-icon>
+            <ion-icon *ngIf="direc === 'rtl'" name="md-arrow-round-back"></ion-icon>
+        </button>
+
+      </div>
+  
+    </div>
+  </ion-header>
+
+
+<ion-content>
+  <div *ngIf="isSearchToggle">
+    <ion-list>
+      <ion-item *ngFor="let item of searchResults">
+        {{ item }}
+      </ion-item>
+    </ion-list>
+  </div>
+  <div *ngIf="!isSearchToggle">
+  <!--  Home Page Slider  -->
+      <div *ngIf="slider_Data_Store.length > 0" class="slide-img-size" dir="ltr">
+          <div>
+              <ion-slides speed="500" loop="true" spaceBewteen = "15" pager>
+                  <ion-slide class="ion-slide" *ngFor = 'let slide of slider_Data_Store; let i = index'>
+                      <div (click)="mainFunc.openSlider(slide.action)">
+                          <img class="slide-img-size" [ngClass]="{tablet: isTabletOriPad}" [src]="slide.img" >
+                      </div>
+                      <div class="slider-link" *ngIf="i != 0 && slide.action">{{ 'TAP_FOR_MORE' | translate:param }}</div>
+                  </ion-slide>
+              </ion-slides>
+          </div>
+      </div>
+
+
+      <!-- <div class="wrapperlist">
+        <div center>
+          <div class="boxlist" *ngIf="this.mainFunc.manuno7 == true">
+            <div class="box2list bg6" style="width: 100%;" (tap)="click_Open_categories()">
+              <div class="subTable1stDivlist">
+                <img src="assets/img/categories.png">
+              </div>
+              <div class="centerVerticallist">
+                  <div *ngIf="this.platform.dir() === 'rtl'" class="fontNormal maxsize">{{ 'CATEGORIES' | translate:param }}</div>
+                  <div *ngIf="this.platform.dir() === 'ltr'" class="fontNormal maxsize">{{ 'CATEGORIES' | translate:param }}</div>
+              </div>
+            </div>
+            <div class="box2list bg3" style="width: 100%;" (tap)="click_Open_Used()">
+              <div class="subTable1stDivlist">
+                <img src="assets/img/used_items_icon.png">
+              </div>
+              <div class="centerVerticallist">
+                  <div class="fontNormal maxsize">{{ 'USED' | translate:param }}</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="boxlist single" *ngIf="this.mainFunc.manuno7 == false">
+            <div class="box2list bg6" style="width: 100%;" (tap)="click_Open_categories()">
+              <div class="subTable1stDivlist">
+                <img src="assets/img/categories.png">
+              </div>
+              <div class="centerVerticallist">
+                  <div *ngIf="this.platform.dir() === 'rtl'" class="fontNormal maxsize">{{ 'CATEGORIES' | translate:param }}</div>
+                  <div *ngIf="this.platform.dir() === 'ltr'" class="fontNormal maxsize">{{ 'CATEGORIES' | translate:param }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> -->
+  
+
+
+      <div class="titleDiv" dir="{{this.platform.dir()}}">
+          {{ 'BESTOVERS' | translate:param }}
+      </div>
+      <div class="slideScrolls" dir="{{this.platform.dir()}}">
+        
+      <div class="itemScroll" *ngFor="let item of bestOvers; let i = index">
+        <div (tap)="openItemDetails(item.id)">
+          
+          <div class="itemScrollImage"><img [src]="item.image"></div>
+          <div class="itemScrollName">{{item.name}}</div>
+          <div class="itemScrollPrice">{{item.price | number}} {{ 'POUND' | translate:param }}</div>
+          <div></div>
+        </div>
+          <div class="itemScrollFavBuy">
+            <div *ngIf="!mainFunc.checkItemInFav(item.id)" class="itemScrollFav">
+              <img src="assets/icon/icon-favo.png"  (tap)="addToFav(item.id)">
+            </div>
+            <div *ngIf="mainFunc.checkItemInFav(item.id)" class="itemScrollFav">
+              <img src="assets/icon/icon-favo-on.png" (tap)="removeFromFav(item.id)">
+            </div>
+            <div *ngIf="item.premium" class="starItem"><img src="assets/img/starItem.png"></div>
+            <div *ngIf="!item.premium" class="starItem"></div>
+            <div *ngIf="!mainFunc.checkItemInCart(item.id)" class="itemScrollBuy"  (tap)="addToCart(item.id,item)"  [@addButton]="item.addButtonState" (@addButton.done)="addToCartFinished(item)"><img src="assets/icon/icon-carto.png"></div>
+            <div *ngIf="mainFunc.checkItemInCart(item.id)" class="itemScrollBuy"><img src="assets/icon/icon-carto-on.png"></div>
+          </div>
+        
+        </div>
+      </div>
+      <!-- 888888888888888888888888888888888888888888 -->
+      <div class="titleDiv" dir="{{this.platform.dir()}}">
+          {{ 'BESTSTORES' | translate:param }}
+          <!-- {{ 'SHOW_MORE' | translate:param }} -->
+      </div>
+
+      <div class="wrapper">
+          <div  *ngFor="let item of storelist; let i = index">
+            <div class="box"  *ngIf="item.cet">
+              <div class="box2">
+                <div class="subTable1stDiv">
+                  <img [src]="item.img">
+                </div>
+                <div class="centerVertical">
+                    <div class="fontNormal maxsize">{{item.name}}</div>
+                </div>
+                <div class="maxSubMap">
+                  
+                </div>
+                <div class="maxSubDates">
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 88888888888888888888888888888888 -->
+      <div class="titleDiv" dir="{{this.platform.dir()}}">
+          {{ 'RECOMENDED' | translate:param }}
+      </div>
+      <div class="slideScrolls" dir="{{this.platform.dir()}}">
+        <div class="itemScroll" *ngFor="let item of bestrecommended; let i = index">
+          <div class="itemScrollImage"><img [src]="item.image"></div>
+          <div class="itemScrollName">{{item.name}}</div>
+          <div class="itemScrollPrice">{{item.price | number}} {{ 'POUND' | translate:param }}</div>
+          <div></div>
+          <div class="itemScrollFavBuy">
+            <div *ngIf="!mainFunc.checkItemInFav(item.id)" class="itemScrollFav">
+              <img src="assets/icon/icon-favo.png"  (tap)="addToFav(item.id)">
+            </div>
+            <div *ngIf="mainFunc.checkItemInFav(item.id)" class="itemScrollFav">
+              <img src="assets/icon/icon-favo-on.png" (tap)="removeFromFav(item.id)">
+            </div>
+            <div *ngIf="item.premium" class="starItem"><img src="assets/img/starItem.png"></div>
+            <div *ngIf="!item.premium" class="starItem"></div>
+            <div *ngIf="!mainFunc.checkItemInCart(item.id)" class="itemScrollBuy"  (tap)="addToCart(item.id,item)"  [@addButton]="item.addButtonState" (@addButton.done)="addToCartFinished(item)"><img src="assets/icon/icon-carto.png"></div>
+            <div *ngIf="mainFunc.checkItemInCart(item.id)" class="itemScrollBuy"><img src="assets/icon/icon-carto-on.png"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="titleDiv" dir="{{this.platform.dir()}}">
+          {{ 'BESTSALES' | translate:param }}
+      </div>
+      <div class="slideScrolls" dir="{{this.platform.dir()}}">
+        <div class="itemScroll" *ngFor="let item of bestSell; let i = index">
+          <div class="itemScrollImage"><img [src]="item.image"></div>
+          <div class="itemScrollName">{{item.name}}</div>
+          <div class="itemScrollPrice">{{item.price | number}} {{ 'POUND' | translate:param }}</div>
+          <div></div>
+          <div class="itemScrollFavBuy">
+            <div *ngIf="!mainFunc.checkItemInFav(item.id)" class="itemScrollFav">
+              <img src="assets/icon/icon-favo.png"  (tap)="addToFav(item.id)">
+            </div>
+            <div *ngIf="mainFunc.checkItemInFav(item.id)" class="itemScrollFav">
+              <img src="assets/icon/icon-favo-on.png" (tap)="removeFromFav(item.id)">
+            </div>
+            <div *ngIf="item.premium" class="starItem"><img src="assets/img/starItem.png"></div>
+            <div *ngIf="!item.premium" class="starItem"></div>
+            <div *ngIf="!mainFunc.checkItemInCart(item.id)" class="itemScrollBuy"  (tap)="addToCart(item.id,item)"  [@addButton]="item.addButtonState" (@addButton.done)="addToCartFinished(item)"><img src="assets/icon/icon-carto.png"></div>
+            <div *ngIf="mainFunc.checkItemInCart(item.id)" class="itemScrollBuy"><img src="assets/icon/icon-carto-on.png"></div>
+          </div>
+        </div>
+      </div>
+  </div>  
+  <div class="footer">
+      <div>
+          {{ 'APP_COPYRIGHT' | translate:param }}
+      </div>
+  </div>
+</ion-content>

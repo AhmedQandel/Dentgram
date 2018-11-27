@@ -1,0 +1,55 @@
+{
+    "slider": [
+        {
+            "name": "1",
+            "img": "assets/img/slider/cover_img1.png"
+        },
+        {
+            "name": "2",
+            "img": "assets/img/slider/cover_img2.png"
+        },
+        {
+            "name": "3",
+            "img": "assets/img/slider/cover_img3.png"
+        },
+        {
+            "name": "4",
+            "img": "assets/img/slider/cover_img4.png"
+        },
+        {
+            "name": "5",
+            "img": "assets/img/slider/cover_img5.png"
+        }
+        ],
+
+    "categories": [
+        {
+            "name_ar": "الأساسيات",
+            "name_en": "Basics",
+            "id": "1",
+            "back_back": "",
+            "img": "assets/img/catalogue/img-1.png"
+        },
+        {
+            "name_ar": "المهارات المتقدمة",
+            "name_en": "Advanced Skills",
+            "id": "2",
+            "back_back": "",
+            "img": "assets/img/catalogue/img-1.png"
+        },
+        {
+            "name_ar": "استخدام المعدات الحديثة",
+            "name_en": "Using Advanced Equipment",
+            "id": "3",
+            "back_back": "",
+            "img": "assets/img/catalogue/img-1.png"
+        },
+        {
+            "name_ar": "تاريخ طب الأسنان",
+            "name_en": "Dentist history",
+            "id": "4",
+            "back_back": "",
+            "img": "assets/img/catalogue/img-1.png"
+        }
+    ]
+}

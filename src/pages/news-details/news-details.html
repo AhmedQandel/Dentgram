@@ -1,0 +1,45 @@
+<ion-header class="header"  dir="{{direc}}" no-border>
+
+  <ion-navbar color="darkprimary">
+    <ion-buttons style="display: flex; direction: row;" left>
+      <button ion-button>
+          <ion-badge color="danger" *ngIf="mainFunc.getCartItemsNumber()" item-end>{{mainFunc.getCartItemsNumber()}}</ion-badge>
+          <ion-icon name="md-cart" *ngIf="this.mainFunc.manuno8 == false"></ion-icon>
+      </button>
+    </ion-buttons>
+    <!-- <img class="homeLogo" src="assets/img/homelogo.png"> -->
+
+    <ion-title><span class="des" style="border: 0px;    color: #ffffff;" *ngIf="this.platform.dir() === 'rtl'" [innerHTML]="newsData.title_ar"> {{ newsData.title_ar  }}</span></ion-title>
+    <ion-title><span class="des" style="border: 0px;    color: #ffffff;" *ngIf="this.platform.dir() === 'ltr'" [innerHTML]="newsData.title_en"> {{ newsData.title_en  }}</span></ion-title>
+
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    
+    <img class="imgMainDetails" [src]="newsData.main_image" onError="this.src='assets/img/course_img_not_avilable2.png'"/>
+ 
+    <div class="pageTitle" style="font-weight: bold;font-size: 20px;" *ngIf="this.platform.dir() === 'rtl'">{{ newsData.title_ar }}</div>
+    <div class="pageTitle" style="font-weight: bold;font-size: 20px;" *ngIf="this.platform.dir() === 'ltr'">{{ newsData.title_en }}</div>
+    
+    <!-- <div class="cate_display_name" [innerHTML]="newsData.body_ar">
+      {{ newsData.body_ar }}
+    </div> -->
+    <ion-card>
+    <ion-card-content>
+      <ion-card-title [innerHTML]="newsData.body_ar" *ngIf="this.platform.dir() === 'rtl'">
+          {{ newsData.body_ar }}
+      </ion-card-title>
+      <ion-card-title [innerHTML]="newsData.body_en" *ngIf="this.platform.dir() === 'ltr'">
+          {{ newsData.body_en }}
+      </ion-card-title>
+
+    </ion-card-content>
+  
+
+  </ion-card>
+
+
+</ion-content>

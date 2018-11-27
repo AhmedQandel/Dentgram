@@ -1,0 +1,84 @@
+
+<ion-header class="header" no-border>
+    
+  <ion-navbar color="darkprimary">
+    <!-- <ion-buttons style="display: flex; direction: row;" right>
+      <button ion-button menuToggle>
+      <img src="assets/img/avatar.png" class="avatar-menu-icon">
+      </button>
+    </ion-buttons> -->
+    <ion-title>{{ 'AUTH_LOGIN_TITLE' | translate:param }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div dir="{{direcR}}" id="cloud-layer">
+      <div id="formcenter" [formGroup]="login" (ngSubmit)="openLoginUser()" >
+        <ion-row>
+          <ion-col>
+            <img src="assets/img/logo_lang.png" />
+          </ion-col>
+        </ion-row>
+    
+        <div>
+          <ion-row>
+            <ion-col>
+              <ion-item no-lines>
+                <ion-label>{{ 'AUTH_EMAIL' | translate:param }}</ion-label>
+                <ion-input type="email" formControlName="email"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item no-lines>
+                <ion-label>{{ 'AUTH_PASSWORD' | translate:param }}</ion-label>
+                <ion-input type="password" formControlName="password"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item no-lines>
+                <ion-label>{{ 'AUTH_REMEMBER' | translate:param }}</ion-label>
+                <ion-checkbox class="bgrememberme" checked="true" formControlName="remember"></ion-checkbox>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </div>
+    
+        <ion-row>
+          <ion-col>
+            <button ion-button class="login-button" (tap)="openLoginUser()"><ion-icon name="key"></ion-icon>&nbsp;&nbsp;{{ 'AUTH_LOGIN_LOGIN' | translate:param }}</button>
+          </ion-col>
+          <ion-col>
+            <button ion-button class="signup-button" (tap)="openCreateUser()"><ion-icon name="person"></ion-icon>&nbsp;&nbsp;{{ 'AUTH_LOGIN_SIGNUP' | translate:param }}</button>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <button ion-button class="facebook-button" (tap)="fbLoginWithToken()"><ion-icon md="logo-facebook"></ion-icon>&nbsp;&nbsp;Facebok Login</button>
+          </ion-col>
+          <ion-col *ngIf="hideMe">
+            <button ion-button class="linked-in-button" (tap)="doLinLogin()"><ion-icon style="font-size:40px;" md="logo-linkedin"></ion-icon></button>
+          </ion-col>
+        </ion-row>
+        <ion-row *ngIf="shouldAuth === false">
+          <ion-col>
+            <ion-item no-lines>
+              <a href="https://dentgram.com/password/reset" target="_self">Forgot your password?</a>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row *ngIf="shouldAuth === false">
+          <ion-col>
+            <button ion-button clear class="skip-button" (tap)="skipRegister()">{{ 'AUTH_PASS_LOGIN' | translate:param }}</button>
+          </ion-col>
+        </ion-row>
+      </div>
+      </div>
+</ion-content>
+    

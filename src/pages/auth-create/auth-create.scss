@@ -1,0 +1,47 @@
+page-auth-create {
+    background-color: color($colors, borderColor2);
+    .formCreate {
+        background-color: color($colors, fontWhite);
+        margin: 10px;
+        padding-top: 5px;
+        border-radius: 5px!important;
+        // border: 0.5px dotted color($colors, borderColor2);
+       
+    }
+    ion-label {
+        min-width: 65px;
+    }
+    .errorshow {
+        color: color($colors, danger);
+    }
+    
+    ion-input {
+        font-size: 16px;
+    }
+    ion-item {
+        background-color: color($colors, borderColor2);
+        border-color: #fcfcfc;
+        border-inline-end-color: #fcfcfc;
+        border-radius: 15px!important;
+    }
+    ion-select {
+        min-width: 70% !important;
+    }
+    h6 {
+        margin: 10px;
+        font-size: 17px;
+        font-weight: bold;
+    }
+    .buttonSubmit {
+        display: flex;
+        flex-direction: row;
+        align-content: center;
+        justify-content: center;
+        button {
+            font-size: 15px;
+            border-radius: 8px!important;
+            background-color: color($colors,darkprimary);
+            text-transform: none;
+        }
+    }
+}

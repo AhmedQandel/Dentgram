@@ -1,0 +1,28 @@
+{
+    "items": [
+    {
+        "name": "شركة قنديل الطبية",
+        "id": "1",
+        "cet": true,
+        "img": "assets/img/stores/store_img1.png"
+    },
+    {
+        "name": "شركة جيت لمستلزمات طب الاسنان",
+        "id": "2",
+        "cet": true,
+        "img": "assets/img/stores/store_img2.png"
+    },
+    {
+        "name": "زيتون لمستلزمات طب الأسنان",
+        "id": "3",
+        "cet": true,
+        "img": "assets/img/stores/store_img3.png"
+    },
+    {
+        "name": "ابن سينا للمستلزمات الطبية",
+        "id": "4",
+        "cet": true,
+        "img": "assets/img/stores/store_img4.png"
+    }
+    ]
+}

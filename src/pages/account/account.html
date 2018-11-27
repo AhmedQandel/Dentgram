@@ -1,0 +1,5 @@
+<ion-tabs color="darkprimary" [selectedIndex]="selected_tab">
+    <ion-tab [root]="accOrdersRoot" *ngIf="this.mainFunc.manuno8 == false" tabTitle="{{ 'ACC_TITLE_ORDERS' | translate:param }}" tabIcon="md-cube"></ion-tab>
+    <ion-tab [root]="accInfoRoot" tabTitle="{{ 'ACC_TITLE_INFO' | translate:param }}" tabIcon="md-information-circle"></ion-tab>
+    <ion-tab [root]="accAddressRoot" *ngIf="this.mainFunc.manuno8 == false" tabTitle="{{ 'ACC_TITLE_ADDRESSES' | translate:param }}" tabIcon="md-navigate"></ion-tab>
+</ion-tabs>

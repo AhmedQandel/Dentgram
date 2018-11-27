@@ -1,0 +1,46 @@
+{
+    "items": [
+        {
+            "name_ar": "الكتالوج",
+            "name": "MENU_CATALOGUE",
+            "id": 1,
+            "back_back": "bg10",
+            "img": "assets/img/home-page-menu/img-menu-catalogue.png"
+        },
+        {
+            "name_ar": "البيع والشراء",
+            "name": "MENU_BUY_SELL",
+            "id": 2,
+            "back_back": "bg10",
+            "img": "assets/img/home-page-menu/img-menu-buy.png"
+        },
+        {
+            "name_ar": "الكورسات",
+            "name": "MENU_COURSES",
+            "id": 3,
+            "back_back": "bg10",
+            "img": "assets/img/home-page-menu/img-menu-courses.png"
+        },
+        {
+            "name_ar": "المكتبة",
+            "name": "MENU_LIBRARY",
+            "id": 4,
+            "back_back": "bg10",
+            "img": "assets/img/home-page-menu/img-menu-library.png"
+        },
+        {
+            "name_ar": "اجندة المواعيد",
+            "name": "MENU_CALENDAR",
+            "id": 5,
+            "back_back": "bg10",
+            "img": "assets/img/home-page-menu/img-menu-calendar.png"
+        },
+        {
+            "name_ar": "الوظائف",
+            "name": "MENU_MATCH_MAKING",
+            "id": 6,
+            "back_back": "bg10",
+            "img": "assets/img/home-page-menu/img-menu-match.png"
+        }
+    ]
+}

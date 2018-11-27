@@ -1,0 +1,149 @@
+<ion-header *ngIf="this.platform.dir() === 'rtl'" class="header" dir="ltr" no-border>
+  <ion-navbar class="ion-navbar" hideBackButton="true" color="darkprimary" *ngIf="!isSearchToggle">
+    <ion-buttons style="display: flex; direction: row;" left>
+      
+      <button ion-button *ngIf="this.mainFunc.manuno8 == false" (tap)="openCartPage2()">
+          <ion-icon name="md-cart" *ngIf="this.mainFunc.manuno8 == false" [@cartBadge]="cartBadgeState"></ion-icon>
+          <ion-badge color="danger" *ngIf="mainFunc.getCartItemsNumber()" [@flyInOut]="cartBadgeState" item-end>{{mainFunc.getCartItemsNumber()}}</ion-badge>
+      </button>
+      <button ion-button (tap)="showSearchBar()">
+          <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title text-center>{{catName}}</ion-title>
+    <!-- <ion-title>دانتجرام</ion-title> -->
+    <!-- <img class="homeLogo" src="assets/img/homelogo.png"> -->
+    <ion-buttons style="display: flex; direction: row;" right>
+      <button ion-button menuToggle>
+        <!-- <ion-icon name="menu"></ion-icon> -->
+      <img [src]="this.thumb == null ? 'assets/img/avatar.png' : this.thumb" onerror="src = 'assets/img/avatar.png'" class="avatar-menu-icon">
+      </button>
+     
+      
+      <span *ngIf="this.platform.dir() === 'rtl' && this.mainFunc.manuno8 == false">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>  
+      <span *ngIf="this.platform.dir() === 'ltr' && this.mainFunc.manuno8 == false">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      <button ion-button icon-only (tap)="dismissview()">
+        <ion-icon *ngIf="this.platform.dir() === 'rtl'" name="ios-arrow-back"></ion-icon>
+        <ion-icon *ngIf="this.platform.dir() === 'ltr'" name="ios-arrow-forward"></ion-icon>
+      </button>
+      
+    </ion-buttons>
+    
+  </ion-navbar>
+  <!-- <ion-toolbar class="toolbar" color="primary">
+    <ion-searchbar class="toolbar" placeholder="بحث" dir="rtl" (input)="getItems($event)"></ion-searchbar>
+  </ion-toolbar>
+ -->
+
+  <div class="serachDiv" dir= "{{direcR}}" *ngIf="isSearchToggle">
+    <ion-searchbar class="toolbarSearch" cancle-button="true" placeholder="بحث" (input)="searchBar($event)"></ion-searchbar>
+    <div class="searchButton">
+      <button ion-button color="fontWhite" (tap)="showSearchBar()" clear>
+          <ion-icon *ngIf="direc === 'ltr'" name="md-arrow-round-forward"></ion-icon>
+          <ion-icon *ngIf="direc === 'rtl'" name="md-arrow-round-back"></ion-icon>
+      </button>
+    </div>
+
+  </div>
+</ion-header>
+
+<ion-header *ngIf="this.platform.dir() === 'ltr'" dir="rtl" class="header" no-border>
+    <ion-navbar class="ion-navbar" hideBackButton="true" color="darkprimary" *ngIf="!isSearchToggle">
+      <ion-buttons style="display: flex; direction: row;" left>
+        <button ion-button *ngIf="this.mainFunc.manuno8 == false" (tap)="openCartPage2()">
+            <ion-icon name="md-cart" *ngIf="this.mainFunc.manuno8 == false" [@cartBadge]="cartBadgeState"></ion-icon>
+            <ion-badge color="danger" *ngIf="mainFunc.getCartItemsNumber()" [@flyInOut]="cartBadgeState" item-end>{{mainFunc.getCartItemsNumber()}}</ion-badge>
+        </button>
+        <button ion-button (tap)="showSearchBar()">
+            <ion-icon name="search"></ion-icon>
+        </button>
+      </ion-buttons>
+      <!-- <ion-title>دانتجرام</ion-title> -->
+      <ion-title text-center>{{catName}}</ion-title>
+      <!-- <img class="homeLogo" src="assets/img/homelogo.png"> -->
+      <ion-buttons style="display: flex; direction: row;" right>
+
+        
+        <span *ngIf="this.platform.dir() === 'ltr' && this.mainFunc.manuno8 == false">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <button ion-button icon-only (tap)="dismissview()">
+          <ion-icon *ngIf="this.platform.dir() === 'rtl'" name="ios-arrow-back"></ion-icon>
+          <ion-icon *ngIf="this.platform.dir() === 'ltr'" name="ios-arrow-forward"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-navbar>
+    <!-- <ion-toolbar class="toolbar" color="primary">
+      <ion-searchbar class="toolbar" placeholder="بحث" dir="rtl" (input)="getItems($event)"></ion-searchbar>
+    </ion-toolbar>
+   -->
+  
+    <div class="serachDiv" dir= "{{direcR}}" *ngIf="isSearchToggle">
+      <ion-searchbar class="toolbarSearch" cancle-button="true" placeholder="{{ 'SEARCH' | translate:param }}" (input)="searchBar($event)"></ion-searchbar>
+      <div class="searchButton">
+        <button ion-button color="fontWhite" (tap)="showSearchBar()" clear>
+            <ion-icon *ngIf="direc === 'ltr'" name="md-arrow-round-forward"></ion-icon>
+            <ion-icon *ngIf="direc === 'rtl'" name="md-arrow-round-back"></ion-icon>
+        </button>
+
+      </div>
+  
+    </div>
+  </ion-header>
+
+
+<ion-content>
+  <div *ngIf="isSearchToggle">
+    <ion-list>
+      <ion-item *ngFor="let item of searchResults">
+        {{ item }}
+      </ion-item>
+    </ion-list>
+  </div>
+  <div *ngIf="!isSearchToggle">
+  <!--  Home Page Slider  -->
+      <div *ngIf="slider_Data_Store.length > 0" class="slide-img-size" dir="ltr">
+          <div>
+              <ion-slides speed="500" loop="true" spaceBewteen = "15" pager>
+                  <ion-slide class="ion-slide" *ngFor = 'let slide of slider_Data_Store; let i = index'>
+                      <div (click)="mainFunc.openSlider(slide.action)">
+                          <img class="slide-img-size" [ngClass]="{tablet: isTabletOriPad}" [src]="slide.img" >
+                      </div>
+                      <div class="slider-link" *ngIf="i != 0 && slide.action">{{ 'TAP_FOR_MORE' | translate:param }}</div>
+                  </ion-slide>
+              </ion-slides>
+          </div>
+      </div>
+
+      <div class="wrapperlist">
+        <div *ngFor="let item of homemenu; let i = index" center>
+          <div class="boxlist {{ item.back_back }}" (tap)="click_Open_catalogue_sub_id(item.id,item.name_ar,item.name_en,item.useable)">
+            <div class="box2list">
+              <div class="subTable1stDivlist">
+                <img [src]="item.img">
+              </div>
+              <div class="centerVerticallist">
+                  <div *ngIf="this.platform.dir() === 'rtl'" class="fontNormal maxsize">{{ item.name_ar }}</div>
+                  <div *ngIf="this.platform.dir() === 'ltr'" class="fontNormal maxsize">{{ item.name_en }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+  </div>  
+
+  <div class="footerz" *ngIf="!isDataAvilable">
+    <img src="assets/img/nodata.png">
+  </div>
+
+  <div class="footerz" *ngIf="!homemenu?.length > 0 && isDataAvilable">
+    <ion-spinner></ion-spinner>
+  </div>
+  
+</ion-content>
+<!-- <ion-footer class="footer bgs" (tap)="click_Open_catalogue_sub_id( catId, catName)">
+  <div>
+    <div>
+      {{ 'BROWES_PRODUCTS' | translate:param }} 
+    </div>
+</div>
+</ion-footer> -->

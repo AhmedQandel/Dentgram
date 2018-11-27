@@ -1,0 +1,7 @@
+{
+  "name": "dentist",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

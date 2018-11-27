@@ -1,0 +1,112 @@
+page-match-making-apply {
+
+    .header {
+        // margin-bottom: 50px;
+        ion-icon {
+            font-size: 24px;
+        }
+    }
+
+    background-color: color($colors, borderColor2);
+    .formCreate {
+        background-color: color($colors, fontWhite);
+        margin: 10px;
+        padding-top: 5px;
+        border-radius: 5px!important;
+        height: 95%;
+        // border: 0.5px dotted color($colors, borderColor2);
+       
+    }
+    ion-label {
+        // min-width: 45px;
+    }
+    ion-input {
+        font-size: 16px;
+    }
+    ion-item {
+        background-color: color($colors, borderColor2);
+        border-color: #fcfcfc;
+        border-inline-end-color: #fcfcfc;
+        border-radius: 15px!important;
+    }
+    h6 {
+        margin: 10px;
+        font-size: 17px;
+        font-weight: bold;
+    }
+    .buttonSubmit {
+        display: flex;
+        flex-direction: row;
+        align-content: center;
+        justify-content: center;
+        button {
+            font-size: 15px;
+            border-radius: 8px!important;
+            background-color: color($colors,darkprimary);
+            text-transform: none;
+        }
+    }
+
+    ion-textarea {
+        height: 120px;
+    }
+
+    .canApply {
+        border-radius: 8px;
+        min-width: 100px;
+        min-height: 90px;
+        max-width: 100px;
+        max-height: 90px;
+        background-color: #f1f1f1;
+        // margin: 5px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        vertical-align: middle;
+
+        img {
+            
+            min-width: 45px;
+            min-height: 45px;
+            max-width: 45px;
+            max-height: 45px;
+
+            display:block;
+            margin:auto;
+            padding: 0px;
+            // display: block;
+            // margin-left: auto;
+            // margin-right: auto;
+        }
+
+        .applytitle {
+            text-align: center;
+            font-size: 1em;
+            color: color($colors,primary);
+            padding: 0px;
+            font-weight: bold;
+            padding-bottom: 5px;
+        }
+    }
+
+    .footerz {
+        display: flex;
+        flex-direction: row;
+        // height: 40px;
+        text-align: center;
+        justify-content: center;
+        align-content: center;
+        align-self: center;
+        align-items: center;
+        // color: white;
+        margin-top: 60px;
+        padding-bottom: 5px;
+        font-size: 18px;
+        // background-color: #fff;//color($colors, darkprimary);
+        color: #000 !important;
+
+        img {
+            max-width: 240px;
+        }
+      }
+}

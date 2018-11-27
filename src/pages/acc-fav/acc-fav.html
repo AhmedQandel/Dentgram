@@ -1,0 +1,61 @@
+<ion-header class="header" dir="{{direc}}" no-border>
+    
+  <ion-navbar color="darkprimary">
+    <ion-buttons right>
+        <span *ngIf="this.platform.dir() === 'ltr' && this.mainFunc.manuno8 == false">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>  
+      <button ion-button icon-only (tap)="dismissview()">
+        <ion-icon *ngIf="this.platform.dir() === 'rtl'" name="ios-arrow-back"></ion-icon>
+        <ion-icon *ngIf="this.platform.dir() === 'ltr'" name="ios-arrow-forward"></ion-icon>
+      </button>
+          
+    </ion-buttons>
+    <!-- <ion-buttons left>
+      <button ion-button icon-only>
+        <ion-icon></ion-icon>
+      </button>
+    </ion-buttons> -->
+    <ion-buttons style="display: flex; direction: row;" left>
+      
+      <button ion-button icon-only>
+        <ion-badge color="danger" *ngIf="mainFunc.getCartItemsNumber()" item-end>{{mainFunc.getCartItemsNumber()}}</ion-badge>
+        <ion-icon name="md-cart" *ngIf="this.mainFunc.manuno8 == false"></ion-icon>
+      </button>
+      <span *ngIf="this.platform.dir() === 'rtl' && this.mainFunc.manuno8 == false">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    </ion-buttons>
+    <ion-title text-center>{{ 'ACC_TITLE_FAV' | translate:param }}</ion-title>
+    
+        <!-- <div>&nbsp;&nbsp;&nbsp;</div> -->
+      
+    
+  </ion-navbar>
+</ion-header>
+
+<ion-content dir="{{direcR}}">
+  
+    <div class="slideScrolls" [class.slideScrollsList]="!isGrid" dir="{{direcR}}">
+      <div *ngFor="let item of itemsList; let i = index">
+        <div class="itemScroll" [class.itemScrollList]="!isGrid" *ngIf="mainFunc.checkItemInFav(item.id)" dir="{{direcR}}"> 
+          <div (tap)="openItemDetails(item.id)" [class.class1]="!isGrid">
+            <div class="itemScrollImage" [class.itemScrollImageList]="!isGrid"><img [src]="item.image"></div>
+            <div [class.class2]="!isGrid">
+              <div class="itemScrollName" [class.itemScrollNameList]="!isGrid">{{item.name}}</div>
+              <div class="itemScrollPrice" [class.itemScrollPriceList]="!isGrid">{{item.price | number}} جنيه</div>
+            </div>
+          </div>
+            <div class="itemScrollFavBuy" [class.itemScrollFavBuyList]="!isGrid">
+              <div *ngIf="!mainFunc.checkItemInFav(item.id)" class="itemScrollFav" [class.itemScrollFavList]="!isGrid">
+                <img src="assets/icon/icon-favo.png"  (tap)="addToFav(item.id)">
+              </div>
+              <div *ngIf="mainFunc.checkItemInFav(item.id)" class="itemScrollFav" [class.itemScrollFavList]="!isGrid">
+                <img src="assets/icon/icon-favo-on-remove.png" (tap)="deleteFromFav(item.id)">
+              </div>
+              <div *ngIf="item.premium" class="starItem" [class.starItemList]="!isGrid"><img src="assets/img/starItem.png"></div>
+              <div *ngIf="!item.premium" class="starItem" [class.starItemList]="!isGrid"></div>
+              <div *ngIf="!mainFunc.checkItemInCart(item.id)" class="itemScrollBuy"  [class.itemScrollBuyList]="!isGrid" (tap)="addToCart(item.id, item)"  [@addButton]="item.addButtonState" (@addButton.done)="addToCartFinished(item)"><img src="assets/icon/icon-carto.png"></div>
+              <div *ngIf="mainFunc.checkItemInCart(item.id)" class="itemScrollBuy" [class.itemScrollBuyList]="!isGrid"><img src="assets/icon/icon-carto-on.png"></div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </ion-content>
+  

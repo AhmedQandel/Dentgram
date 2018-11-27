@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1091313309582",
+    "firebase_url": "https://dentgram-app.firebaseio.com",
+    "project_id": "dentgram-app",
+    "storage_bucket": "dentgram-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1091313309582:android:df5f45149813e5fc",
+        "android_client_info": {
+          "package_name": "com.makdev.dentgram"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1091313309582-8d0n4uuh0qu9fcncq8479pg0fk0httev.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDrpzMdxEfdCe0Y0tDe9IcdAWbLlS-ajCM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

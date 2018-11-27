@@ -1,0 +1,31 @@
+page-used-msges-list {
+    .header {
+        // margin-bottom: 50px;
+        ion-icon {
+            font-size: 24px;
+        }
+    }
+
+    .read{
+    	background: #eee;
+    }
+    
+    .unread {
+    	background: #fff;
+    	font-weight: 700;
+    }
+
+    .msg-icon{
+        font-size: 34px;
+    }
+    .msg-date{
+        color:#999;
+        font-size: 12px;
+        float: right;
+    }
+    ion-list[dir=rtl]{
+        .msg-date {
+            float: left;
+        }
+    }
+}

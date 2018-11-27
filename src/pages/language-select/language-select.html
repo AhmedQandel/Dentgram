@@ -1,0 +1,134 @@
+<ion-header class="header" center no-border>
+  <ion-navbar class="ion-navbar" color="darkprimary">
+    <img class="homeLogo" src="assets/img/homelogo.png">
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content >
+  <div id="cloud-layer">
+    <div id="formcenter" [formGroup]="create">
+      <ion-row>
+        <ion-col>
+          <img src="assets/img/logo_lang.png" />
+        </ion-col>
+      </ion-row>
+      <!-- <ion-row>
+        <ion-col>
+            <div class="selectDiv titleDiv bg10 title_size">
+                اللغة
+            </div>
+        </ion-col>
+      </ion-row> -->
+      <ion-row dir="">
+        <ion-col>
+            <div class="selectDiv" (tap)="changelanguage('english')">
+                <img *ngIf="!lang_en" src="assets/img/lang_english_off.png" />
+                <img *ngIf="lang_en" src="assets/img/lang_english_on.png" />
+            </div>
+        </ion-col>
+        <ion-col>
+            <div class="selectDiv" (tap)="changelanguage('arabic')">
+                <img *ngIf="!lang_ar" src="assets/img/lang_arabic_off.png" />
+                <img *ngIf="lang_ar" src="assets/img/lang_arabic_on.png" />
+            </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row *ngIf="dir === 'rtl'">
+        <ion-col>
+          <ion-item dir="{{dir}}" class="selectDiv titleDiv" no-lines>
+            <ion-label class="bg10">{{lab_country}}</ion-label>
+            <ion-select (ionChange)="change_city('ar')" class="bg10" formControlName="country_selected_ar" dir="{{dir}}">
+              <!-- <ion-option *ngFor="let count of Countries; let i = index" [value]="count.country_id">{{count.name}}</ion-option> -->
+              <ion-option *ngFor="let c of country_list; let i = index" [value]="c.id" dir="{{dir}}">{{ c.name_en }}</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="dir === 'ltr'">
+        <ion-col>
+          <ion-item dir="{{dir}}" class="selectDiv titleDiv" no-lines>
+            <ion-label class="bg10">{{lab_country}}</ion-label>
+            <ion-select (ionChange)="change_city('en')" class="bg10" formControlName="country_selected_en" dir="{{dir}}">
+              <!-- <ion-option *ngFor="let count of Countries; let i = index" [value]="count.country_id">{{count.name}}</ion-option> -->
+              <ion-option *ngFor="let c of country_list; let i = index" [value]="c.id" dir="{{dir}}">{{ c.name_en }}</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+
+
+
+
+      <ion-row *ngIf="dir === 'rtl'">
+        <ion-col>
+          <ion-item dir="{{dir}}" class="selectDiv titleDiv" no-lines>
+            <ion-label class="bg10">{{lab_city}}</ion-label>
+            <ion-select class="bg10" formControlName="city_selected_ar" dir="{{dir}}">
+              <!-- <ion-option *ngFor="let count of Countries; let i = index" [value]="count.country_id">{{count.name}}</ion-option> -->
+              <ion-option *ngFor="let c of city_list; let i = index" [value]="c.id" dir="{{dir}}">{{ c.name_en }}</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row *ngIf="dir === 'ltr'">
+        <ion-col>
+          <ion-item dir="{{dir}}" class="selectDiv titleDiv" no-lines>
+            <ion-label class="bg10">{{lab_city}}</ion-label>
+            <ion-select class="bg10" formControlName="city_selected_en" dir="{{dir}}">
+              <!-- <ion-option *ngFor="let count of Countries; let i = index" [value]="count.country_id">{{count.name}}</ion-option> -->
+              <ion-option *ngFor="let c of city_list; let i = index" [value]="c.id" dir="{{dir}}">{{ c.name_en }}</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-item dir="{{dir}}" class="valid_errs" no-lines>
+        <ion-label *ngIf="requierd_field_not_valid" dir="{{dir}}" class="bgerror">{{requierd_field}}</ion-label>
+      </ion-item>
+
+
+      <ion-row>
+        <ion-col>
+            <div class="titleDiv">
+            </div>
+        </ion-col>
+      </ion-row>
+
+
+      <ion-row class="buttonDiv">
+        <div class="buttonSubmit">
+            <button ion-button (tap)="saveData()" >{{lab_save}}</button>
+        </div>  
+      </ion-row>
+
+      
+      <!-- <ion-row  class="buttonDiv">
+        <div class="buttonSubmit">
+            <button ion-button (tap)="saveData()" >{{lab_login}}</button>
+        </div>
+        <div class="buttonSubmit">
+          <button ion-button (tap)="saveData()" >{{lab_continue}}</button>
+      </div>  
+      </ion-row> -->
+    </div>
+  </div>
+  
+</ion-content>
+
+
+<ion-footer>
+  <div class="footer" *ngIf="dir === 'rtl'">
+    <div>
+        جميع الحقوق محفوظة دنتجرام 2017
+    </div>
+  </div>
+  <div class="footer" *ngIf="dir === 'ltr'">
+    <div>
+        Copyright © 2017 Dentgram, All rights reserved
+    </div>
+  </div>
+</ion-footer>

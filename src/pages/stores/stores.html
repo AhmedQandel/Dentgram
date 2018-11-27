@@ -1,0 +1,64 @@
+
+<ion-header class="header" dir="{{direc}}" no-border>
+    
+  <ion-navbar color="darkprimary">
+    <ion-buttons style="display: flex; direction: row;" right>
+      <button ion-button menuToggle>
+          <!-- <ion-icon name="menu"></ion-icon> -->
+      <img src="assets/img/avatar.png">
+      <img [src]="this.thumb == null ? 'assets/img/avatar.png' : this.thumb" onerror="src = 'assets/img/avatar.png'" class="avatar-menu-icon">
+      </button>
+    </ion-buttons>
+    <ion-title text-center>{{ 'STORES_TITLE' | translate:param }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+<div class="titleDiv" dir="{{this.platform.dir()}}">
+    {{ 'STORES_CERTIFIED' | translate:param }}
+</div>
+
+<div class="wrapper">
+  <div  *ngFor="let item of storelist; let i = index">
+    <div class="box"  *ngIf="item.cet">
+      <div class="box2">
+        <div class="subTable1stDiv">
+          <img src="assets/img/stores/store_img3.png">
+        </div>
+        <div class="centerVertical">
+            <div class="fontNormal maxsize">{{item.name}}</div>
+        </div>
+        <div class="maxSubMap">
+          
+        </div>
+        <div class="maxSubDates">
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="titleDiv" dir="{{this.platform.dir()}}">
+  {{ 'STORES_NORMAL_NAME' | translate:param }}
+</div>
+
+<div class="wrapperx">
+    <div *ngFor="let item of storelist; let i = index">
+      <div class="boxx"  *ngIf="!item.cet">
+        <div class="box2x">
+          <div class="subTable1stDivx">
+            <img src="assets/img/stores/store_img3.png">
+          </div>
+          <div class="centerVerticalx">
+              <div class="fontNormal maxsize">{{item.name}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</ion-content>
+    

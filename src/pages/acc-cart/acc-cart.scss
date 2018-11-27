@@ -1,0 +1,763 @@
+page-acc-cart {
+    .header {
+        // direction: rtl;
+        
+        ion-icon {
+            font-size: 24px;
+        }
+    }
+    .toolbars {
+        background-color: color($colors,fontLight);
+        height: 28px;
+    }
+    .toolBar {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        
+        .toolSorting{
+            align-self: center;
+            display: flex;
+            width: 50%;
+            align-items: center;
+            justify-content: center;
+            p {
+                color: color($colors, darkprimary);
+            }
+            img {
+                width: 22px;
+                height: 22px;
+            }
+        }
+        .toolShowType{
+            display: flex;
+            width: 50%;
+            align-items: center;
+            justify-content: center;
+            p {
+                color: color($colors, darkprimary);
+            }
+            img {
+                width: 22px;
+                height: 22px;
+            }
+        }
+    }
+
+    .font13 {
+        font-size: 13px;
+    }
+    .font12 {
+        font-size: 12px;
+    }
+    .font14 {
+        font-size: 14px;
+    }
+    .font15 {
+        font-size: 15px;
+    }
+    .font16 {
+        font-size: 16px;
+    }
+    .font11 {
+        font-size: 11px;
+    }
+    .rowDiv {
+        display: flex;
+        flex-direction: row;
+        font-size: 14px;
+        color: color($colors, dark2primary);
+    }
+    .itemScrollPriceafter {
+        padding-top: 3px;
+        font-size: 13px;
+        // font-weight: bold;
+        color: color($colors, dark);
+    }
+    .itemScrollPriceListafter {
+        padding-top: 3px;
+        font-size: 14px;
+        font-weight: bold;
+        color: color($colors, dark);
+    }
+    .discountSign {
+        text-decoration: line-through;
+    }
+    .storeTitle {
+        height: 33px;
+        font-size: 16px;
+        // vertical-align: center;
+        padding: 5px;
+        padding-left: 10px;
+        padding-right: 10px;
+        margin-bottom: 5px;
+    }
+    .quntityText {
+        width: 30px;
+    }
+
+    .quntityTextDiv {
+        max-height: 30px;
+        // max-height: fit-content;
+        display: flex;
+        padding-left: 12px; 
+        padding-right: 12px;
+        margin-left: 5px; 
+        margin-right: 5px;
+        max-width: 120px; 
+        width: 120px; 
+        border: 1.3px solid;
+        border-radius: 5px;
+        border-color: color($colors,borderColor);
+        
+        .item {
+            min-height: 2.5rem;
+            text-align: center;
+            border: 0px!important;
+            border-bottom-color: transparent !important;
+            box-shadow: none !important;
+        }
+        ion-item {
+            max-width: 120px!important;
+            max-height: 30px!important;
+            background-color: #ffffff;
+            border: 0px!important;
+            text-align: center;
+            border-bottom-color: transparent !important;
+            box-shadow: none !important;
+            ion-input {
+                max-width: 120px!important;
+                max-height: 30px!important;
+                background-color: #ffffff;
+                border: 0px!important;
+                text-align: center;
+                border-bottom-color: transparent !important;
+                box-shadow: none !important;
+            }
+        }
+    }
+
+    .quntityTextDiv2 {
+        max-height: 25px;
+        display: flex;
+        padding-left: 12px; 
+        padding-right: 12px;
+        margin-left: 5px; 
+        margin-right: 5px;
+        max-width: 60px; 
+        width: 60px; 
+        // border: 1.3px solid;
+        // border-radius: 5px;
+        // border-color: color($colors,borderColor);
+    }
+
+    ion-input {
+        
+        color: color($colors, danger);
+        font-weight: bold;
+        margin-top: -8.5px;
+        max-height: 40px;
+        // height: 60px;
+        // max-width: 40px; 
+        // width: 40px; 
+        // top: -10px;
+        
+
+        placeholder {
+        
+            text-align: center; 
+            align-self: center;
+            align-content: center;
+            vertical-align: top;
+            max-width: 40px; 
+            width: 40px; 
+
+            top: 0px;
+            max-height: 25px;
+    
+        }
+    }
+    .slideScrolls {
+        // display: flex;
+        // flex-direction: row;
+        // direction: rtl;
+        // padding-top: 10px;
+        padding-bottom: 10px;
+        display: grid;
+        grid-gap: 5px;
+        grid-template-columns: repeat(auto-fill, minmax(157px,1fr));
+        // background-color: color($colors, MainGrayLevel_4);
+
+        padding-right: 1px;
+        padding-left: 1px;
+        .itemScroll {
+            // width: 158px;
+            min-width: 158px;
+            border: 1px solid;
+            border-color: color($colors,borderColor);
+            background-color: color($colors,fontWhite);
+            padding: 5px;
+            margin-right: 2px;
+            margin-left: 2px;
+
+            
+            .itemScrollImage{
+                display: flex;
+                max-height: 150px;
+                max-width: 100%;
+                justify-content: center;
+                img {
+                    
+                    max-height: 100px;
+                }
+            }
+            .itemScrollName {
+                font-size: 14px;
+                padding-top: 3px;
+                min-height: 1em;
+                max-height: 5em;
+            }
+            .itemCounter {
+                display: flex;
+                flex-direction: row;
+                align-content: center;
+                align-items: center;
+                max-height: 25px;
+                // button {
+                //     height: 22px;
+                //     width: 22px;
+                //     background: color($colors,borderColor);
+                //     color: color($colors,darkprimary);
+                //     ion-icon {
+                //         font-size: 16px;
+                //     }
+                // }
+                // p {
+                //     text-align: center;
+                //     height: 22px;
+                //     width: 38px;
+                //     background: color($colors,borderColor);
+                //     color: color($colors,darkprimary);
+                //     font-size: 16px;
+                // }
+            }
+            .itemScrollPrice {
+                padding-top: 3px;
+                font-size: 13px;
+                font-weight: bold;
+                color: color($colors, danger);
+            }
+            .itemScrollFavBuy {
+                padding-top: 15px;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                .itemScrollFav {
+                    width: 25%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    img {
+                        align-self: center;
+                        width: 22px;
+                        height: 22px;
+                    }
+                }
+                .starItem {
+                    width: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    img {
+                        align-self: center;
+                        // width: 22px;
+                        height: 22px;
+                    }
+                }
+                .itemScrollBuy {
+                    width: 25%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    img {
+                        align-self: center;
+                        width: 22px;
+                        height: 22px;
+                    }
+                }
+            }
+        }
+    }
+
+    .storeIcon {
+        max-height: 22px;
+    }
+    
+    .slideScrollsList {
+        // display: flex;
+        // flex-direction: row;
+        // direction: rtl;
+        padding-top: 5px;
+        padding-bottom: 10px;
+        display: grid;
+        grid-gap: 5px;
+        grid-template-columns: repeat(auto-fill, minmax(300px,1fr));
+        // background-color: color($colors, MainGrayLevel_4);
+
+        padding-right: 1px;
+        padding-left: 1px;
+        .itemScrollList {
+            display: flex;
+            flex-direction: column;
+            // width: 350px;
+            // max-width: 320px;
+            // min-width: 320px;
+            border: 1px solid;
+            border-radius: 3px;
+            border-color: color($colors,borderColor);
+            background-color: color($colors,fontWhite);
+            padding: 5px;
+            margin: 0px 2px 2px 2px;
+            // margin-left: 2px;
+
+            
+            .itemScrollImageList{
+                display: flex;
+                // max-height: 200px;
+                // max-width: 300px;
+                min-width: 90px;
+                max-width: 90px;
+                // max-height: 80px;
+                // min-height: 80px;
+                justify-content: center;    
+                vertical-align: middle;
+                padding-top: 10px;
+                img {
+                    align-self: flex-start;
+                    width: 100%!important;
+                    object-fit: contain;
+                    vertical-align: middle;
+                    // height: auto;
+                }
+            }
+            .itemScrollNameList {
+                font-size: 14px;
+                // font-weight: bold;
+                padding-top: 3px;
+                // padding-right: 3px;
+                padding-bottom: 5px;
+                // min-height: 4.5em;
+                // max-height: 4.5em;
+            }
+            .itemScrollPriceList {
+                padding-top: 3px;
+                font-size: 12px;
+                padding-right: 6px;
+                // font-weight: bold;
+                color: color($colors, danger);
+            }
+            .itemScrollFavBuyList {
+                align-self: flex-end;
+                width: 40%;
+                // padding-top: 15px;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                .itemScrollFavList {
+                    width: 25%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    img {
+                        align-self: center;
+                        width: 20px;
+                        height: 20px;
+                    }
+                }
+                .starItemList {
+                    width: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    img {
+                        align-self: center;
+                        // width: 22px;
+                        height: 20px;
+                    }
+                }
+                .itemScrollBuyList {
+                    width: 25%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    img {
+                        align-self: center;
+                        width: 20px;
+                        height: 20px;
+                    }
+                }
+            }
+        }
+    }
+
+    
+    .class1 {
+        display: flex;
+        flex-direction: row;
+    }
+    .class2 {
+        
+        display: flex;
+        flex-direction: column;
+        padding: 0px 2px 0px 2px;
+    }
+
+    .selectItemDiv {
+        min-width: 100%;
+        padding-top: 10px;
+        .radiox{
+            max-width: 10%;
+            min-width: 10%;
+        }
+        .textx{
+            font-weight: bold;
+            font-size: 12px;
+            max-width: 70%;
+            min-width: 70%;
+            .maintextx{
+                color:  color($colors, darkprimary);
+            }
+            .subtextx{
+                font-weight: normal;
+                font-size: 12px;
+            }
+        }
+        .pricex{
+            font-size: 11px;
+            max-width: 20%;
+            min-width: 20%;
+            color:  color($colors, danger);
+        }
+    }
+
+
+    .smallTabs {
+        margin: 5px;
+        padding-top: 3px;
+        display: flex;
+        flex-direction: row;
+        // min-height: fit-content;
+        .smallTabsCell {
+            width: 25%;
+            max-width: 25%;
+            
+          .sicon {
+            text-align: center;
+            img {
+                max-width: 44px;
+                min-width: 44px;
+            }
+          }
+          .stitle {
+            text-align: center;
+            font-size: 11px;
+            font-weight: bold;
+            max-height: 0px;
+          }  
+        }
+
+    }
+
+    .addressesList {
+        margin: 5px;
+        // border-radius: 5px!important;
+        // background-color: color($colors, fontWhite);
+        width: 100%;
+        .addressItem {
+            padding: 4px;
+            .addressnameDiv {
+
+                display: flex;
+                flex-direction: row;
+
+                .addressnameTitle{
+                    width: 70%;
+                    font-size: 14px;
+                    font-weight: bold;
+                }
+                .addressnameSelected {
+                    width: 30%
+                    
+                    img {
+                        max-width: 20px;
+                        max-height: 20px;
+                    }
+                }
+            }
+
+            .addressbody {
+
+                display: flex;
+                flex-direction: row;
+
+                .addressbodyIcon {
+                    img {
+                        max-height: 40px;
+                        max-width: 40px;
+                        min-height: 40px;
+                        min-width: 40px;
+                        margin: 5px;
+                    }
+                }
+                .addressbodyContent {
+
+                    display: flex;
+                    flex-direction: column;
+                    
+                    .addressLine1 {
+                        font-size: 13px;
+                    }
+                    .addressLine2 {
+                        font-size: 13px;
+                    }
+                    .addressphone {
+                        font-size: 12px;
+                        color: red;
+                    }
+                    .addressrecipient {
+                        font-size: 13px;
+                    }
+
+                }
+            }
+        }
+    }
+    
+    .totalSummeryMain {
+        display: flex;
+        flex-direction: column;
+        .totalSummeryLine {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            padding-left: 6px;
+            padding-right: 6px;
+            // padding: 6px;
+            // margin: 5px;
+            .totalSummeryItemMain {
+                font-size: 13px;
+                color: #444;
+                font-weight: bold;
+                min-width: 50%;
+            }
+            .totalSummeryItemSub {
+                font-size: 13px;
+                color:red;
+            }
+        }
+    }
+
+    .footerz {
+        display: flex;
+        flex-direction: row;
+        // height: 40px;
+        text-align: center;
+        justify-content: center;
+        align-content: center;
+        align-self: center;
+        align-items: center;
+        // color: white;
+        margin-top: 60px;
+        padding-bottom: 5px;
+        font-size: 18px;
+        // background-color: #fff;//color($colors, darkprimary);
+        color: #000 !important;
+
+        img {
+            max-width: 240px;
+        }
+      }
+
+    @media screen and (max-width: 460px) {
+
+        .slideScrollsList {
+            // display: flex;
+            // flex-direction: row;
+            // direction: rtl;
+            // padding-top: 0px;
+            // margin-top: -12px;
+            // padding-bottom: 10px;
+            display: list-item;
+            // grid-gap: 5px;
+            grid-template-columns: repeat(auto-fill, minmax(100%,1fr));
+            // background-color: color($colors, MainGrayLevel_4);
+
+        }
+        .itemScrollList {
+            width: 100%;
+            min-width: 99%!important;
+        }
+        .itemScroll {
+            // width: 48%;
+            // min-width: 48%;
+        }
+        .slideScrolls {
+            grid-template-columns: repeat(auto-fill, minmax(48%,1fr));
+            // grid-column: auto / span 3;
+        }
+
+    }
+
+    .total {
+        margin-top: 10px;
+        display: flex;
+        height: 50px;
+        flex-direction: column;
+        align-content: center;
+        align-items: center;
+        padding: 10px;
+        border-top: 1px solid color($colors,fontLight);
+
+        .subTotal {
+            font-size: 16px;
+            color: color($colors,darkprimary);
+        }
+        .moveNext {
+            padding: 0.5em 0em 0.5em 0em;
+            button {
+                font-size: 13px;
+                width: 250px;
+                background: color($colors,greenButton);
+            }
+        }
+        .moveNext2 {
+            padding: 0.5em 0em 0.5em 0em;
+            button {
+                width: 200px;
+                background: color($colors,greenButton);
+            }
+            .but2 {
+                background: red;
+            }
+        }
+        .moveNextAddress {
+            padding: 0.5em 0em 0.5em 0em;
+            display: flex;
+            flex-direction: row;
+
+            button {
+                
+            }
+            .but1 {
+                width: 180px;
+                background: color($colors,greenButton);
+            } 
+            .but2 {
+                background: color($colors,danger);
+            }
+        }
+    }
+
+    .paddingBottom {
+        // padding-bottom: 25px;
+    }
+    .addressDiv {
+        
+        padding: 10px 8px 0px 8px;
+        font-size: 15px;
+
+        .payment_method_bold {
+            font-weight: bold;
+            
+        }
+
+        // .addresslist{
+        //     ion-item {
+        //         margin: 5px;
+        //         border-radius: 5px!important;
+        //         background-color: color($colors, fontWhite);
+        //         width: 100%;
+                
+        //         ion-label {
+        //             // min-height: 3em;
+        //         }
+
+        //         .ion-radio {
+        //             max-width: 10%;
+        //         }
+        //     }
+        //     .addressOption{
+        //         width: 1rf;
+        //         min-width: 1rf;
+        //     }
+        //     .addressValue{
+        //         // padding: 0px 8px 0px 8px;
+        //         width: 4rf;
+        //         min-width: 4rf;
+        //     }
+        // }
+    }
+
+    .shippingSelect{
+        ion-item {
+            // ion-label {
+            //     // min-height: 3em;
+            //     font-size: 14px;
+            // }
+        }
+        // .addressOption{
+        //     // width: 1rf;
+        //     // min-width: 1rf;
+        // }
+        // .addressValue{
+        //     // padding: 0px 4px 0px 4px;
+        //     // width: 3rf;
+        //     // min-width: 3rf;
+        // }
+    }
+
+    .thank_you{
+        display: flex;
+        flex-direction: column;
+        height: 100%!important;
+        justify-content: center;
+        padding: 20px;
+        .centerImage {
+            // height: 100%;
+            // width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            img {
+                max-height: 150px;
+                padding-bottom: 20px;
+            }
+        }
+        .thank_you_sub {
+            text-align: center;
+            font-size: 18px;
+            color: color($colors,darkprimary);
+        }
+    
+        .backToHome {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            .but_home{
+                width: 250px;
+                // background: color($colors,darkprimary); 
+            }
+        }
+    }
+
+    button {
+        font-size: 14px !important;
+        text-transform: capitalize;
+    }
+}

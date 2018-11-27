@@ -1,0 +1,62 @@
+<ion-header class="header" dir="{{direc}}" no-border>
+    
+  <ion-navbar color="darkprimary">
+    <ion-buttons right>
+      <span *ngIf="this.platform.dir() === 'ltr' && this.mainFunc.manuno8 == false">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>  
+    <button ion-button icon-only (tap)="dismissview()">
+      <ion-icon *ngIf="this.platform.dir() === 'rtl'" name="ios-arrow-back"></ion-icon>
+      <ion-icon *ngIf="this.platform.dir() === 'ltr'" name="ios-arrow-forward"></ion-icon>
+    </button>
+        <!-- <button ion-button (tap)="showSearchBar()">
+        <ion-icon name="search"></ion-icon>
+    </button> -->
+  </ion-buttons>
+
+  <ion-buttons style="display: flex; direction: row;" left>
+    
+    <button ion-button icon-only>
+      <ion-badge color="danger" *ngIf="mainFunc.getCartItemsNumber()" item-end>{{mainFunc.getCartItemsNumber()}}</ion-badge>
+      <ion-icon *ngIf="this.mainFunc.manuno8 == false" name="md-cart"></ion-icon>
+    </button>
+    
+    <span *ngIf="this.platform.dir() === 'rtl' && this.mainFunc.manuno8 == false">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+  </ion-buttons>
+    <ion-title text-center>{{ 'USED_TITLE_MESSAGES_MAIN' | translate:param }}</ion-title>
+    
+        <!-- <div>&nbsp;&nbsp;&nbsp;</div> -->
+      
+    
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+<ion-list>
+  <ion-item-sliding *ngFor = "let msg of messageslist; let i = index">
+    <ion-item-options side="left">
+      <button ion-button color="danger" (tap)="deleteMessage(msg.id,i)">
+        <ion-icon name="trash"></ion-icon>
+        Delete
+      </button>
+    </ion-item-options>
+    <ion-item *ngIf="msg != undefined" (tap)="openMsgDetails(msg.messages.body,msg.id,i)" [class.read]="msg.read_at != null" [class.unread]="msg.read_at == null">
+      <ion-avatar item-start>
+        <ion-icon name="chatboxes" class="msg-icon" style="color:#999"></ion-icon>
+      </ion-avatar>
+      <h2>{{ msg.messages.subject }}</h2>
+      <p><ion-icon name="person" style="color:#999"></ion-icon>&nbsp;{{ msg.senders.first_name+' '+msg.senders.last_name }} <span class="msg-date">{{ msg.created_at }}</span></p>
+    </ion-item>
+  </ion-item-sliding>
+</ion-list>
+<ion-infinite-scroll *ngIf="can_load_more" (ionInfinite)="doInfinite($event)">
+  <ion-infinite-scroll-content></ion-infinite-scroll-content>
+</ion-infinite-scroll>
+  
+
+  <div class="footerz" *ngIf="!isDataAvilable">
+    <img src="assets/img/nodata.png">
+  </div>
+  <div class="footerz" *ngIf="isDataAvilable && messageslist == undefined">
+    <img src="assets/img/home_preloading.gif">
+  </div>
+</ion-content>

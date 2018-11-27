@@ -1,0 +1,58 @@
+<ion-header *ngIf="this.platform.dir() === 'ltr'" class="header" dir="rtl" no-border>
+  <ion-navbar class="ion-navbar" hideBackButton="true" color="darkprimary" *ngIf="!isSearchToggle">
+    <ion-title text-center>{{ 'USED_TITLE_MASSAGES' | translate:param }}</ion-title>
+    <ion-buttons style="float: left;" right>
+      <button ion-button icon-only (tap)="dismissview(catId)" >
+        <ion-icon *ngIf="this.platform.dir() === 'rtl'" name="ios-arrow-back"></ion-icon>
+        <ion-icon *ngIf="this.platform.dir() === 'ltr'" name="ios-arrow-forward"></ion-icon>
+      </button>  
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-header *ngIf="this.platform.dir() === 'rtl'" class="header" dir="ltr" no-border>
+  <ion-navbar class="ion-navbar" hideBackButton="true" color="darkprimary" *ngIf="!isSearchToggle">
+    <ion-buttons style="display: flex; direction: row;" right>
+      <button ion-button icon-only (tap)="dismissview(catId)">
+        <ion-icon *ngIf="this.platform.dir() === 'rtl'" name="ios-arrow-back"></ion-icon>
+        <ion-icon *ngIf="this.platform.dir() === 'ltr'" name="ios-arrow-forward"></ion-icon>
+      </button>
+      
+    </ion-buttons>
+    <ion-title text-center>{{ 'USED_TITLE_MASSAGES' | translate:param }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <div class="formCreate">
+      <form [formGroup]="adMessage" (ngSubmit)="sendMessage()">
+        <h6>Send A Message to Seller</h6>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-item no-lines>
+                <!-- <ion-label>{{ 'CONTACT_US_MASSAGE' | translate:param }}</ion-label> -->
+                <ion-textarea [(ngModel)]="message" placeholder="Type your message here" formControlName="message"></ion-textarea>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <label>By Sending this message the receiver<br>will get your following information:</label>
+                <ul>
+                  <li>Full Name</li>
+                  <li>Email</li>
+                  <li>Phone</li>
+                </ul>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <div class="buttonSubmit">
+            <button ion-button type="submit"[disabled]="!adMessage.valid">{{ 'CONTACT_US_SUBMIT' | translate:param }}</button>
+        </div>
+      </form>
+    </div>
+</ion-content>

@@ -1,0 +1,190 @@
+{
+    "countries": [
+            {
+            "id": 1,
+            "name_en": "Egypt",
+            "name_ar": "مصر",
+            "alt": "EGY",
+            "icon": "http://dentgram.com/photos/1/countries/egypt.png",
+            "cities": [
+                {
+                    "id": 1,
+                    "name_en": "Cairo",
+                    "name_ar": "القاهرة"
+                },
+                {
+                    "id": 2,
+                    "name_en": "Alexandria",
+                    "name_ar": "الأسكندرية"
+                },
+                {
+                    "id": 3,
+                    "name_en": "Giza",
+                    "name_ar": "الجيزة"
+                },
+                {
+                    "id": 4,
+                    "name_en": "El Beheira",
+                    "name_ar": "البحيرة"
+                },
+                {
+                    "id": 5,
+                    "name_en": "Aswan",
+                    "name_ar": "أسوان"
+                },
+                {
+                    "id": 6,
+                    "name_en": "Luxor",
+                    "name_ar": "الأقصر"
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "name_en": "United Arab Emirates",
+            "name_ar": "الإمارات العربية المتحدة",
+            "alt": "UAE",
+            "icon": "http://dentgram.com/photos/1/countries/united-arab-emirates.png",
+            "cities": [
+                {
+                    "id": 7,
+                    "name_en": "Abu Dhabi",
+                    "name_ar": "أبو ظبي"
+                },
+                {
+                    "id": 8,
+                    "name_en": "Dubai",
+                    "name_ar": "دبي"
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "name_en": "Jordan",
+            "name_ar": "الأردن",
+            "alt": "JOR",
+            "icon": "http://dentgram.com/photos/1/countries/jordan.png",
+            "cities": []
+        },
+        {
+            "id": 5,
+            "name_en": "Kingdom of Saudi Arabia",
+            "name_ar": "المملكة العربية السعودية",
+            "alt": "KSA",
+            "icon": "http://dentgram.com/photos/1/countries/saudi-arabia.png",
+            "cities": []
+        },
+        {
+            "id": 6,
+            "name_en": "Oman",
+            "name_ar": "سلطنة عمان",
+            "alt": "OMN",
+            "icon": "http://dentgram.com/photos/1/countries/oman.png",
+            "cities": []
+        },
+        {
+            "id": 7,
+            "name_en": "Qatar",
+            "name_ar": "قطر",
+            "alt": "QTR",
+            "icon": "http://dentgram.com/photos/1/countries/qatar.png",
+            "cities": []
+        },
+        {
+            "id": 8,
+            "name_en": "Morocco",
+            "name_ar": "المملكة العربية المغربية",
+            "alt": "MOR",
+            "icon": "http://dentgram.com/photos/1/countries/morocco.png",
+            "cities": []
+        },
+        {
+            "id": 9,
+            "name_en": "Lebanon",
+            "name_ar": "لبنان",
+            "alt": "LBN",
+            "icon": "http://dentgram.com/photos/1/countries/lebanon.png",
+            "cities": []
+        },
+        {
+            "id": 10,
+            "name_en": "Tunisia",
+            "name_ar": "تونس",
+            "alt": "TNS",
+            "icon": "http://dentgram.com/photos/1/countries/tunisia.png",
+            "cities": []
+        },
+        {
+            "id": 11,
+            "name_en": "Algeria",
+            "name_ar": "الجزائر",
+            "alt": "ALG",
+            "icon": "http://dentgram.com/photos/1/countries/algeria.png",
+            "cities": []
+        },
+        {
+            "id": 12,
+            "name_en": "Kuwait",
+            "name_ar": "الكويت",
+            "alt": "KWT",
+            "icon": "http://dentgram.com/photos/1/countries/kuwait.png",
+            "cities": []
+        },
+        {
+            "id": 13,
+            "name_en": "Bahrain",
+            "name_ar": "البحرين",
+            "alt": "BHR",
+            "icon": "http://dentgram.com/photos/1/countries/bahrain.png",
+            "cities": []
+        },
+        {
+            "id": 14,
+            "name_en": "Yemen",
+            "name_ar": "اليمن",
+            "alt": "YMN",
+            "icon": "http://dentgram.com/photos/1/countries/yemen.png",
+            "cities": []
+        },
+        {
+            "id": 15,
+            "name_en": "Iraq",
+            "name_ar": "العراق",
+            "alt": "IRQ",
+            "icon": "http://dentgram.com/photos/1/countries/iraq.png",
+            "cities": []
+        },
+        {
+            "id": 16,
+            "name_en": "Libya",
+            "name_ar": "ليبيا",
+            "alt": "LIB",
+            "icon": "http://dentgram.com/photos/1/countries/libya.png",
+            "cities": []
+        },
+        {
+            "id": 17,
+            "name_en": "Syria",
+            "name_ar": "سوريا",
+            "alt": "SYR",
+            "icon": "http://dentgram.com/photos/1/countries/syria.png",
+            "cities": []
+        },
+        {
+            "id": 18,
+            "name_en": "Palestine",
+            "name_ar": "فلسطين",
+            "alt": "PLS",
+            "icon": "http://dentgram.com/photos/1/countries/palestine.png",
+            "cities": []
+        },
+        {
+            "id": 19,
+            "name_en": "Turkey",
+            "name_ar": "تركيا",
+            "alt": "TUR",
+            "icon": "http://dentgram.com/photos/1/countries/turkey.png",
+            "cities": []
+        }
+    ]
+}

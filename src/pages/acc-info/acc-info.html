@@ -1,0 +1,373 @@
+<ion-header class="header" dir="{{direc}}" no-border>
+    
+  <ion-navbar color="darkprimary">
+    <ion-buttons right>
+        <span *ngIf="this.platform.dir() === 'ltr' && this.mainFunc.manuno8 == false">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>  
+      <button ion-button icon-only (tap)="dismissview()">
+        <ion-icon *ngIf="this.platform.dir() === 'rtl'" name="ios-arrow-back"></ion-icon>
+        <ion-icon *ngIf="this.platform.dir() === 'ltr'" name="ios-arrow-forward"></ion-icon>
+      </button>
+          
+    </ion-buttons>
+    <!-- <ion-buttons left>
+      <button ion-button icon-only>
+        <ion-icon></ion-icon>
+      </button>
+    </ion-buttons> -->
+    <ion-buttons style="display: flex; direction: row;" left>
+      
+      <button ion-button icon-only>
+        <ion-badge color="danger" *ngIf="mainFunc.getCartItemsNumber()" item-end>{{mainFunc.getCartItemsNumber()}}</ion-badge>
+        <ion-icon name="md-cart" *ngIf="this.mainFunc.manuno8 == false"></ion-icon>
+      </button>
+      <span *ngIf="this.platform.dir() === 'rtl' && this.mainFunc.manuno8 == false">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    </ion-buttons>
+    <ion-title text-center>{{ 'ACC_TITLE_INFO' | translate:param }}</ion-title>
+    
+        <!-- <div>&nbsp;&nbsp;&nbsp;</div> -->
+      
+    
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <div *ngIf="mainMenu && dataLoaded">
+    <div class="avatarMinDiv">
+      <!-- &nbsp; -->
+    </div>
+    <div class="avatarMinDiv">
+      <div class="avatarDiv">
+        <ion-item>
+          <ion-avatar item-start>
+            <img [src]="thumb != null ? thumb: 'assets/img/avatar.png'">
+          </ion-avatar>
+        </ion-item>
+      </div>
+      <div class="emailDiv">
+        {{ pro_email }}
+      </div>
+    </div>
+
+    <div class="wrapper" center>
+      <div *ngFor="let item of homemenu; let i = index" center>
+        <div class="box {{ item.back_back }}" (tap)="click_Open_Page(item.id)">
+          <div class="box2">
+            <div class="subTable1stDiv">
+              <img [src]="item.img">
+            </div>
+            <div class="centerVertical">
+                <div class="fontNormal maxsize">{{ item.name | translate:param }}</div>
+            </div>
+            <div class="maxSubMap">
+              
+            </div>
+            <div class="maxSubDates">
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="mainProfile" class="">
+
+    <div class="titleSection"></div>
+
+    <div class="formCreate">
+      <form [formGroup]="create" (ngSubmit)="myUploadClick()">
+          <h6>{{ 'AUTH_BASIC_INFO' | translate:param }}</h6>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <div class="avatarDiv">
+                <ion-item>
+                  <ion-avatar item-start>
+                    <img [src]="pro_thumb" onerror="src = 'assets/img/avatar-logged.png'">
+                  </ion-avatar>
+                  <span>Profile Image</span>
+                  <a class="change_btn" ion-button (tap)="selectImage(event)">Change</a>
+                </ion-item>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item no-lines>
+                <ion-label>{{ 'AUTH_FIRST_NAME' | translate:param }}</ion-label>
+                <ion-input type="text" [(ngModel)]="pro_first_name" formControlName="pro_first_name" ></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item no-lines>
+                <ion-label>{{ 'AUTH_LAST_NAME' | translate:param }}</ion-label>
+                <ion-input type="text" [(ngModel)]="pro_last_name" formControlName="pro_last_name"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item no-lines>
+                <ion-label>{{ 'AUTH_EMAIL' | translate:param }}</ion-label>
+                <ion-input type="email" [(ngModel)]="pro_email" formControlName="pro_email"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+         
+          <ion-row>
+            <ion-col>
+              <ion-item no-lines>
+                <ion-label>{{ 'AUTH_PHONE' | translate:param }}</ion-label>
+                <ion-input type="text" [(ngModel)]="pro_phone" formControlName="pro_phone" placeholder="eg. +1234567890"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <h6>{{ 'AUTH_GENDER' | translate:param }}</h6>
+          <ion-row radio-group [(ngModel)]="pro_gender" formControlName="pro_gender">
+            <ion-col>
+                <ion-item no-lines>
+                  <ion-label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="assets/icon/icon-male.png"></ion-label>
+                  <ion-radio checked="true" value="1"></ion-radio>
+                </ion-item>
+            </ion-col>
+            <ion-col>
+              <ion-item no-lines>
+                <ion-label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="assets/icon/icon-female.png"></ion-label>
+                <ion-radio checked="false" value="0"></ion-radio>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item no-lines>
+                <ion-label>{{ 'AUTH_BIRTHDATE' | translate:param }}</ion-label>
+                <ion-datetime displayFormat="YYYY-M-DD" [(ngModel)]="pro_age" formControlName="pro_age"></ion-datetime>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <div class="buttons">
+          <div class="buttonSubmit">
+              <button ion-button type="submit" [disabled]="!create.valid">{{ 'INFO_UPDATE' | translate:param }}</button>
+          </div>
+          <div class="buttonCancel">
+              <button ion-button (tap)="click_Open_Page('0')" >{{ 'CANCEL' | translate:param }}</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- *************************** || ******************************* -->
+  <!-- ********************* Language Change ************************ -->
+  <!-- ****************************  ******************************** -->
+
+  <div *ngIf="mainLang" class="">
+    <div class="titleSection"></div>
+    <div id="cloud-layer">
+      <div id="formcenter" [formGroup]="createLang">
+        <h6>{{ 'AUTH_LANGUAGE_CHANGE' | translate:param }}</h6>
+        <!-- <ion-row>
+          <ion-col>
+            <img src="assets/img/logo_lang.png" />
+          </ion-col>
+        </ion-row> -->
+        <ion-row dir="">
+          <ion-col>
+              <div class="selectDiv" (tap)="changelanguage('english')">
+                  <img *ngIf="!lang_en" src="assets/img/lang_english_off.png" />
+                  <img *ngIf="lang_en" src="assets/img/lang_english_on.png" />
+              </div>
+          </ion-col>
+          <ion-col>
+              <div class="selectDiv" (tap)="changelanguage('arabic')">
+                  <img *ngIf="!lang_ar" src="assets/img/lang_arabic_off.png" />
+                  <img *ngIf="lang_ar" src="assets/img/lang_arabic_on.png" />
+              </div>
+          </ion-col>
+        </ion-row>
+
+        <ion-row *ngIf="dir === 'rtl'">
+          <ion-col>
+            <ion-item dir="{{dir}}" class="selectDiv titleDiv" no-lines>
+              <ion-label class="bg10">{{lab_country}}</ion-label>
+              <ion-select (ionChange)="change_city('ar')" class="bg10" [(ngModel)]="lang_country" formControlName="country_selected_ar" dir="{{dir}}">
+                <!-- <ion-option *ngFor="let count of Countries; let i = index" [value]="count.country_id">{{count.name}}</ion-option> -->
+                <ion-option *ngFor="let c of country_list; let i = index" [value]="c.id" dir="{{dir}}">{{ c.name_en }}</ion-option>
+              </ion-select>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row *ngIf="dir === 'ltr'">
+          <ion-col>
+            <ion-item dir="{{dir}}" class="selectDiv titleDiv" no-lines>
+              <ion-label class="bg10">{{lab_country}}</ion-label>
+              <ion-select (ionChange)="change_city('en')" class="bg10" [(ngModel)]="lang_country" formControlName="country_selected_en" dir="{{dir}}">
+                <!-- <ion-option *ngFor="let count of Countries; let i = index" [value]="count.country_id">{{count.name}}</ion-option> -->
+                <ion-option *ngFor="let c of country_list; let i = index" [value]="c.id" dir="{{dir}}">{{ c.name_en }}</ion-option>
+              </ion-select>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+  
+        <ion-row *ngIf="dir === 'rtl'">
+          <ion-col>
+            <ion-item dir="{{dir}}" class="selectDiv titleDiv" no-lines>
+              <ion-label class="bg10">{{lab_city}}</ion-label>
+              <ion-select class="bg10" [(ngModel)]="lang_city" formControlName="city_selected_ar" dir="{{dir}}">
+                <!-- <ion-option *ngFor="let count of Countries; let i = index" [value]="count.country_id">{{count.name}}</ion-option> -->
+                <ion-option *ngFor="let c of city_list; let i = index" [value]="c.id" dir="{{dir}}">{{ c.name_en }}</ion-option>
+              </ion-select>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+  
+        <ion-row *ngIf="dir === 'ltr'">
+          <ion-col>
+            <ion-item dir="{{dir}}" class="selectDiv titleDiv" no-lines>
+              <ion-label class="bg10">{{lab_city}}</ion-label>
+              <ion-select class="bg10" [(ngModel)]="lang_city" formControlName="city_selected_en" dir="{{dir}}">
+                <!-- <ion-option *ngFor="let count of Countries; let i = index" [value]="count.country_id">{{count.name}}</ion-option> -->
+                <ion-option *ngFor="let c of city_list; let i = index" [value]="c.id" dir="{{dir}}">{{ c.name_en }}</ion-option>
+              </ion-select>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+  
+        <!-- <ion-row>
+          <ion-item dir="{{dir}}" no-lines>
+            <ion-label *ngIf="requierd_field_not_valid" dir="{{dir}}" class="bgerror">{{requierd_field}}</ion-label>
+          </ion-item>
+        </ion-row> -->
+<!--   
+  
+        <ion-row>
+          <ion-col>
+              <div class="titleDiv">
+              </div>
+          </ion-col>
+        </ion-row>
+   -->
+      <div class="titleSection"></div>
+        <ion-row class="buttons">
+          <div class="buttonSubmit">
+              <button ion-button (tap)="saveLanguageData()" >{{ lab_save }}</button>
+          </div>
+          <div class="buttonCancel">
+            <button ion-button (tap)="click_Open_Page('0')" >{{ 'CANCEL' | translate:param }}</button>
+          </div>
+        </ion-row>
+  
+        
+        <!-- <ion-row  class="buttonDiv">
+          <div class="buttonSubmit">
+              <button ion-button (tap)="saveData()" >{{lab_login}}</button>
+          </div>
+          <div class="buttonSubmit">
+            <button ion-button (tap)="saveData()" >{{lab_continue}}</button>
+        </div>  
+        </ion-row> -->
+      </div>
+    </div>
+  </div>
+
+<!--  -->
+<!--  -->
+
+  <div *ngIf="mainPass" class="">
+
+    <div class="titleSection"></div>
+
+    <div class="formCreate">
+      <form [formGroup]="createPass" (ngSubmit)="changePassword()">
+          <h6>{{ 'AUTH_BASIC_INFO' | translate:param }}</h6>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-item no-lines>
+                <ion-label>{{ 'INFO_OLD_PASSWORD' | translate:param }}</ion-label>
+                <ion-input type="password" formControlName="pass_old_password"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item no-lines>
+                <ion-label>{{ 'INFO_NEW_PASSWORD' | translate:param }}</ion-label>
+                <ion-input type="password" formControlName="pass_new_password"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item no-lines>
+                <ion-label>{{ 'INFO_REPEAT_PASSWORD' | translate:param }}</ion-label>
+                <ion-input type="password" formControlName="pass_repeat_password"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          
+        </ion-grid>
+        <div class="buttons">
+          <div class="buttonSubmit">
+              <button ion-button type="submit" (tap)="changePassword()" [disabled]="!createPass.valid">{{ 'INFO_CHANGE_BUTTON' | translate:param }}</button>
+          </div>
+          <div class="buttonCancel">
+              <button ion-button (tap)="click_Open_Page('0')" >{{ 'CANCEL' | translate:param }}</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div *ngIf="mainContact" class="">
+    <div class="formCreate">
+      <form [formGroup]="contForm" (ngSubmit)="sendMassage()">
+          <h6>{{ 'CONTACT_US_TITLE' | translate:param }}</h6>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-item no-lines>
+                <ion-label>{{ 'CONTACT_US_NAME' | translate:param }}</ion-label>
+                <ion-input type="text" [(ngModel)]="cont_name" formControlName="cont_name" ></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item no-lines>
+                <ion-label>{{ 'AUTH_EMAIL' | translate:param }}</ion-label>
+                <ion-input type="email" [(ngModel)]="cont_email" formControlName="cont_email"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item no-lines>
+                <ion-label>{{ 'CONTACT_US_SUBJECT' | translate:param }}</ion-label>
+                <ion-input type="text" [(ngModel)]="cont_subject" formControlName="cont_subject" ></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <h6>{{ 'CONTACT_US_MASSAGE' | translate:param }}</h6>
+          <ion-row>
+            <ion-col>
+              <ion-item no-lines>
+                <!-- <ion-label>{{ 'Message' | translate:param }}</ion-label> -->
+                <ion-textarea type="text" [(ngModel)]="cont_message" id="message" name="cont_message" formControlName="cont_message" ></ion-textarea>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <div class="buttonSubmit">
+            <button ion-button type="submit" [disabled]="!contForm.valid">{{ 'CONTACT_US_SUBMIT' | translate:param }}</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="footerz" *ngIf="!dataLoaded">
+    <ion-spinner></ion-spinner>
+  </div>
+</ion-content>
+  

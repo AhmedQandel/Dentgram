@@ -1,0 +1,410 @@
+<ion-header class="header" dir="{{direc}}" no-border>
+  
+<ion-navbar color="darkprimary">
+  <ion-buttons right>
+      <span *ngIf="this.platform.dir() === 'ltr' && this.mainFunc.manuno8 == false">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>  
+    <button ion-button icon-only (tap)="dismissview()">
+      <ion-icon *ngIf="this.platform.dir() === 'rtl'" name="ios-arrow-back"></ion-icon>
+      <ion-icon *ngIf="this.platform.dir() === 'ltr'" name="ios-arrow-forward"></ion-icon>
+    </button>
+        
+  </ion-buttons>
+  <!-- <ion-buttons left>
+    <button ion-button icon-only>
+      <ion-icon></ion-icon>
+    </button>
+  </ion-buttons> -->
+  <ion-buttons style="display: flex; direction: row;" left>
+    
+    <button ion-button icon-only>
+      <ion-badge color="danger" *ngIf="mainFunc.getCartItemsNumber()" item-end>{{mainFunc.getCartItemsNumber()}}</ion-badge>
+      <ion-icon name="md-cart" *ngIf="this.mainFunc.manuno8 == false"></ion-icon>
+    </button>
+    <span *ngIf="this.platform.dir() === 'rtl' && this.mainFunc.manuno8 == false">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+  </ion-buttons>
+  <ion-title text-center>{{ 'ACC_TITLE_CART' | translate:param }}</ion-title>
+  
+</ion-navbar>
+
+
+</ion-header>
+
+<ion-content dir="{{direcR}}">
+  <div class="smallTabs">
+    <div class="smallTabsCell">
+      <div class="sicon">
+        <img *ngIf="!small_tab_cart" src="assets/img/cart/cart_off.png">
+        <img *ngIf="small_tab_cart" src="assets/img/cart/cart_on.png">
+      </div>
+      <div class="stitle">
+          {{ 'SMALL_TABS_CART' | translate:param }}
+      </div>
+    </div>
+    <div class="smallTabsCell">
+      <div class="sicon">
+        <img *ngIf="!small_tab_shipping" src="assets/img/cart/shipping_off.png">
+        <img *ngIf="small_tab_shipping" src="assets/img/cart/shipping_on.png">
+      </div>
+      <div class="stitle">
+          {{ 'SMALL_TABS_SHIPPING' | translate:param }}
+      </div>
+    </div>
+    <div class="smallTabsCell">
+      <div class="sicon">
+        <img *ngIf="!small_tab_address" src="assets/img/cart/address_off.png">
+        <img *ngIf="small_tab_address" src="assets/img/cart/address_on.png">
+      </div>
+      <div class="stitle">
+          {{ 'SMALL_TABS_ADDRESS' | translate:param }}
+      </div>
+    </div>
+    <div class="smallTabsCell">
+      <div class="sicon">
+        <img *ngIf="!small_tab_payment" src="assets/img/cart/payment_off.png">
+        <img *ngIf="small_tab_payment" src="assets/img/cart/payment_on.png">
+      </div>
+      <div class="stitle">
+          {{ 'SMALL_TABS_PAYMENT' | translate:param }}
+      </div>
+    </div>
+  </div>
+  <div>&nbsp;</div>
+  
+  <div class="footerz" *ngIf="isLoadingNow && isCartHaveData">
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <!-- <img src="assets/img/loading_now.png"> -->
+    <ion-spinner></ion-spinner>
+  </div>
+  <div class="thank_you" *ngIf="checkEmptyCart() && !isCartHaveData">
+    <div class="centerImage">
+      <img (tap)="clearCartDB()" src="assets/img/cart.png" />
+    </div>
+    <div class="thank_you_sub">
+        {{ 'CART_NO_ITEMS' | translate:param }}
+    </div>
+  </div>
+
+  <div *ngIf="!isLoadingNow  && isCartHaveData">
+
+    <div *ngIf="tab_1_edit_cart">
+      <div class="slideScrolls" [class.slideScrollsList]="!isGrid" dir="{{direcR}}">
+        <div *ngFor="let store of itemsList; let j = index">
+          <div class="bg7 class1 storeTitle">
+            <div><img class="storeIcon" [src]="store.icon.thumb" alt=""></div>
+            <div>&nbsp;&nbsp;{{ store.name }}&nbsp;&nbsp;</div>
+          </div>
+          <div *ngFor="let item of store['items']; let i = index">
+            <div class="itemScroll" [class.itemScrollList]="!isGrid" *ngIf="mainFunc.checkItemInCart(item.id)" dir="{{direcR}}"> 
+              <div (tap)="openItemDetails(item.id)" [class.class1]="!isGrid">
+                <div class="itemScrollImage" [class.itemScrollImageList]="!isGrid"><img [src]="item.image.thumb" alt="Not Avilable"></div>
+                <div [class.class2]="!isGrid">
+                  <div  *ngIf="this.platform.dir() === 'ltr'" class="itemScrollName" [class.itemScrollNameList]="!isGrid">{{ item.name_en }}</div>
+                  <div  *ngIf="this.platform.dir() === 'rtl'" class="itemScrollName" [class.itemScrollNameList]="!isGrid">{{ item.name_ar }}</div>
+                  
+                  <div *ngIf="item.discount != '0'" class="rowDiv">
+                    <!-- <div class="itemScrollPrice discountSign" [class.itemScrollPriceList]="!isGrid">{{ item.unit_price | number}} {{ 'EGP' | translate:param }}</div> -->
+                    <div class="font13">{{ 'PRICE' | translate:param }} :  {{item.final_price / item.quantity | number }} {{ 'EGP' | translate:param }} </div>
+                    <div>&nbsp;</div>
+                    <div class="itemScrollPriceafter" [class.itemScrollPriceListafter]="!isGrid">  </div>
+                    <!-- <p>{{ 5000 | currency:'EGP':'symbol':'4.2-2':'ar-EG'}}</p> -->
+                  </div>
+                  <!-- <div class="itemScrollPrice" [class.itemScrollPriceList]="!isGrid">سعر الوحدة {{ item.final_price / item.quantity | number}} جنيه</div> -->
+                  <div class="itemCounter">
+                    <div class="font13">{{ 'QUANTITY' | translate:param }} : </div>
+                    <div class="quntityTextDiv"><ion-item no-lines><ion-input type="number" pattern="[0-9]*" [(ngModel)]="mainFunc.cartItemsNumber[mainFunc.getCartItemid(item.id)]" class="quntityText font13 ng-pristine ng-valid ng-valid-number ng-valid-max ng-valid-min" [placeholder]="" [value]="mainFunc.getCartItemCounter(item.id)" [min]="minOrderControl(item.min_order)" [max]="maxOrderControl(item.stock)" (ionBlur)="onBlur(item.id,item.min_order,item.stock)" (dchange)="OrderLogicControl(item.id,item.min_order,item.stock)">{{ mainFunc.getCartItemCounter(item.id) }}</ion-input></ion-item></div>
+
+                    <!-- <div>أقل كمية : {{  }}</div> -->
+                    <!-- <button ion-button icon-only clear (tap)="mainFunc.updateCartCounter('add',i)">
+                      <ion-icon name="md-add" ></ion-icon>
+                    </button>
+                    <p>{{mainFunc.cartItemsNumber[i]}}</p>
+                    <button ion-button icon-only clear (tap)="mainFunc.updateCartCounter('remove',i)">
+                      <ion-icon name="md-remove"></ion-icon>
+                    </button> -->
+                  </div>
+                  
+                  <div class="itemScrollPriceafter" [class.itemScrollPriceafter]="!isGrid"> {{ 'ITEM_TOTAL_PRIMARY' | translate:param }} : {{ (item.final_price / item.quantity) * mainFunc.cartItemsNumber[mainFunc.getCartItemid(item.id)] | number}} {{ 'EGP' | translate:param }}</div>
+                </div>
+              </div>
+                <div class="itemScrollFavBuy" *ngIf="!tab_1_edit_cart_check_total" [class.itemScrollFavBuyList]="!isGrid">
+                  <div *ngIf="!mainFunc.checkItemInFav(item.id)" class="itemScrollFav" [class.itemScrollFavList]="!isGrid">
+                    <img src="assets/icon/icon-favo.png"  (tap)="addToFav(item.id)">
+                  </div>
+                  <div *ngIf="mainFunc.checkItemInFav(item.id)" class="itemScrollFav" [class.itemScrollFavList]="!isGrid">
+                    <img src="assets/icon/icon-favo-on.png" (tap)="removeFromFav(item.id)">
+                  </div>
+                  <div *ngIf="item.premium" class="starItem" [class.starItemList]="!isGrid"><img src="assets/img/starItem.png"></div>
+                  <div *ngIf="!item.premium" class="starItem" [class.starItemList]="!isGrid"></div>
+                  <div *ngIf="!mainFunc.checkItemInCart(item.id)" class="itemScrollBuy"  [class.itemScrollBuyList]="!isGrid" [@addButton]="item.addButtonState" (@addButton.done)="addToCartFinished(item)" (tap)="deleteFromCart(item.id)"><img src="assets/icon/icon-favo-on-remove.png"></div>
+                  <div *ngIf="mainFunc.checkItemInCart(item.id)" class="itemScrollBuy" [class.itemScrollBuyList]="!isGrid"  (tap)="deleteFromCart(item.id)"><img src="assets/icon/icon-favo-on-remove.png"></div>
+                </div>
+              </div>
+          </div>
+          <div *ngIf="tab_1_edit_cart_check_total">
+            <div class="bg12 class1 storeTitle">
+              <div><img class="storeIcon" src="assets/img/shipping.png" alt=""></div>
+              <div class="font14">&nbsp;&nbsp;{{ 'SHIPPING_OPTIONS' | translate:param }}&nbsp;&nbsp;</div>
+            </div>
+            <div class="shippingSelect" dir="{{direcR}}">
+              <ion-row [(ngModel)]="shippingWayList[getStoreShippingId(store.store_id)]" radio-group>
+                <ion-item no-lines *ngFor="let item of store['shipping_profiles']; let i = index">
+                  <!-- <ion-label dir="{{direcR}}">{{ 'DELIVERY' | translate:param }} {{ item.delivery_min }}-{{ item.delivery_max }} {{ 'DAYS' | translate:param }}</ion-label> -->
+                  
+                  <div item-content class="class1 selectItemDiv" dir="{{direc}}">
+                      
+                      <div *ngIf="item.rate != '0.00'" class="pricex" dir="{{direcR}}">
+                          {{ item.rate }} {{ 'EGP' | translate:param }} 
+                      </div>
+                      <div *ngIf="item.rate === '0.00' && this.platform.dir() === 'rtl'" class="pricex" dir="{{direcR}}">
+                          مجانا
+                      </div>
+                      <div *ngIf="item.rate === '0.00' && this.platform.dir() === 'ltr'" class="pricex" dir="{{direcR}}">
+                          Free
+                      </div>
+                      <div class="textx class2" dir="{{direcR}}">
+                          <div class="maintextx">
+                              {{ store.shipping_profile_id }}{{ 'DELIVERY' | translate:param }} {{ item.delivery_min }}-{{ item.delivery_max }} {{ 'DAYS' | translate:param }} 
+                          </div>
+                          <div *ngIf="this.platform.dir() === 'rtl'" class="subtextx">
+                              {{ item.name_ar }}
+                          </div>
+                          <div *ngIf="this.platform.dir() === 'ltr'" class="subtextx">
+                              {{ item.name_en }}
+                              
+                          </div>
+                      </div>
+                      
+                      <div class="radiox">
+                          <ion-radio checked="store.shipping_profile_id === item.id" value="{{ item.id }}"></ion-radio>
+                      </div>
+                      
+                  </div>
+                </ion-item>
+              </ion-row>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="paddingBottom" *ngIf="tab_1_edit_cart && !checkEmptyCart()">
+      <div class="total paddingBottom">
+        <div class="subTotal"  *ngIf="tab_1_edit_cart_check_total">
+          {{ 'CART_TOTAL_PRIMARY' | translate:param }} {{finalTotal}} {{ 'EGP' | translate:param }} 
+        </div>
+        <div class="moveNext" *ngIf="!checkEmptyCart() && tab_1_edit_cart && !tab_1_edit_cart_check_total">
+          <button ion-button  (tap)="clickContenuShopping()" >
+            {{ 'CART_CONT_BUTTON' | translate:param }}
+          </button>
+        </div>
+        <div class="moveNextAddress paddingBottom" *ngIf="!checkEmptyCart() && tab_1_edit_cart_check_total">
+          <button ion-button  class="but1" (tap)="clickContenuShoppingAddress()" >
+            {{ 'CART_ADDRESS_BUTTON' | translate:param }}
+          </button>
+          <button ion-button class="but2" (tap)="goBackToCart()" >
+            {{ 'CART_GOBACK_BUTTON' | translate:param }}
+          </button>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="addressDiv paddingBottom" *ngIf="tab_1_select_address">
+      <!-- <h5>{{ 'CART_SELECT_ADDRESS' | translate:param }}</h5> -->
+      <div>
+        &nbsp;
+      </div>
+      <div class="addresslist">
+        <ion-row radio-group [(ngModel)]="selected_address"  dir="{{direc}}">
+          <ion-item no-lines *ngFor="let item of address_list; let i = index">
+            <!-- <ion-label dir="{{direcR}}">7 شارع سيد عبد الواحد - من شارع شهاب - امام القاهره للمبيعات - المهندسين - الجيزة - مصر</ion-label> -->
+            <div item-content class="addressesList" dir="{{direcR}}">
+              <div class="addressItem">
+                <div class="addressnameDiv">
+                  <div class="addressnameTitle">
+                    {{ item.name }}
+                  </div>
+                  <div class="addressnameSelected">
+                    <img src="">
+                    <img src="">
+                  </div>
+                </div>
+                <div class="addressbody">
+                  <!-- <div class="addressbodyIcon">
+                    <img src="assets/icon/map.png">
+                  </div> -->
+                  <div class="addressbodyContent">
+                    <div class="addressLine1">{{ item.address1 }}</div>
+                    <div class="addressLine2">{{ item.address2 }}</div>
+                    <div class="addressphone">{{ item.phone }}</div>
+                    <div class="addressrecipient">{{ item.recipient_name }}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <ion-radio checked="false" value="{{ item.id }}"></ion-radio>
+          </ion-item>
+          <!-- <ion-item no-lines text-wrap>
+            <ion-label dir="{{direcR}}"> 	طريق الحرية عماره نقابه المهندسين - بولكلى - الاسكندريه - مصر</ion-label>
+            <ion-radio checked="false" value="2"></ion-radio>
+          </ion-item>
+          <ion-item no-lines text-wrap>
+            <ion-label dir="{{direcR}}">6 شارع الشهيد سيد زكريا خليل - مصر الجديده - القاهره - مصر</ion-label>
+            <ion-radio checked="false" value="3"></ion-radio>
+          </ion-item> -->
+        </ion-row>
+
+        <button ion-button clear (tap)="addNewAddress()" icon-left>
+          <ion-icon name="add"></ion-icon>
+          {{ 'ADDRESS_ADD_NEW' | translate:param }}
+        </button>
+      </div>
+
+    </div>
+    <div class="paddingBottom paddingBottom" *ngIf="tab_1_select_address">
+      <div class="total paddingBottom">
+        <div class="subTotal">
+          {{ 'CART_TOTAL' | translate:param }} {{finalTotalShipping}} {{ 'EGP' | translate:param }} 
+        </div>
+        <div class="moveNextAddress">
+          <button class="but1" ion-button (tap)="clickPaymentMethod()" >
+            {{ 'CART_PAYMENT_BUTTON' | translate:param }}
+          </button>
+          <button class="but2" ion-button (tap)="goBackToShopping()" >
+            {{ 'CART_GOBACK_BUTTON' | translate:param }}
+          </button>
+        </div>
+        <div>
+          &nbsp;
+        </div>
+      </div>
+    </div>
+
+
+    <div class="addressDiv" *ngIf="tab_1_payment_method">
+      
+      <div class="slideScrolls" [class.slideScrollsList]="!isGrid" dir="{{direcR}}">
+        <div class="payment_method_bold">
+            {{ 'CART_SUMMARY' | translate:param }}
+        </div>
+        <div *ngFor="let store of itemsList; let j = index">
+          <div *ngFor="let item of store['items']; let i = index">
+            <div class="itemScroll" [class.itemScrollList]="!isGrid" *ngIf="mainFunc.checkItemInCart(item.id)" dir="{{direcR}}"> 
+              <div (tap)="openItemDetails(item.id)" [class.class1]="!isGrid">
+                <div class="itemScrollImage" [class.itemScrollImageList]="!isGrid"><img [src]="item.image.thumb" alt="Not Avilable"></div>
+                <div [class.class2]="!isGrid">
+                  <div  *ngIf="this.platform.dir() === 'ltr'" class="itemScrollName" [class.itemScrollNameList]="!isGrid">{{ item.name_en }}</div>
+                  <div  *ngIf="this.platform.dir() === 'rtl'" class="itemScrollName" [class.itemScrollNameList]="!isGrid">{{ item.name_ar }}</div>
+                  
+                  <div *ngIf="item.discount != '0'" class="rowDiv">
+                    <!-- <div class="itemScrollPrice discountSign" [class.itemScrollPriceList]="!isGrid">{{ item.unit_price | number}} {{ 'EGP' | translate:param }}</div> -->
+                    <div class="font13">{{ 'PRICE' | translate:param }} :  {{item.final_price / item.quantity | number }} {{ 'EGP' | translate:param }} </div>
+                    <div>&nbsp;</div>
+                    <div class="itemScrollPriceafter" [class.itemScrollPriceListafter]="!isGrid">  </div>
+                    <!-- <p>{{ 5000 | currency:'EGP':'symbol':'4.2-2':'ar-EG'}}</p> -->
+                  </div>
+                  <!-- <div class="itemScrollPrice" [class.itemScrollPriceList]="!isGrid">سعر الوحدة {{ item.final_price / item.quantity | number}} جنيه</div> -->
+                  <div class="itemCounter">
+                    <div class="font13">{{ 'QUANTITY' | translate:param }} : </div>
+                    <div class="quntityTextDiv2 font13" >{{ mainFunc.getCartItemCounter(item.id) }}</div>
+                  </div>
+                  
+                  <div class="itemScrollPriceafter" [class.itemScrollPriceafter]="!isGrid"> {{ 'ITEM_TOTAL_PRIMARY' | translate:param }} : {{ (item.final_price / item.quantity) * mainFunc.cartItemsNumber[mainFunc.getCartItemid(item.id)] | number}} {{ 'EGP' | translate:param }}</div>
+                </div>
+              </div>
+
+              </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+      <div>
+        <div>
+          &nbsp;
+        </div>
+        <div>
+            {{ 'CART_COD_TITLE' | translate:param }}
+        </div>
+        <div class="payment_method_bold">
+            {{ 'CART_COD' | translate:param }}
+        </div>
+      </div>
+
+      <div class="totalSummeryMain">
+        <div class="totalSummeryLine">
+          <div class="totalSummeryItemMain">
+              {{ 'CART_PAYMENT_SUB_TOTAL' | translate:param }}
+          </div>
+          <div class="totalSummeryItemSub">
+            {{ final_sub_price_price }}  {{ 'EGP' | translate:param }} 
+          </div>
+        </div>
+      <div class="totalSummeryLine">
+        <div class="totalSummeryItemMain">
+            {{ 'CART_PAYMENT_COD' | translate:param }}
+        </div>
+        <div class="totalSummeryItemSub">
+          {{ total_cod_price }}  {{ 'EGP' | translate:param }} 
+        </div>
+      </div>
+      <div class="totalSummeryLine">
+        <div class="totalSummeryItemMain">
+            {{ 'CART_PAYMENT_SHIPPING' | translate:param }}
+        </div>
+        <div class="totalSummeryItemSub">
+            {{ total_shipping_price }}  {{ 'EGP' | translate:param }} 
+        </div>
+      </div>
+      <div class="totalSummeryLine">
+        <div class="totalSummeryItemMain">
+            {{ 'CART_PAYMENT_TOTAL' | translate:param }}
+        </div>
+        <div class="totalSummeryItemSub">
+            {{ finalTotalShipping }}  {{ 'EGP' | translate:param }} 
+        </div>
+      </div>
+    </div>
+    </div>
+    <div class="payment_method paddingBottom" *ngIf="tab_1_payment_method">
+      <div class="total">
+        <!-- <div class="subTotal">
+          {{ 'CART_TOTAL' | translate:param }} {{finalTotalShipping}} {{ 'EGP' | translate:param }} 
+        </div> -->
+        <div class="moveNextAddress">
+          <button class="but1" ion-button (tap)="clickFinishShopping()">
+            {{ 'CART_FINISH_PAYMENT_BUTTON' | translate:param }}
+          </button>
+          <button class="but2" ion-button (tap)="goBackToAddress()" >
+            {{ 'CART_GOBACK_BUTTON' | translate:param }}
+          </button>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <div class="thank_you" *ngIf="tab_1_thank_you">
+      <div class="centerImage">
+        <img src="assets/img/logo.png" />
+      </div>
+      <div class="thank_you_sub">
+          {{ 'CART_THANK_YOU' | translate:param }}
+      </div>
+      <div class="backToHome">
+        <button class="but_home" ion-button (tap)="clickGoToHome()" >
+          {{ 'CART_HOME_BUTTON' | translate:param }}
+        </button>
+      </div>
+    </div>
+  </div>
+  <div>&nbsp;</div>
+  <div>&nbsp;</div>
+  </ion-content>

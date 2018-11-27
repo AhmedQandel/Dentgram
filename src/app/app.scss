@@ -1,0 +1,151 @@
+.ion-menu {
+    .avatar_opt {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        margin-bottom: 7px;
+        font-size: 12px;
+        margin-right: 7px;
+        color:#e7e7e7;
+    }
+    .forceHeight{
+        min-height: 100vh;
+    }
+    ion-content {
+        background-color: color($colors, darkprimary);  
+        .avatarDiv {
+            // background-color: color($colors, dark2primary);
+            background-image: url('../assets/img/profile_wall2.png');  
+            height: 140px;
+            
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            align-content: center;
+            justify-content: center;
+
+            ion-item {
+                
+                align-self: center;
+                max-height: 100px !important;
+                height: 100px !important;
+                width: max-content!important;
+                // background-color: color($colors, dark2primary);  
+                background-color: rgba(255,255,255,0);
+                
+                ion-avatar {
+                    img {
+                        width: 80px;
+                        height: 80px;
+                    }
+                }
+            }
+            .avatarName {
+                display: flex;
+                flex-direction: column;
+                
+                .avatarNameWelcome {
+                    text-align: center;
+                    font-size: 20px;
+                    font-weight: bold;
+                    color: color($colors, yellow1);
+                }
+                .avatarNameName {
+                    text-align: center;
+                    font-size: 16px;
+                    color: color($colors, yellowL2);
+                }
+            }
+            
+        }
+        
+        .menu {
+            display: flex;
+            flex-direction: column;
+
+            .menuItemcolum {
+                display: flex;
+                flex-direction: column;
+                .menuItem {
+                    display: flex;
+                    flex-direction: row;
+                    
+                    .menuIcon {
+                        align-self: center;
+                        padding: 8px;
+                        img {
+                            width: 22px;
+                            height: 22px;
+                        }    
+                    }
+                    .menuTitle {
+                        font-family: "Dubai Regular" !important;
+                        padding: 8px;
+                        align-self: center;
+                        color: color($colors,fontWhite);
+                        font-size: 17px;
+                        padding-right: 5px;
+                        // font-weight: bold;
+                    }
+                    .menuArrow {
+                        // width: auto;
+                        align-self: center;
+                        flex: 0.9 1 auto;
+                        // align-items: stretch;
+                        // align-content: stretch;
+                        ion-icon {
+                            // size: 22px;
+                            float:left;
+                            
+                            color: #ffffff;    
+                        }
+                    }
+                    .menuArrowrtl {
+                        // width: auto;
+                        align-self: center;
+                        flex: 0.9 1 auto;
+                        // align-items: stretch;
+                        // align-content: stretch;
+                        ion-icon {
+                            // size: 22px;
+                            float:right;
+                            
+                            color: #ffffff;    
+                        }
+                    }
+                    .menuFavBadge {
+                        align-self: center;
+                    }
+                }
+         
+                .activehighlight {
+                    background-color: color($colors,yellow1); 
+                    .menuTitle{
+                        color: color($colors,fontDark);
+                    }
+                }
+                .menuCat {
+                    background-color: color($colors,primary);
+                    // padding: 10px;
+                    padding-right: 15px;
+                    padding-left: 15px;
+                    font-size: 16px;
+                    color: color($colors,fontWhite);
+
+                    .menuCatItem {
+                        padding: 5px;
+                    }
+                }
+            }
+        }
+    }
+
+
+    .menu_logout {
+        color: color($colors , danger) !important;
+      }
+
+      .modal-wrapper{
+        background-color: rgba(0,0,0,0.5); 
+    }
+}

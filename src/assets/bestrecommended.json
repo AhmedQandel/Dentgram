@@ -1,0 +1,54 @@
+{
+    "items": [
+        {
+            "name": "جهاز تي سكان",
+            "id": "702",
+            "premium": 0,
+            "image": "assets/img/bestover/ttttt.png",
+            "price": "19650"
+        },
+        {
+            "name": " جهاز الجبيرة المائية مع تجربة الأسطر المطولة وارتفاع الوحدة",
+            "id": "202",
+            "premium": 0,
+            "image": "assets/img/bestover/aqua-splnt.png",
+            "price": "13500"
+        },
+        {
+            "name": "جهاز التسكين النسبي",
+            "id": "302",
+            "premium": 1,
+            "image": "assets/img/bestover/nitrous-oxide-sedation.jpg",
+            "price": "45200"
+        },
+        {
+            "name": "جهاز امبلا سونيك",
+            "id": "102",
+            "premium": 0,
+            "image": "assets/img/bestover/impla-sonic.png",
+            "price": "16000"
+        },
+        {
+            "name": "جهاز سي جي اف",
+            "id": "502",
+            "premium": 0,
+            "image": "assets/img/bestover/plasma.png",
+            "price": "8600"
+        },
+        {
+            "name": "جهاز ازالة الصبغات",
+            "id": "602",
+            "premium": 0,
+            "image": "assets/img/bestover/Litemedics.png",
+            "price": "4850"
+        },
+        {
+            "name": "جهاز تكثيف الضوء",
+            "id": "402",
+            "premium": 0,
+            "image": "assets/img/bestover/09_04_2014_eilaokoj.jpg",
+            "price": "15200"
+        }
+
+    ]
+}

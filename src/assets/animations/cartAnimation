@@ -1,0 +1,30 @@
+
+    trigger('cartBadge', [
+        state('idle', style({
+            opacity: '1',
+            transform: 'scale(1)'
+        })),
+        state('adding', style({
+            opacity: '0.3',
+            transform: 'scale(1.3)'
+        })),
+        transition('idle <=> adding', animate('300ms linear')),
+        transition('void => *', [
+            style({transform: 'translateX(200%)'}),
+            animate('300ms ease-in-out')
+        ])
+    ]),
+    trigger('addButton', [
+        state('idle', style({
+            opacity: '0.3'
+        })),
+        state('adding', style({
+            opacity: '1',
+            fontWeight: 'bold'
+        })),
+        transition('idle <=> adding', animate('300ms linear')),
+        transition('void => *', [
+            style({transform: 'translateX(200%)'}),
+            animate('300ms ease-in-out')
+        ])
+    ])

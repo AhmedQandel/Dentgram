@@ -1,0 +1,120 @@
+<ion-header *ngIf="this.platform.dir() === 'rtl'" class="header" dir="ltr" no-border>
+  <ion-navbar class="ion-navbar" hideBackButton="true" color="darkprimary" *ngIf="!isSearchToggle">
+   
+    <ion-buttons style="display: flex; direction: row;" right>
+
+
+
+      <span *ngIf="this.platform.dir() === 'rtl' && this.mainFunc.manuno8 == false">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      <span *ngIf="this.platform.dir() === 'ltr' && this.mainFunc.manuno8 == false">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      <button ion-button icon-only (tap)="dismissview()">
+        <ion-icon *ngIf="this.platform.dir() === 'rtl'" name="ios-arrow-back"></ion-icon>
+        <ion-icon *ngIf="this.platform.dir() === 'ltr'" name="ios-arrow-forward"></ion-icon>
+      </button>
+
+    </ion-buttons>
+
+  </ion-navbar>
+
+  <div class="serachDiv" dir="{{direcR}}" *ngIf="isSearchToggle">
+    <ion-searchbar class="toolbarSearch" cancle-button="true" placeholder="بحث" (input)="searchBar($event)"></ion-searchbar>
+    <div class="searchButton">
+      <button ion-button color="fontWhite" (tap)="showSearchBar()" clear>
+        <ion-icon *ngIf="direc === 'ltr'" name="md-arrow-round-forward"></ion-icon>
+        <ion-icon *ngIf="direc === 'rtl'" name="md-arrow-round-back"></ion-icon>
+      </button>
+    </div>
+
+  </div>
+</ion-header>
+
+<ion-header *ngIf="this.platform.dir() === 'ltr'" dir="rtl" class="header" no-border>
+  <ion-navbar class="ion-navbar" hideBackButton="true" color="darkprimary" *ngIf="!isSearchToggle">
+ 
+    <img class="homeLogo" src="assets/img/homelogo.png">
+    <ion-buttons style="display: flex; direction: row;" right>
+
+      
+      <span *ngIf="this.platform.dir() === 'ltr' && this.mainFunc.manuno8 == false">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      <button ion-button icon-only (tap)="dismissview()">
+        <ion-icon *ngIf="this.platform.dir() === 'rtl'" name="ios-arrow-back"></ion-icon>
+        <ion-icon *ngIf="this.platform.dir() === 'ltr'" name="ios-arrow-forward"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+  <div class="serachDiv" dir="{{direcR}}" *ngIf="isSearchToggle">
+    <ion-searchbar class="toolbarSearch" cancle-button="true" placeholder="{{ 'SEARCH' | translate:param }}" (input)="searchBar($event)"></ion-searchbar>
+    <div class="searchButton">
+      <button ion-button color="fontWhite" (tap)="showSearchBar()" clear>
+        <ion-icon *ngIf="direc === 'ltr'" name="md-arrow-round-forward"></ion-icon>
+        <ion-icon *ngIf="direc === 'rtl'" name="md-arrow-round-back"></ion-icon>
+      </button>
+
+    </div>
+
+  </div>
+</ion-header>
+
+
+<ion-content id="content">
+
+  <div *ngIf="!isSearchToggle">
+  
+      <div class="wrapperImage">
+        <div *ngFor="let item of storelist; let i = index" center>
+
+          <ion-card (tap)="openNewsDetails(item.id)">
+              <div >
+                <img style="height: 170px;" class="imgMainDetails"  onError="this.src='assets/img/course_img_not_avilable2.png'" [src]="item.main_image" />
+              </div>
+
+              <ion-card-content>
+                <ion-card-title *ngIf="this.platform.dir() === 'rtl'">
+                    {{item.title_ar}}
+                </ion-card-title>
+                <ion-card-title *ngIf="this.platform.dir() === 'ltr'">
+                  {{item.title_en}}
+                </ion-card-title>
+
+              </ion-card-content>
+          
+              <!-- <ion-row no-padding>
+                <ion-col>
+                  <button ion-button clear small color="danger" icon-start>
+                    <ion-icon name='md-calendar'></ion-icon>
+                    <div style="color: #555555;">date</div>
+                  </button>
+                </ion-col>
+
+                <ion-col>
+                  <button ion-button clear small color="danger" icon-start>
+                    <ion-icon name='md-map'></ion-icon>
+                    <div style="color: #555555;">location</div>
+                  </button>
+                </ion-col>
+              </ion-row>
+           -->
+          </ion-card>
+
+
+
+        </div>
+      </div>
+
+  </div>  
+  
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+  
+  <div class="footerz" *ngIf="!isDataAvilable">
+    <img src="assets/img/nodata.png">
+  </div>
+
+  <div class="footerz" *ngIf="!homemenu?.length > 0 && isDataAvilable">
+    <ion-spinner></ion-spinner>
+  </div>
+
+
+</ion-content>

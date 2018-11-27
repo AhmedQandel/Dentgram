@@ -1,0 +1,946 @@
+// Ionic Variables and Theming. For more info, please see:
+// http://ionicframework.com/docs/theming/
+
+// Font path is used to include ionicons,
+// roboto, and noto sans fonts
+$font-path: "../assets/fonts";
+// @import '../assets/fonts/Amiri.woff2';
+
+// $font-family: "Amiri" !default;
+
+// $font-family-md-base: "Amiri";
+// $font-family-ios-base: "Amiri";
+// $font-family-wp-base: "Amiri";
+
+// $font-family-base: "Amiri" !default;
+
+// The app direction is used to include
+// rtl styles in your app. For more info, please see:
+// http://ionicframework.com/docs/theming/rtl-support/
+
+@font-face {
+    font-family: "Hacen Saudi Arabia";
+    src: url("../assets/fonts/HacenSaudiArabia.ttf")
+}
+@font-face {
+    font-family: "Adobe Naskh Medium";
+    src: url("../assets/fonts/AdobeNaskh-Medium.ttf")
+}
+@font-face {
+    font-family: "KFGQPC Uthmantic Script HAFS";
+    src: url("../assets/fonts/UthmanicHafs1.ttf")
+}
+@font-face {
+    font-family: "Amin Medium";
+    src: url("../assets/fonts/AminMedium.ttf")
+}
+@font-face {
+    font-family: "Dubai Light";
+    src: url("../assets/fonts/Dubai-Light.ttf")
+}
+@font-face {
+    font-family: "Dubai Medium";
+    src: url("../assets/fonts/Dubai-Medium.ttf")
+}
+@font-face {
+    font-family: "Dubai Regular";
+    src: url("../assets/fonts/Dubai-Regular.ttf")
+}
+$app-direction: multi;
+
+$background-color: #f8f8f8;
+@import "ionic.globals";
+
+// Shared Variables
+// --------------------------------------------------
+// To customize the look and feel of this app, you can override
+// the Sass variables found in Ionic's source scss files.
+// To view all the possible Ionic variables, see:
+// http://ionicframework.com/docs/theming/overriding-ionic-variables/
+
+
+
+
+// Named Color Variables
+// --------------------------------------------------
+// Named colors makes it easy to reuse colors on various components.
+// It's highly recommended to change the default colors
+// to match your app's branding. Ionic uses a Sass map of
+// colors so you can add, rename and remove colors as needed.
+// The "primary" color is the only required color in the map.
+
+$searchbar-ios-background-color: rgba(0, 0, 0, 0);
+$searchbar-ios-min-height: 42px !default;
+// $searchbar-md-min-height: 38px !default;
+$action-sheet-max-width: 300px;
+$action-sheet-md-text-align: center;
+// $action-sheet-md-icon-text-align: end;  
+$action-sheet-md-title-color: #004D83;
+
+
+$colors: (
+  darkprimary: #0062A7,// #0476a2,// #089ed7,
+  dark2primary: #004D83,
+  primary:    #008ced,
+  secondary:  #0B9AFF,
+  danger:     #ec644b,
+  success:    #5d9b48,
+  logout: #ffffff,
+  light:      #7ecfee,
+  dark:       #222,
+  dark2:       #666,
+  yellow1: #fec128,
+  yellowL2: #ffdd89,
+  fontDark: #0c3b4d,
+  fontLight: #b9b9b9,
+  fontWhite: #ffffff,
+  borderColor: #f1f1f1,
+  greenButton: #27ae60,
+  borderColor2: #dddddd,
+  MainGrayLevel_4 : #f6f6f6,
+  goldColor: #FFD700,
+  facebook: #3B5998,
+  linkedIn: #007bb6,
+);
+
+
+// App iOS Variables
+// --------------------------------------------------
+// iOS only Sass variables can go here
+
+
+
+
+// App Material Design Variables
+// --------------------------------------------------
+// Material Design only Sass variables can go here
+
+
+
+
+// App Windows Variables
+// --------------------------------------------------
+// Windows only Sass variables can go here
+
+
+
+
+// App Theme
+// --------------------------------------------------
+// Ionic apps can have different themes applied, which can
+// then be future customized. This import comes last
+// so that the above variables are used and Ionic's
+// default are overridden.
+
+@import "ionic.theme.default";
+
+
+// Ionicons
+// --------------------------------------------------
+// The premium icon font for Ionic. For more info, please see:
+// http://ionicframework.com/docs/ionicons/
+
+@import "ionic.ionicons";
+
+
+// Fonts
+// --------------------------------------------------
+
+@import "roboto";
+@import "noto-sans";
+
+
+
+
+
+ion-content {
+    // padding-bottom: 25px;
+
+}
+
+.avatar-menu-icon{ 
+    height: 30px; 
+    border-radius: 50%; 
+} 
+
+.fixed-header{
+    margin-top:56px;
+}
+
+.platform-webview.platform-ios.platform-cordova .fixed-header{
+    margin-top:76px;
+}
+
+.ion-content-below-slider-area{
+    margin-top:160px!important;
+}
+  
+.platform-webview.platform-ios.platform-cordova .ion-content-below-slider-area{
+    margin-top:180px;
+}
+
+.ion-content-below-slider-area-and-subheader{
+    margin-top:200px!important;
+    height: calc(100% - 200px);
+}
+  
+.platform-webview.platform-ios.platform-cordova .ion-content-below-slider-area-and-subheader{
+    margin-top:270px;
+    height: calc(100% - 270px);
+}
+
+ion-segment-button{
+  border-radius: 0px!important;
+  border: none!important;
+  height: unset!important;
+  line-height: unset!important;
+}
+
+.homeLogo {
+  max-height: 36px;
+  height: 32px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.header {
+  // margin-bottom: 50px;
+  ion-icon {
+      font-size: 1.8em;
+      padding-left: 10px;
+      padding-right: 10px;
+  }
+}
+.serachDiv {
+  display: flex;
+  flex-direction: row;
+  // padding-top: 5px;
+  height: 54px;
+  background-color: color($colors, darkprimary);
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  ion-searchbar {
+      height: 40px;
+      // border-radius: 15px;
+  }
+  
+}
+
+.serachInput {
+  
+  align-self: left;
+  text-align: right;
+  background-color: #ffffff;
+  width: 100%;
+  max-width: 100%;
+  margin-right: 10px;
+  border-radius: 5px;
+
+  ion-searchbar {
+      border-radius: 5px;
+  }
+  ion-input {
+      // text-align: right;
+      width: 100%;
+      background-color: #ffffff;
+      // height: 30px !important;
+  }
+  ion-label {
+      background-color: #ffffff;
+  }
+  ion-icon {
+      background-color: #ffffff;
+  }
+  ion-item {
+      background-color: #ffffff;
+      border-radius: 5px;
+      // height: 30px !important;
+  }
+}
+.searchButton {
+  width: 15%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  button {
+
+      // color: color($colors,fontDark);    
+  }
+}
+
+.slider-link{
+    text-align: end;
+    color: #0062a7;
+    position: relative;
+    bottom: 0px;
+    z-index: 999;
+    margin: 2px 10px;
+    font-size: 16px;
+}
+
+.slide-img-size {
+  height: 100%;
+  width: 100%;
+
+  //min-height: 160px;
+  // max-height: 400px;
+//   overflow: hidden;
+}
+.titleDiv {
+  padding-top: 10px;
+  padding-bottom: 5px;
+  padding-right: 10px;
+  padding-left: 10px;
+  font-size: 16px;
+  opacity: 50%;
+}
+.opicity {
+  color: color($colors,fontLight);
+}
+.slideScrolls {
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+  // direction: rtl;
+  padding-right: 1px;
+  padding-left: 1px;
+  .itemScroll {
+      width: 150px;
+      min-width: 140px;
+      border: 0px solid;
+      border-radius: 5px;
+    //   border-color: color($colors,borderColor);
+      background-color: color($colors,fontWhite);
+      padding: 5px;
+      margin-right: 2px;
+      margin-left: 2px;
+
+      
+      .itemScrollImage{
+          display: flex;
+          max-height: 150px;
+          max-width: 150px;
+          justify-content: center;
+          img {
+              
+              height: 80px;
+          }
+      }
+      .itemScrollName {
+          font-size: 14px;
+          padding-top: 3px;
+          min-height: 5em;
+          max-height: 5em;
+      }
+      .itemScrollPrice {
+          padding-top: 3px;
+          font-size: 13px;
+          font-weight: bold;
+          color: color($colors, danger);
+      }
+      .itemScrollFavBuy {
+          padding-top: 15px;
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          .itemScrollFav {
+              width: 25%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              img {
+                  align-self: center;
+                  width: 22px;
+                  height: 22px;
+              }
+          }
+          .starItem {
+              width: 50%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+
+              img {
+                  align-self: center;
+                  // width: 22px;
+                  height: 22px;
+              }
+          }
+          .itemScrollBuy {
+              width: 25%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              img {
+                  align-self: center;
+                  width: 22px;
+                  height: 22px;
+              }
+          }
+      }
+  }
+}
+.wrapper2 {
+ 
+    padding: 5px;
+    // padding-top: 10px;
+    padding-bottom: 0px;
+    display: grid;
+    justify-content: center;
+    grid-gap: 5px;
+    grid-template-columns: repeat(auto-fill, minmax(300px,1fr));
+    .box {
+        border-radius: 0px !important;
+        box-shadow: 1px 1px 3px rgba(0,0,0,0.22);
+        background-color: #fff!important;
+        border: 0px solid color($colors, borderColor2);
+        padding: 5px;  
+        display: flex;
+        flex-direction: row;
+      //   justify-content: center;
+      //   align-items: center;
+      //   align-content: center;
+      //   align-self: center;
+        max-height: 100px;
+        height: 100px;
+        border-radius: 10px;
+        .box2{      
+            // background-color: color($colors, MainGrayLevel_4);
+          //   padding: 5px;  
+            padding-bottom: 0px;
+            display: flex;
+            flex-direction: row;
+          //   align-items: center;
+          //   align-content: center;
+          //   align-self: center;
+            justify-content: center;
+          //   height: 100%;
+            .subTable1stDiv {
+                // width: 100px;
+                // align-self: center;
+                // align-content: center;
+                // text-align: center;
+              //   width: fit-content;
+                max-width: 100px;
+                width: 100px;
+  
+                img{
+                    max-height: 85px;
+                    max-width: 85px;
+                    border-radius: 10px;
+                }
+            }
+            .centerVertical {
+                // height: 15px;
+                width: 100%;
+                padding-top: 15px;
+                text-align: center;
+                font-size: 1.2em!important;
+                bottom: 0px;
+                flex: 1 1 auto;
+            }
+  
+        }
+  
+    }
+  
+  }
+
+.wrapper {
+
+  padding: 5px;
+  // padding-top: 10px;
+  padding-bottom: 0px;
+  display: grid;
+  justify-content: center;
+  grid-gap: 5px;
+  grid-template-columns: repeat(auto-fill, minmax(150px,1fr));
+  .box {
+      background-color: #fff!important;
+      border: 0px solid color($colors, borderColor2);
+      // padding: 5px;  
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      align-content: center;
+      align-self: center;
+      height: 155px;
+      border-radius: 10px;
+      .box2{      
+          // background-color: color($colors, MainGrayLevel_4);
+          padding: 5px;  
+          padding-bottom: 0px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          align-content: center;
+          align-self: center;
+          justify-content: center;
+          height: 100%;
+          .subTable1stDiv {
+              // width: 100px;
+              // align-self: center;
+              // align-content: center;
+              // text-align: center;
+              width: fit-content;
+              img{
+                  max-height: 80px;
+              }
+          }
+          .centerVertical {
+              // height: 15px;
+              padding-top: 15px;
+              text-align: center;
+              font-size: 16px;
+              bottom: 0px;
+              flex: 1 1 auto;
+          }
+
+      }
+
+  }
+
+}
+
+.radio-checked{
+    border-color: #0061a5 !important;
+}
+
+.radio-inner{
+    background-color: #0061a5 !important;
+}
+
+.item-radio-checked.item-md ion-label, ion-select .select-text{
+    color:#0061a5 !important;
+}
+
+.fixed-content{
+  background: #eee;
+}
+ion-segment, ion-card{
+  background: #fff!important;
+}
+.menu-inner{
+  .fixed-content{
+    background: #0062a7!important;
+  }
+}
+ion-card{
+  margin-top: 6px!important;
+  margin-bottom: 6px!important;
+}
+.box{
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.22);
+}
+.wrapperlist {
+    display: grid;
+    // margin: 0%;
+    grid-template-columns: repeat(auto-fill, minmax(300px,1fr));
+    .boxlist {
+        background-color: color($colors, fontWhite);
+        border: 0px solid color($colors, borderColor2);
+        // padding: 5px;  
+        display: flex;
+        // justify-content: center;
+        align-items: center;
+        align-content: center;
+        align-self: center;
+        height: 50px;
+        border-radius: 5px;
+        .box2list{
+            padding: 5px;      
+            // background-color: color($colors, MainGrayLevel_4);
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            align-content: center;
+            align-self: center;
+            justify-content: center;
+            height: 100%;
+            .subTable1stDivlist {
+                width: fit-content;
+                img{
+                    max-height: 32px;
+                }
+            }
+            .centerVerticallist {
+                // height: 15px;
+                padding-left: 5px;
+                padding-right: 5px;
+                // text-align: center;
+                font-size: 16px;
+                bottom: 0px;
+                flex: 1 1 auto;
+            }
+  
+        }
+  
+    }
+  
+  }
+
+  .wrapperImage {
+    padding: 2px;
+    display: grid;
+    grid-gap: 5px;
+    // margin: 0%;
+    grid-template-columns: repeat(auto-fill, minmax(300px,1fr));
+    .boxlist {
+        background-color: color($colors, fontWhite);
+        border: 0px solid color($colors, borderColor2);
+        // padding: 5px;  
+        display: flex;
+        flex-direction: column;
+        // justify-content: center;
+        align-items: center;
+        align-content: center;
+        align-self: center;
+        height: 150px;
+        border-radius: 5px;
+        .box2list{
+            padding: 5px;      
+            // background-color: color($colors, MainGrayLevel_4);
+            border-radius: 5px;
+            width: 100%;
+            .subTable1stDivlist {
+                min-width: 310px !important;
+                min-height: 110px;
+                
+                img{
+                    // max-height: 32px;
+                    min-width: 300px !important;
+                    width: 100%;
+                    max-height: 110px;
+                    border-radius: 5px 5px 0px 0px;
+                }
+            }
+            .centerVerticallist {
+                // height: 15px;
+                padding-left: 5px;
+                padding-right: 5px;
+                // text-align: center;
+                font-size: 16px;
+                bottom: 0px;
+                flex: 1 1 auto;
+            }
+  
+        }
+  
+    }
+  
+  }
+
+.footer {
+    font-family: "roboto";
+    // font-family: "Adobe Naskh Medium";
+    // font-family: "KFGQPC Uthmantic Script HAFS";
+    // font-family: "Amin Medium";
+
+    display: flex;
+    height: 40px;
+    text-align: center;
+    width: 100%;
+    //   height: 100%;
+    justify-content: center;
+    align-content: center;
+    align-self: center;
+    align-items: center;
+    color: white;
+    margin-top: 10px;
+    padding-bottom: 5px;
+    background-color: color($colors, darkprimary);
+}
+.bg1 {
+    font-family: "roboto" !important;
+  background: linear-gradient(to left bottom,  #424242 0%, #424242 100%);
+  color: #ffffff;
+}
+.bg2 {
+    font-family: "roboto" !important;
+  background: linear-gradient(to left bottom,  #00695C 0%, #00695C 100%);
+  color: #ffffff;
+}
+.bg3 {
+    font-family: "roboto" !important;
+  background: linear-gradient(to left bottom,  #37474F 0%, #37474F 100%);
+  color: #ffffff;
+}
+.bg4 {
+    font-family: "roboto" !important;
+  background: linear-gradient(to left bottom,  #dddddd  0%, #dddddd  100%);
+  color: #616161;
+}
+.bg5 {
+    font-family: "roboto" !important;
+  background: linear-gradient(to left bottom,  #b71c1c 0%, #b71c1c 100%);
+  color: #ffffff;
+}
+.bg6 {
+    font-family: "roboto" !important;
+  background: linear-gradient(to left bottom,  #0277BD 0%, #0277BD 100%);
+  color: #ffffff;
+}
+
+.bg7 {
+    font-family: "roboto" !important;
+  background: linear-gradient(to left bottom,  #1976D2 0%, #0062A7 100%);
+  color: #ffffff;
+}
+
+.bg8 {
+    font-family: "roboto" !important;
+    background: linear-gradient(to left bottom,  #F5F5F5 0%, #F5F5F5 100%);
+    color: #616161;
+  }
+
+  .bg9 {
+    font-family: "roboto" !important;
+    background: linear-gradient(to left bottom,  #0062a7 0%, #0062a7 100%);
+    color: #ffffff;
+  }
+
+  .bg10 {
+    font-family: "roboto" !important;
+    background: linear-gradient(to left bottom,  #fff 0%, #fff 100%);
+    color: #616161;
+  }
+  .bg11 {
+    font-family: "roboto" !important;
+    background: linear-gradient(to left bottom,  #E0E0E0 0%, #E0E0E0 100%);
+    color: #424242;
+    }
+.bg12 {
+    font-family: "roboto" !important;
+    background: linear-gradient(to left bottom,  #ffc 0%, #ffc 100%);
+    color: #424242;
+    }
+.bg13 {
+    font-family: "roboto" !important;
+    background: linear-gradient(to left bottom,  #e9e9e9 0%, #e9e9e9 100%);
+    color: #424242;
+    }
+.bgwhite {
+    font-family: "roboto" !important;
+    background: linear-gradient(to left bottom,  #fff 0%, #fff 100%);
+}
+  .bgerror{
+    font-family: "roboto" !important;
+    // background: linear-gradient(to left bottom,  #fff 0%, #fff 100%);
+    font-size: 13px;
+    color: red;
+  }
+
+  .bgremember{
+    font-family: "roboto" !important;
+    // background: linear-gradient(to left bottom,  #fff 0%, #fff 100%);
+    font-size: 13px !important;
+    color: red !important;
+  }
+
+    .font13 {
+    font-size: 13px;
+    }
+    .font12 {
+    font-size: 12px;
+    }
+    .font14 {
+    font-size: 14px;
+    }
+    .font15 {
+    font-size: 15px;
+    }
+    .font16 {
+    font-size: 16px;
+    }
+    .font11 {
+    font-size: 11px;
+    }
+
+  .colorDarkGray {
+      color: #222;
+  }
+  div, h1, h2, h3, h4, h5, h6, span {
+    font-family: "roboto" !important;
+  }
+
+  .swiper-container{
+    // background: #000!important;
+  }
+  .swiper-pagination-bullet{
+    background-color: #000!important;
+    opacity: 0.2!important;
+    box-shadow: 0 0 0 3px rgba(0,0,0,0.0)!important;
+    transition:0.3s;
+    &.swiper-pagination-bullet-active{
+      background-color: #0062A7!important;
+      box-shadow: 0 0 0 3px rgba(0,0,0,0.3)!important;
+      opacity: 1!important;
+    }
+  }
+  .sliderDiv {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    // padding-top: 5px;
+    // min-height: 260px;
+    // padding-bottom: 10px;
+    .img-container{
+      // background: #000!important;
+      img{
+        padding-top: 0px!important;
+        margin-bottom: 0px!important;
+      }
+    }
+  }
+  .swiper-pagination-bullets{
+    position: absolute;
+    z-index: 1000;
+  }
+.slider {
+    max-height: 260px;
+    max-height: 260px;
+    min-width: 100%;
+    justify-content: center;
+    // padding-bottom: 10px;
+}
+
+div.swiper-pagination {
+    // top: 225px ;
+    bottom: initial ;
+    // color: #000;
+ }
+
+@media screen and (min-width: 720px) {
+  .slide-img-size {
+    // max-height: 300px;
+  }
+  .boxlist{
+    max-height: 50px;
+  }
+  .wrapperlist{
+    padding: 0!important;
+  }
+  .box2list{
+    margin: 0!important;
+  }
+  .wrapper {
+
+      padding: 10px;
+      padding-top: 20px;
+      display: grid;
+      justify-content: center;
+      grid-gap: 10px;
+      grid-template-columns: repeat(auto-fill, minmax(250px,1fr));
+      .box {
+          background-color: #fff!important;
+          border: 0px solid color($colors, borderColor2);
+          padding: 10px;  
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          align-content: center;
+          align-self: center;
+          height: 190px;
+          border-radius: 15px;
+          .box2{      
+              // background-color: color($colors, MainGrayLevel_4);
+              padding: 10px;  
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              align-content: center;
+              align-self: center;
+              justify-content: center;
+              height: 100%;
+              .subTable1stDiv {
+                  // width: 100px;
+                  // align-self: center;
+                  // align-content: center;
+                  // text-align: center;
+                  width: fit-content;
+                  img{
+                      max-height: 105px;
+                  }
+              }
+              .centerVertical {
+                  // height: 15px;
+                  padding-top: 15px;
+                  text-align: center;
+                  font-size: 21px;
+                  bottom: 0px;
+                  flex: 1 1 auto;
+              }
+
+          }
+
+      }
+
+  }
+
+  .wrapperImage {
+    padding: 5px;
+    padding-top: 15px;
+    display: grid;
+    grid-gap: 10px;
+    // margin: 0%;
+    grid-template-columns: repeat(auto-fill, minmax(400px,1fr));
+    .boxlist {
+        background-color: color($colors, fontWhite);
+        border: 0px solid color($colors, borderColor2);
+        // padding: 5px;  
+        display: flex;
+        flex-direction: column;
+        // justify-content: center;
+        align-items: center;
+        align-content: center;
+        align-self: center;
+        height: 200px;
+        border-radius: 10px;
+        .box2list{
+            padding: 5px;      
+            // background-color: color($colors, MainGrayLevel_4);
+            border-radius: 10px;
+            width: 100%;
+            .subTable1stDivlist {
+                min-width: 310px !important;
+                min-height: 155px;
+                
+                img{
+                    // max-height: 32px;
+                    min-width: 300px !important;
+                    width: 100%;
+                    max-height: 155px;
+                    border-radius: 10px 10px 0px 0px;
+                }
+            }
+            .centerVerticallist {
+                // height: 15px;
+                padding-left: 10px;
+                padding-right: 10px;
+                // text-align: center;
+                font-size: 18px;
+                bottom: 0px;
+                flex: 1 1 auto;
+            }
+  
+        }
+  
+    }
+  
+  }
+}
+@media screen and (max-width: 420px) {
+  .slide-img-size {
+    // max-height: 200px;
+  }
+}
+
+@media screen and (max-width: 280px) {
+  .slide-img-size {
+    // max-height: 180px;
+  }
+}

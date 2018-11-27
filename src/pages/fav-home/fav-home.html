@@ -1,0 +1,194 @@
+<ion-header *ngIf="this.platform.dir() === 'rtl'" class="header" dir="ltr" no-border>
+  <ion-navbar class="ion-navbar" hideBackButton="true" color="darkprimary" *ngIf="!isSearchToggle">
+   
+    <ion-buttons style="display: flex; direction: row;" right>
+
+
+
+      <span *ngIf="this.platform.dir() === 'rtl' && this.mainFunc.manuno8 == false">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      <span *ngIf="this.platform.dir() === 'ltr' && this.mainFunc.manuno8 == false">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      <button ion-button icon-only (tap)="dismissview()">
+        <ion-icon *ngIf="this.platform.dir() === 'rtl'" name="ios-arrow-back"></ion-icon>
+        <ion-icon *ngIf="this.platform.dir() === 'ltr'" name="ios-arrow-forward"></ion-icon>
+      </button>
+
+    </ion-buttons>
+
+  </ion-navbar>
+
+  <div class="serachDiv" dir="{{direcR}}" *ngIf="isSearchToggle">
+    <ion-searchbar class="toolbarSearch" cancle-button="true" placeholder="بحث" (input)="searchBar($event)"></ion-searchbar>
+    <div class="searchButton">
+      <button ion-button color="fontWhite" (tap)="showSearchBar()" clear>
+        <ion-icon *ngIf="direc === 'ltr'" name="md-arrow-round-forward"></ion-icon>
+        <ion-icon *ngIf="direc === 'rtl'" name="md-arrow-round-back"></ion-icon>
+      </button>
+    </div>
+
+  </div>
+</ion-header>
+
+<ion-header *ngIf="this.platform.dir() === 'ltr'" dir="rtl" class="header" no-border>
+  <ion-navbar class="ion-navbar" hideBackButton="true" color="darkprimary" *ngIf="!isSearchToggle">
+ 
+    <img class="homeLogo" src="assets/img/homelogo.png">
+    <ion-buttons style="display: flex; direction: row;" right>
+
+      
+      <span *ngIf="this.platform.dir() === 'ltr' && this.mainFunc.manuno8 == false">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      <button ion-button icon-only (tap)="dismissview()">
+        <ion-icon *ngIf="this.platform.dir() === 'rtl'" name="ios-arrow-back"></ion-icon>
+        <ion-icon *ngIf="this.platform.dir() === 'ltr'" name="ios-arrow-forward"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+  <div class="serachDiv" dir="{{direcR}}" *ngIf="isSearchToggle">
+    <ion-searchbar class="toolbarSearch" cancle-button="true" placeholder="{{ 'SEARCH' | translate:param }}" (input)="searchBar($event)"></ion-searchbar>
+    <div class="searchButton">
+      <button ion-button color="fontWhite" (tap)="showSearchBar()" clear>
+        <ion-icon *ngIf="direc === 'ltr'" name="md-arrow-round-forward"></ion-icon>
+        <ion-icon *ngIf="direc === 'rtl'" name="md-arrow-round-back"></ion-icon>
+      </button>
+
+    </div>
+
+  </div>
+</ion-header>
+
+    <ion-content >
+        <div >
+              <div class="wrapper" center>
+                <div  (tap)="openFavScreen('products')"  center>
+                  <div class="box" >
+                    <div class="box2">
+                        <div class="image">
+                        <img src="assets/img/catalogue/img-11.png" style="    height: 90px;">
+                          </div> 
+                      <div class="centerVertical">
+                          <div class="fontBig fontBold maxsize">{{ 'Product' | translate:param }}</div>
+                      </div>
+                      <div class="maxSubMap">
+                        
+                      </div>
+                      <div class="maxSubDates">
+                        
+                      </div>
+                    </div>
+                  </div>
+                 
+                </div>
+                <div  (tap)="openFavScreen('used_item')"  center>
+                  <div class="box" >
+                    <div class="box2">
+                        <div class="image">
+                        <img src="assets/img/catalogue/img-11.png" style="    height: 90px;">
+                          </div> 
+                      <div class="centerVertical">
+                          <div class="fontBig fontBold maxsize">{{ 'Uesditem' | translate:param }}</div>
+                      </div>
+                      <div class="maxSubMap">
+                        
+                      </div>
+                      <div class="maxSubDates">
+                        
+                      </div>
+                    </div>
+                  </div>
+                 
+                </div>
+                <div (tap)="openFavScreen('courses')" center>
+                    <div class="box" >
+                      <div class="box2">
+                          <div class="image">
+                              <img src="assets/img/catalogue/img-11.png" style="    height: 90px;">
+                                </div> 
+                        <div class="centerVertical">
+                            <div class="fontNormal maxsize">{{ 'MENU_COURSES' | translate:param }}</div>
+                        </div>
+                        <div class="maxSubMap">
+                          
+                        </div>
+                        <div class="maxSubDates">
+                          
+                        </div>
+                      </div>
+                    </div>
+                   
+                  </div>
+
+                  <div (tap)="openFavScreen('events')" center>
+                    <div class="box" >
+                      <div class="box2">
+                          <div class="image">
+                              <img src="assets/img/catalogue/img-11.png" style="    height: 90px;">
+                                </div> 
+                        <div class="centerVertical">
+                            <div class="fontNormal maxsize">{{ 'MENU_CALENDAR' | translate:param }}</div>
+                        </div>
+                        <div class="maxSubMap">
+                          
+                        </div>
+                        <div class="maxSubDates">
+                          
+                        </div>
+                      </div>
+                    </div>
+                   
+                  </div>
+
+                  <div (tap)="openFavScreen('librarys')" center>
+                    <div class="box" >
+                      <div class="box2">
+                          <div class="image">
+                              <img src="assets/img/catalogue/img-11.png" style="    height: 90px;">
+                                </div> 
+                        <div class="centerVertical">
+                            <div class="fontNormal maxsize">{{ 'MENU_LIBRARY' | translate:param }}</div>
+                        </div>
+                        <div class="maxSubMap">
+                          
+                        </div>
+                        <div class="maxSubDates">
+                          
+                        </div>
+                      </div>
+                    </div>
+                   
+                  </div>
+
+                  <!-- <div (tap)="openFavScreen('item')" center>
+                    <div class="box" >
+                      <div class="box2">
+                          <div class="image">
+                              <img src="assets/img/catalogue/img-11.png" style="    height: 90px;">
+                                </div> 
+                        <div class="centerVertical">
+                            <div class="fontNormal maxsize">used_item</div>
+                        </div>
+                        <div class="maxSubMap">
+                          
+                        </div>
+                        <div class="maxSubDates">
+                          
+                        </div>
+                      </div>
+                    </div>
+                   
+                  </div> -->
+
+                  
+              </div>
+            </div>  
+        
+        
+      </ion-content>
+
+
+    <!-- <ion-footer>
+        <div class="footer">
+          <div>
+              {{ 'APP_COPYRIGHT' | translate:param }}
+          </div>
+      </div>
+      </ion-footer> -->

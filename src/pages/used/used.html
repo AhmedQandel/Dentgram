@@ -1,0 +1,7 @@
+<ion-tabs color="darkprimary" [selectedIndex]="selected_tab">
+    <!-- <ion-tab [root]="usedMsgRoot" tabTitle="{{ 'USED_TITLE_MASSAGES' | translate:param }}" tabIcon="md-chatbubbles"></ion-tab> -->
+    <ion-tab [root]="usedAddRoot" *ngIf="ifIsLogged" tabTitle="{{ 'USED_TITLE_ADD' | translate:param }}" tabIcon="md-add"></ion-tab>
+    <ion-tab [root]="usedMyadsRoot" *ngIf="ifIsLogged" tabTitle="{{ 'USED_TITLE_MYADS' | translate:param }}" tabIcon="ios-albums-outline"></ion-tab>
+    <ion-tab [root]="usedMsgesListRoot" *ngIf="ifIsLogged" tabTitle="{{ 'USED_TITLE_MESSAGES' | translate:param }}" tabIcon="md-mail"></ion-tab>
+    <ion-tab [root]="usedAdsRoot" tabTitle="{{ 'USED_TITLE_ADS' | translate:param }}" tabIcon="md-apps"></ion-tab>
+</ion-tabs>

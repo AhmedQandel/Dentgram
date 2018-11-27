@@ -1,0 +1,63 @@
+  <ion-header class="header" dir="{{direcR}}" no-border>
+    
+    <ion-navbar color="darkprimary">
+
+      <ion-buttons style="display: flex; direction: row;" left>
+        <button ion-button icon-only>
+          <ion-badge color="danger" *ngIf="mainFunc.getCartItemsNumber()" item-end>{{mainFunc.getCartItemsNumber()}}</ion-badge>
+          <ion-icon name="md-cart" *ngIf="this.mainFunc.manuno8 == false"></ion-icon>
+        </button>
+        <span *ngIf="this.platform.dir() === 'rtl' && this.mainFunc.manuno8 == false">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      </ion-buttons>
+      <ion-title text-center>{{ 'ACC_TITLE_CONTACT_US' | translate:param }}</ion-title>
+      
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content dir="{{direcR}}" scroll="true">
+    <div class="formCreate">
+      <form [formGroup]="validateForm" (ngSubmit)="sendMassage()">
+          <h6>{{ 'CONTACT_US_TITLE' | translate:param }}</h6>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-item no-lines>
+                <ion-label>{{ 'CONTACT_US_NAME' | translate:param }}</ion-label>
+                <ion-input type="text" [(ngModel)]="name" formControlName="name" ></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item no-lines>
+                <ion-label>{{ 'AUTH_EMAIL' | translate:param }}</ion-label>
+                <ion-input type="email" [(ngModel)]="email" formControlName="email"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item no-lines>
+                <ion-label>{{ 'CONTACT_US_SUBJECT' | translate:param }}</ion-label>
+                <ion-input type="text" [(ngModel)]="subject" formControlName="subject" ></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <h6>{{ 'CONTACT_US_MASSAGE' | translate:param }}</h6>
+          <ion-row>
+            <ion-col>
+              <ion-item no-lines>
+                <ion-label>{{ 'Message' | translate:param }}</ion-label>
+                <ion-textarea type="text" [(ngModel)]="message" id="message" name="message" formControlName="message" ></ion-textarea>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <div class="buttonSubmit">
+            <button ion-button type="submit" [disabled]="!validateForm.valid">{{ 'CONTACT_US_SUBMIT' | translate:param }}</button>
+        </div>
+      </form>
+    </div>
+  </ion-content>
+  

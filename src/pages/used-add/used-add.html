@@ -1,0 +1,187 @@
+<ion-header class="header" dir="{{direc}}" no-border>
+    
+    <ion-navbar color="darkprimary">
+      <ion-buttons right>
+          <span *ngIf="this.platform.dir() === 'ltr' && this.mainFunc.manuno8 == false">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>  
+        <button ion-button icon-only (tap)="dismissview()">
+          <ion-icon *ngIf="this.platform.dir() === 'rtl'" name="ios-arrow-back"></ion-icon>
+          <ion-icon *ngIf="this.platform.dir() === 'ltr'" name="ios-arrow-forward"></ion-icon>
+        </button>
+             <!-- <button ion-button (tap)="showSearchBar()">
+            <ion-icon name="search"></ion-icon>
+        </button> -->
+      </ion-buttons>
+
+      <ion-buttons style="display: flex; direction: row;" left>
+        
+        <button ion-button icon-only>
+          <ion-badge color="danger" *ngIf="mainFunc.getCartItemsNumber()" item-end>{{mainFunc.getCartItemsNumber()}}</ion-badge>
+          <ion-icon name="md-cart" *ngIf="this.mainFunc.manuno8 == false"></ion-icon>
+        </button>
+       
+        <span *ngIf="this.platform.dir() === 'rtl' && this.mainFunc.manuno8 == false">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      </ion-buttons>
+      <ion-title text-center>{{ 'USED_TITLE_ADD' | translate:param }}</ion-title>
+      
+          <!-- <div>&nbsp;&nbsp;&nbsp;</div> -->
+        
+      
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content>
+  
+  
+  
+    <!-- Select Category Div -->
+    <div class="div_select_category" *ngIf="div_select_category" padding>
+      <!-- <div class="title_Size">{{ 'USED_ADD_PLEASE_AD_CATEGORY' | translate:param }}</div> -->
+      
+      <form [formGroup]="create" (ngSubmit)="addAd()">
+        <h6>{{ 'AD_ADD_IMAGE' | translate:param }}</h6>
+        <ion-row>
+          <ion-col>
+            <div class="images_select">
+              <img (tap)="selectImage()" src="assets/img/select_photo.png">
+              <img *ngIf="images_list[0]" [src]="images_list[0]">
+              <img *ngIf="images_list[1]" [src]="images_list[1]">
+              <img *ngIf="images_list[2]" [src]="images_list[2]">
+              <img *ngIf="images_list[3]" [src]="images_list[3]">
+              <img *ngIf="images_list[4]" [src]="images_list[4]">
+              <img *ngIf="images_list[5]" [src]="images_list[5]">
+            </div>
+          </ion-col>
+        </ion-row>
+
+        <h6>{{ 'USED_AD_DETAILS' | translate:param }}</h6>
+        <ion-row>
+          <ion-col>
+            <ion-item dir="{{dir}}" class="selectDiv titleDiv" (tap)="openSelectCategory()" no-lines>
+              <ion-label class="bg10">{{ 'USED_ADD_CATEGORY' | translate:param }}</ion-label>
+              <ion-label class="bg10" style="width: 100%;">{{ ad_category }}</ion-label>
+              <!-- <ion-select class="bg10" [(ngModel)]="ad_category" (tap)="openSelectCategory">
+                <ion-option *ngFor="let c of category_list; let i = index" [value]="c.id" dir="{{dir}}"><div class="option-text">{{ c.name }}</div></ion-option>
+              </ion-select> -->
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+
+        <ion-row>
+          <ion-col>
+            <ion-item dir="{{dir}}" class="selectDiv titleDiv" no-lines>
+                <ion-label class="bg10">{{ 'USED_AD_NAME' | translate:param }}</ion-label>
+                <ion-input type="text" formControlName="ad_name" [(ngModel)]="ad_name"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        
+        <ion-row>
+          <ion-col>
+            <ion-item dir="{{dir}}" class="selectDiv" no-lines>
+              <ion-label class="bg10">{{ 'USED_AD_DETAILS' | translate:param }}</ion-label>
+              <ion-textarea type="text" rows="6" formControlName="ad_details"  [(ngModel)]="ad_details"></ion-textarea>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-item dir="{{dir}}" class="selectDiv titleDiv" no-lines>
+              <ion-label class="bg10">{{ 'USED_AD_PHONE' | translate:param }}</ion-label>
+              <ion-input type="number" formControlName="ad_phone"  [(ngModel)]="ad_phone"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+
+        <ion-row>
+          <ion-col>
+            <ion-item dir="{{dir}}" class="selectDiv titleDiv" no-lines>
+              <ion-label class="bg10">{{ 'USED_AD_PRICE' | translate:param }}</ion-label>
+              <ion-input type="number" formControlName="ad_price"  [(ngModel)]="ad_price"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <h6>{{ 'USED_AD_CONTACT' | translate:param }}</h6>
+        <ion-row>
+          <ion-col>
+              <ion-item no-lines>
+                <ion-label>{{ 'USED_AD_CONTACT_CALL' | translate:param }}</ion-label>
+                <ion-checkbox checked="true" formControlName="ad_can_call"  [(ngModel)]="ad_can_call" value="1"></ion-checkbox>
+              </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item no-lines>
+              <ion-label>{{ 'USED_AD_CONTACT_MESSAGE' | translate:param }}</ion-label>
+              <ion-checkbox checked="true" formControlName="ad_can_message"  [(ngModel)]="ad_can_message" value="1"></ion-checkbox>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <div class="buttonSubmit">
+          <button block type="submit" [disabled]="!create.valid" ion-button>{{ 'USED_AD_SUBMIT' | translate:param }}</button>
+        </div>
+      </form>
+      <!-- <button ion-butoon (tap)="openmatch()">pdf</button> -->
+      <div>
+        &nbsp; {{ listenToAdd() }}
+      </div>
+    </div>
+    
+    <div *ngIf="div_ad_data">
+  
+
+      <!-- Main Categories Section -->
+      <!-- ----------------------- -->
+
+      <div class="wrapperlist" *ngIf = "MainMenuDiv">
+        <div *ngFor="let item of homemenu; let i = index">
+          <div class="boxlist {{ item.back_back }}" (tap)="click_Open_catalogue_sub_id(item.id,item.name_ar,item.name_en,item.useable)">
+            <div class="box2list">
+              <div class="subTable1stDivlist">
+                <img [src]="item.img">
+              </div>
+              <div class="centerVerticallist">
+                  <div *ngIf="this.platform.dir() === 'rtl'" class="fontNormal maxsize">{{ item.name_ar }}</div>
+                  <div *ngIf="this.platform.dir() === 'ltr'" class="fontNormal maxsize">{{ item.name_en }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Internal Categories Section -->
+      <!-- --------------------------- -->
+
+      <div class="wrapperlist" *ngIf = "SubMenuDiv">
+        <div *ngFor="let item of homemenu; let i = index" center>
+          <div class="boxlist {{ item.back_back }}" (tap)="click_Open_catalogue_sub_id(item.id,item.name_ar,item.name_en,item.useable)">
+            <div class="box2list">
+              <div class="subTable1stDivlist">
+                <img [src]="item.img">
+              </div>
+              <div class="centerVerticallist">
+                  <div *ngIf="this.platform.dir() === 'rtl'" class="fontNormal maxsize">{{ item.name_ar }}</div>
+                  <div *ngIf="this.platform.dir() === 'ltr'" class="fontNormal maxsize">{{ item.name_en }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button ion-button color="danger" block *ngIf="homemenu?.length > 0 && !isDataAvilable">{{ 'CANCEL' | translate:param }}</button>
+
+      <!-- Show Loading between Selecting Categories -->
+      <!-- ----------------------------------------- -->
+      <div class="footerz" *ngIf="!homemenu?.length > 0 && isDataAvilable">
+        <ion-spinner></ion-spinner>
+      </div>
+    </div>
+  
+    <!-- Loading Spinner -->
+    <!-- <div class="footerz" *ngIf="!category_list?.length > 0 && isDataAvilable">
+      <ion-spinner></ion-spinner>
+    </div> -->
+  </ion-content>

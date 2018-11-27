@@ -1,0 +1,148 @@
+page-acc-address {
+    .header {
+        // margin-bottom: 50px;
+        ion-icon {
+            font-size: 24px;
+        }
+    }
+
+    background-color: color($colors, borderColor2);
+    .formCreate {
+        background-color: color($colors, fontWhite);
+        margin: 10px;
+        padding-top: 5px;
+        border-radius: 5px!important;
+        // border: 0.5px dotted color($colors, borderColor2);
+       
+    }
+
+    .addressesList {
+        margin: 5px;
+        border-radius: 5px!important;
+        background-color: color($colors, fontWhite);
+
+        .addressItem {
+            padding: 8px;
+            .addressnameDiv {
+
+                display: flex;
+                flex-direction: row;
+
+                .addressnameTitle{
+                    width: 70%;
+                    font-size: 14px;
+                    font-weight: bold;
+                }
+                .addressnameSelected {
+                    width: 30%
+                    
+                    img {
+                        max-width: 20px;
+                        max-height: 20px;
+                    }
+                }
+            }
+
+            .addressbody {
+
+                display: flex;
+                flex-direction: row;
+
+                .addressbodyIcon {
+                    img {
+                        max-height: 40px;
+                        max-width: 40px;
+                        min-height: 40px;
+                        min-width: 40px;
+                        margin: 5px;
+                    }
+                }
+                .addressbodyContent {
+
+                    display: flex;
+                    flex-direction: column;
+                    
+                    .addressLine1 {
+                        font-size: 13px;
+                    }
+                    .addressLine2 {
+                        font-size: 13px;
+                    }
+                    .addressphone {
+                        font-size: 12px;
+                        color: red;
+                    }
+                    .addressrecipient {
+                        font-size: 13px;
+                    }
+
+                }
+            }
+        }
+    }
+    .buttonsDiv {
+        justify-content: center;
+        align-content: center;
+        display: flex;
+        button {
+            justify-content: center;
+            align-content: center;
+        }
+    }
+    ion-label {
+        min-width: 65px;
+    }
+    .errorshow {
+        color: color($colors, danger);
+    }
+    
+    ion-input {
+        font-size: 16px;
+    }
+    ion-item {
+        background-color: color($colors, borderColor2);
+        border-color: #fcfcfc;
+        border-inline-end-color: #fcfcfc;
+        border-radius: 15px!important;
+    }
+    ion-select {
+        min-width: 70% !important;
+    }
+    h6 {
+        margin: 10px;
+        font-size: 17px;
+        font-weight: bold;
+    }
+    .buttonSubmit {
+        display: flex;
+        flex-direction: row;
+        align-content: center;
+        justify-content: center;
+        button {
+            font-size: 15px;
+            border-radius: 8px!important;
+            background-color: color($colors,darkprimary);
+            text-transform: none;
+        }
+        .btnCancel {
+            background-color: color($colors,danger);
+        }
+    }
+
+    .class1 {
+        display: flex;
+        flex-direction: row;
+    }
+    .class2 {
+        
+        display: flex;
+        flex-direction: column;
+        padding: 0px 2px 0px 2px;
+    }
+    .smallWorning {
+        font-size: 12px;
+        color: red;
+    }
+
+    
+}

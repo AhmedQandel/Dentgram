@@ -1,0 +1,200 @@
+<ion-header *ngIf="this.platform.dir() === 'rtl'" class="header" dir="ltr" no-border>
+  <ion-navbar class="ion-navbar" hideBackButton="true" color="darkprimary" *ngIf="!isSearchToggle">
+    <ion-buttons style="display: flex; direction: row;" left>
+
+      <button ion-button *ngIf="this.mainFunc.manuno8 == false" (tap)="openCartPage2()">
+        <ion-icon name="md-cart" *ngIf="this.mainFunc.manuno8 == false" [@cartBadge]="cartBadgeState"></ion-icon>
+        <ion-badge color="danger" *ngIf="mainFunc.getCartItemsNumber()" [@flyInOut]="cartBadgeState" item-end>{{mainFunc.getCartItemsNumber()}}</ion-badge>
+      </button>
+      <button ion-button (tap)="showSearchBar()">
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-buttons>
+    <!-- <ion-title>دانتجرام</ion-title> -->
+    <!-- <img class="homeLogo" src="assets/img/homelogo.png"> -->
+    <ion-buttons style="display: flex; direction: row;" right>
+      <!-- <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button> -->
+
+
+      <span *ngIf="this.platform.dir() === 'rtl' && this.mainFunc.manuno8 == false">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      <span *ngIf="this.platform.dir() === 'ltr' && this.mainFunc.manuno8 == false">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      <button ion-button icon-only (tap)="dismissview(catId)">
+        <ion-icon *ngIf="this.platform.dir() === 'rtl'" name="ios-arrow-back"></ion-icon>
+        <ion-icon *ngIf="this.platform.dir() === 'ltr'" name="ios-arrow-forward"></ion-icon>
+      </button>
+
+    </ion-buttons>
+
+  </ion-navbar>
+
+  <div class="serachDiv" dir="{{direcR}}" *ngIf="isSearchToggle">
+    <ion-searchbar class="toolbarSearch" cancle-button="true" placeholder="بحث" (input)="searchBar($event)"></ion-searchbar>
+    <div class="searchButton">
+      <button ion-button color="fontWhite" (tap)="showSearchBar()" clear>
+        <ion-icon *ngIf="direc === 'ltr'" name="md-arrow-round-forward"></ion-icon>
+        <ion-icon *ngIf="direc === 'rtl'" name="md-arrow-round-back"></ion-icon>
+      </button>
+    </div>
+
+  </div>
+</ion-header>
+
+<ion-header *ngIf="this.platform.dir() === 'ltr'" dir="rtl" class="header" no-border>
+  <ion-navbar class="ion-navbar" hideBackButton="true" color="darkprimary" *ngIf="!isSearchToggle">
+    <ion-buttons style="display: flex; direction: row;" left>
+      <button ion-button *ngIf="this.mainFunc.manuno8 == false" (tap)="openCartPage2()">
+        <ion-icon name="md-cart" *ngIf="this.mainFunc.manuno8 == false" [@cartBadge]="cartBadgeState"></ion-icon>
+        <ion-badge color="danger" *ngIf="mainFunc.getCartItemsNumber()" [@flyInOut]="cartBadgeState" item-end>{{mainFunc.getCartItemsNumber()}}</ion-badge>
+      </button>
+      <button ion-button (tap)="showSearchBar()">
+          <ion-icon name="search"></ion-icon>
+        </button>
+    </ion-buttons>
+    <!-- <ion-title>دانتجرام</ion-title> -->
+    <img class="homeLogo" src="assets/img/homelogo.png">
+    <ion-buttons style="display: flex; direction: row;" right>
+
+      
+      <span *ngIf="this.platform.dir() === 'ltr' && this.mainFunc.manuno8 == false">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      <button ion-button icon-only (tap)="dismissview(catId)">
+        <ion-icon *ngIf="this.platform.dir() === 'rtl'" name="ios-arrow-back"></ion-icon>
+        <ion-icon *ngIf="this.platform.dir() === 'ltr'" name="ios-arrow-forward"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+  <div class="serachDiv" dir="{{direcR}}" *ngIf="isSearchToggle">
+    <ion-searchbar class="toolbarSearch" cancle-button="true" placeholder="{{ 'SEARCH' | translate:param }}" (input)="searchBar($event)"></ion-searchbar>
+    <div class="searchButton">
+      <button ion-button color="fontWhite" (tap)="showSearchBar()" clear>
+        <ion-icon *ngIf="direc === 'ltr'" name="md-arrow-round-forward"></ion-icon>
+        <ion-icon *ngIf="direc === 'rtl'" name="md-arrow-round-back"></ion-icon>
+      </button>
+
+    </div>
+
+  </div>
+</ion-header>
+<div class="fixed-header">
+
+    <!-- <div class="wrapperlist">
+        <ion-row style="padding-left: 3px; padding-right: 8px;" no-lines no-padding>
+            <ion-col no-lines col-12 *ngIf="showFilter">
+                <ion-item dir="{{dir}}" class="selectDiv titleDiv" no-lines>
+                  <ion-label class="bg10">{{ 'FILTER_BY' | translate:param }}</ion-label>
+                  <ion-select interface="popover" class="bg10" dir="{{dir}}" (ionChange)="onFilterByChange($event)" [(ngModel)]="filterBy">
+                    <ion-option *ngFor="let op of filterOptions" [value]="op">{{ op | translate:param }}</ion-option>
+                  </ion-select>
+                </ion-item>
+            </ion-col>
+
+              <ion-col *ngIf="filterBy == 'LOCATION_FILTER'">
+                  <ion-item dir="{{dir}}" class="selectDiv titleDiv" no-lines>
+                    <ion-label class="bg10">{{ 'CHOOSE_CITY' | translate:param }}</ion-label>
+                    <ion-select interface="popover" class="bg10" dir="{{dir}}" (ionChange)="onFilterByValueChange($event)" [(ngModel)]="filterByValue">
+                      <ion-option *ngFor="let c of city_list; let i = index" [value]="c.id">{{ platform.dir() === 'ltr'? c.name_en: c.name_ar }}</ion-option>
+                    </ion-select>
+                  </ion-item>
+              </ion-col>
+
+              <ion-col *ngIf="filterBy == 'CATEGORY_FILTER'">
+                  <ion-item dir="{{dir}}" class="selectDiv titleDiv" no-lines>
+                    <ion-label class="bg10">{{ 'CHOOSE_CATEGORY' | translate:param }}</ion-label>
+                    <ion-select interface="popover" class="bg10" dir="{{dir}}" (ionChange)="onFilterByValueChange($event)" [(ngModel)]="filterByValue">
+                      <ion-option *ngFor="let c of category_list; let i = index" [value]="c.id">{{ platform.dir() === 'ltr'? c.name_en: c.name_ar }}</ion-option>
+                    </ion-select>
+                  </ion-item>
+                </ion-col>
+            
+                <ion-col *ngIf="filterBy == 'COURSE_PROVIDER_FILTER'">
+                  <ion-item dir="{{dir}}" class="selectDiv titleDiv" no-lines>
+                    <ion-label class="bg10">{{ 'CHOOSE_COURSE_PROVIDER' | translate:param }}</ion-label>
+                    <ion-input class="bg10" dir="{{dir}}" [(ngModel)]="filterByValue" (ionChange)="onFilterByValueChange($event)"></ion-input>
+                  </ion-item>
+                </ion-col>
+
+                <ion-col *ngIf="filterBy == 'DATE_FILTER'">
+                    <ion-item dir="{{dir}}" class="selectDiv titleDiv" no-lines>
+                      <ion-label class="bg10">{{ 'CHOOSE_DATE' | translate:param }}</ion-label>
+                      <ion-datetime class="bg10" dir="{{dir}}" displayFormat="MM/DD/YYYY" [(ngModel)]="filterByValue" cancelText="{{ 'CANCEL' | translate:param }}"
+                        doneText="{{ 'OK' | translate:param }}" (ionChange)="onFilterByValueChange($event)"></ion-datetime>
+                    </ion-item>
+                  </ion-col>
+              
+                  <ion-col col-9 no-lines>
+                    <ion-searchbar no-lines [(ngModel)]="searchTerm" placeholder="{{ 'SEARCH' | translate:param }}" [formControl]="searchControl"
+                      (ionInput)="onSearchInput()"></ion-searchbar>
+                  </ion-col>
+                  <ion-col no-lines col-3>
+                    <button ion-button style="width: fit-content;" color="darkprimary" (tap)="openSearchResultPage()">{{ 'SEARCH' | translate:param }}</button>
+                  </ion-col>
+
+
+        </ion-row>
+    </div>
+
+    <div *ngIf="searching" class="spinner-container">
+        <ion-spinner></ion-spinner>
+    </div> -->
+  <!-- <div *ngIf="this.catId == 0" class="wrapperlist">
+    <div center>
+      <div class="boxlist">
+        <div class="box2list bg6" style="width: 100%;" (tap)="click_Open_Category()">
+          <div class="subTable1stDivlist">
+            <img src="assets/img/categories.png">
+          </div>
+          <div class="centerVerticallist">
+            <div *ngIf="this.platform.dir() === 'rtl'" class="fontNormal maxsize">{{ 'CATEGORIES' | translate:param }}</div>
+            <div *ngIf="this.platform.dir() === 'ltr'" class="fontNormal maxsize">{{ 'CATEGORIES' | translate:param }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+  <div *ngIf="slider_Data.length > 0" class="slide-img-size" dir="ltr">
+    <div>
+      <ion-slides id="slider" (ionSlideDidChange)="slideChanged()" speed="500" loop="true" spaceBewteen="15" pager>
+        <ion-slide class="ion-slide" *ngFor='let slide of slider_Data; let i = index'>
+          <div (click)="openSlider(slide.action,slide.id)">
+            <img class="slide-img-size" [ngClass]="{tablet: isTabletOriPad}" [src]="slide.url.full">
+          </div>
+          <div class="slider-link" *ngIf="i != 0 && slide.action">{{ 'TAP_FOR_MORE' | translate:param }}</div>
+        </ion-slide>
+      </ion-slides>
+    </div>
+  </div>
+</div>
+<ion-content id="content" dir="{{direcR}}" [ngClass]="slider_Data.length > 0? 'ion-content-below-slider-area-and-subheader': ''">
+
+  <div class="slideScrolls" dir="{{direcR}}">
+    <div class="itemScroll" *ngFor="let item of bestrecommended; let i = index" dir="{{direcR}}">
+      <div (tap)="openItemDetails(item.id)">
+        <div class="itemScrollImage">
+          <img [src]="item.image" height="200" width="200" onerror="src = 'assets/img/catalogue/img-1.png'">
+        </div>
+        <div class="itemScrollDetails">
+          <div class="itemScrollName">{{ item.name }}</div>
+          <div class="itemScrollPriceafter">{{ mainFunc.financial(item.price) }} {{ item.currency | translate:param }}</div>
+          <div class="city_div">
+            <ion-icon name="md-map"></ion-icon>
+            <div class="city_name"> {{ item.city_en }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+
+  <div class="footerz" *ngIf="!isDataAvilable">
+    <img src="assets/img/nodata.png">
+  </div>
+  <div class="footerz" *ngIf="!bestrecommended?.length > 0 && isDataAvilable">
+    <ion-spinner></ion-spinner>
+  </div>
+</ion-content>

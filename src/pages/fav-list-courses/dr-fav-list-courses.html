@@ -1,0 +1,237 @@
+<ion-header *ngIf="this.platform.dir() === 'rtl'" class="header" dir="ltr" no-border>
+  <ion-navbar class="ion-navbar" hideBackButton="true" color="darkprimary" *ngIf="!isSearchToggle">
+
+
+    <img class="homeLogo" src="assets/img/homelogo.png">
+
+    <ion-buttons style="display: flex; direction: row;" right>
+      <button ion-button menuToggle>
+        <!-- <ion-icon name="menu"></ion-icon> -->
+        <img [src]="this.thumb == null ? 'assets/img/avatar.png' : this.thumb" onerror="src = 'assets/img/avatar.png'" class="avatar-menu-icon">
+      </button>
+
+      <span *ngIf="this.platform.dir() === 'rtl' && this.mainFunc.manuno8 == false">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      <span *ngIf="this.platform.dir() === 'ltr' && this.mainFunc.manuno8 == false">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      <button ion-button icon-only (tap)="dismissview()">
+        <ion-icon *ngIf="this.platform.dir() === 'rtl'" name="ios-arrow-back"></ion-icon>
+        <ion-icon *ngIf="this.platform.dir() === 'ltr'" name="ios-arrow-forward"></ion-icon>
+      </button>
+
+    </ion-buttons>
+
+  </ion-navbar>
+
+  <div class="serachDiv" dir="{{direcR}}" *ngIf="isSearchToggle">
+    <ion-searchbar class="toolbarSearch" cancle-button="true" placeholder="بحث" (input)="searchBar($event)"></ion-searchbar>
+    <div class="searchButton">
+      <button ion-button color="fontWhite" (tap)="showSearchBar()" clear>
+        <ion-icon *ngIf="direc === 'ltr'" name="md-arrow-round-forward"></ion-icon>
+        <ion-icon *ngIf="direc === 'rtl'" name="md-arrow-round-back"></ion-icon>
+      </button>
+    </div>
+
+  </div>
+</ion-header>
+
+<ion-header *ngIf="this.platform.dir() === 'ltr'" dir="rtl" class="header" no-border>
+  <ion-navbar class="ion-navbar" hideBackButton="true" color="darkprimary" *ngIf="!isSearchToggle">
+
+    <img class="homeLogo" src="assets/img/homelogo.png">
+
+    <ion-buttons style="display: flex; direction: row;" right>
+      <span *ngIf="this.platform.dir() === 'ltr' && this.mainFunc.manuno8 == false">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      <button ion-button icon-only (tap)="dismissview()">
+        <ion-icon *ngIf="this.platform.dir() === 'rtl'" name="ios-arrow-back"></ion-icon>
+        <ion-icon *ngIf="this.platform.dir() === 'ltr'" name="ios-arrow-forward"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+  <div class="serachDiv" dir="{{direcR}}" *ngIf="isSearchToggle">
+    <ion-searchbar class="toolbarSearch" cancle-button="true" placeholder="{{ 'SEARCH' | translate:param }}" (input)="searchBar($event)"></ion-searchbar>
+    <div class="searchButton">
+      <button ion-button color="fontWhite" (tap)="showSearchBar()" clear>
+        <ion-icon *ngIf="direc === 'ltr'" name="md-arrow-round-forward"></ion-icon>
+        <ion-icon *ngIf="direc === 'rtl'" name="md-arrow-round-back"></ion-icon>
+      </button>
+
+    </div>
+
+  </div>
+</ion-header>
+
+<ion-content id="content" >
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+
+  <div *ngIf="!isSearchToggle">
+
+    <div *ngIf="secretid === 'library'">
+      <ion-segment [(ngModel)]="libraryType" (ionChange)="loadLibData()">
+        <ion-segment-button value="books">
+          <ion-icon name="ios-book-outline"></ion-icon>
+          <br>Articles
+        </ion-segment-button>
+        <ion-segment-button value="videos">
+          <ion-icon name="ios-videocam-outline"></ion-icon>
+          <br>Videos
+        </ion-segment-button>
+      </ion-segment>
+    </div>
+    
+    <div class="wrapperImage">
+        <!-- {{secretid}} -->
+
+      <div *ngFor="let item of homemenu; let i = index" center>
+
+
+        <ion-card *ngIf="secretid == 'courses'" (tap)="openDetailsPage(item.id)">
+          <div *ngIf="item.img != null">
+            <img class="imgMainDetails" [src]="item.img" onError="src='assets/img/course_img_not_avilable.png'" />
+          </div>
+
+          <ion-card-content>
+            <ion-card-title *ngIf="this.platform.dir() === 'rtl'">
+              {{ item.name_ar }}
+            </ion-card-title>
+            <ion-card-title *ngIf="this.platform.dir() === 'ltr'">
+              {{ item.name_en }}
+            </ion-card-title>
+
+          </ion-card-content>
+          <ion-row no-padding>
+            <ion-col>
+              <button ion-button clear small color="danger" icon-start>
+                <ion-icon name='md-map'></ion-icon>
+                <div style="color: #555555;">{{ item.location }}</div>
+              </button>
+            </ion-col>
+          </ion-row>
+          <ion-row no-padding>
+            <ion-col>
+              <button ion-button clear small color="danger" icon-start>
+                <ion-icon name='md-calendar'></ion-icon>
+                <div style="color: #555555;">{{ item.start_date | date : "dd MMM y" }}</div>
+              </button>
+            </ion-col>
+            <ion-col text-center>
+              <button ion-button clear small color="danger" icon-start>
+                <ion-icon name='md-stats'></ion-icon>
+                <div style="color: #555555;">{{ item.level }}</div>
+              </button>
+            </ion-col>
+
+          </ion-row>
+
+        </ion-card>
+
+
+
+        <ion-card *ngIf="secretid === 'events'" (tap)="openDetailsEventPage(item.id)">
+          <div *ngIf="item.img != null">
+            <img class="imgMainDetails" [src]="item.img" onError="src='assets/img/course_img_not_avilable.png'" />
+          </div>
+
+          <ion-card-content>
+            <ion-card-title *ngIf="this.platform.dir() === 'rtl'">
+              {{ item.name_ar }}
+            </ion-card-title>
+            <ion-card-title *ngIf="this.platform.dir() === 'ltr'">
+              {{ item.name_en }}
+            </ion-card-title>
+
+          </ion-card-content>
+
+          <ion-row no-padding>
+            <ion-col>
+              <button ion-button clear small color="danger" icon-start>
+                <ion-icon name='md-calendar'></ion-icon>
+                <div style="color: #555555;">{{ item.start_date | date : "dd MMM y" }}</div>
+              </button>
+            </ion-col>
+
+            <ion-col>
+              <button ion-button clear small color="danger" icon-start>
+                <ion-icon name='md-map'></ion-icon>
+                <div style="color: #555555;">{{ item.location }}</div>
+              </button>
+            </ion-col>
+          </ion-row>
+
+        </ion-card>
+
+
+        <ion-card *ngIf="secretid === 'products'" (tap)="openProduct(item.id)">
+            <div class="itemScroll" [class.itemScrollList]="true" dir="{{direcR}}">
+                <div [class.class1]="true">
+                  <div class="itemScrollImage" [class.itemScrollImageList]="true"><img [src]="item.img"></div>
+                  <div [class.class2]="true">
+                    <div *ngIf="this.platform.dir() === 'ltr'" class="itemScrollName" [class.itemScrollNameList]="!isGrid">{{item.name_en}}</div>
+                    <div *ngIf="this.platform.dir() === 'rtl'" class="itemScrollName" [class.itemScrollNameList]="!isGrid">{{item.name_ar}}</div>
+
+                  </div>
+                </div>
+              </div>
+        </ion-card>
+
+        <ion-card *ngIf="secretid === 'used_item'" (tap)="openItem(item.id)">
+          <div class="itemScroll" [class.itemScrollList]="true" dir="{{direcR}}">
+              <div [class.class1]="true">
+                <div class="itemScrollImage" [class.itemScrollImageList]="true"><img [src]="item.img"></div>
+                <div [class.class2]="true">
+                  <div  class="itemScrollName" [class.itemScrollNameList]="!isGrid">{{item.name_ar}}</div>
+                  <div  class="itemScrollName" [class.itemScrollNameList]="!isGrid">{{item.price}}</div>
+
+                </div>
+              </div>
+            </div>
+      </ion-card>
+
+        <ion-card [ngSwitch]="books" *ngIf="secretid === 'librarys' " (tap)="openLibraryItem(item.id)">
+          <div *ngIf="item.img != null">
+            <img class="imgMainDetails" [src]="item.img" onError="src='assets/img/course_img_not_avilable.png'" />
+          </div>
+
+          <ion-card-content>
+            <ion-card-title *ngIf="this.platform.dir() === 'rtl'">
+              <ion-icon name="ios-book-outline"></ion-icon> {{ item.name_ar }}
+            </ion-card-title>
+            <ion-card-title *ngIf="this.platform.dir() === 'ltr'">
+              <ion-icon name="ios-book-outline"></ion-icon> {{ item.name_en }}
+            </ion-card-title>
+
+          </ion-card-content>
+
+        </ion-card>
+        <ion-card [ngSwitch]="videos" *ngIf="secretid === 'librarys'" (tap)="openLibraryItem(item.id)">
+          <div *ngIf="item.img != null">
+            <img class="imgMainDetails" [src]="item.img" onError="src='assets/img/course_img_not_avilable.png'" />
+          </div>
+
+          <ion-card-content>
+            <ion-card-title *ngIf="this.platform.dir() === 'rtl'">
+              <ion-icon name="ios-videocam-outline"></ion-icon> {{ item.name_ar }}
+            </ion-card-title>
+            <ion-card-title *ngIf="this.platform.dir() === 'ltr'">
+              <ion-icon name="ios-videocam-outline"></ion-icon> {{ item.name_en }}
+            </ion-card-title>
+
+          </ion-card-content>
+
+        </ion-card>
+
+      </div>
+    </div>
+
+  </div>
+
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+  
+
+
+</ion-content>
