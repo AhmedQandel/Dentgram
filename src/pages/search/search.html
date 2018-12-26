@@ -147,7 +147,7 @@
     <ion-col  col-12  *ngIf="filterBy == 'DATE_FILTER' && (secretid=='for_course' || secretid=='course')">
       <ion-item dir="{{dir}}" class="selectDiv titleDiv" no-lines>
         <ion-label class="bg10">{{ 'CHOOSE_DATE' | translate:param }}</ion-label>
-        <ion-datetime class="bg10" dir="{{dir}}" displayFormat="DD/MM/YYYY" [(ngModel)]="filterByValue" cancelText="{{ 'CANCEL' | translate:param }}"
+        <ion-datetime class="bg10" dir="{{dir}}" displayFormat="MM/YYYY" [(ngModel)]="filterByValue" cancelText="{{ 'CANCEL' | translate:param }}"
           doneText="{{ 'OK' | translate:param }}" (ionChange)="onFilterByValueChange($event)"></ion-datetime>
       </ion-item>
     </ion-col>

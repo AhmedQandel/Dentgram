@@ -1,5 +1,5 @@
 import { Component, ViewChild, ChangeDetectorRef, ElementRef } from '@angular/core';
-import { NavController, ViewController,ToastController, NavParams, Slides, Platform, Events, AlertController, LoadingController } from 'ionic-angular';
+import { NavController, ViewController,ToastController, NavParams, Slides, Platform, Events, AlertController, LoadingController,normalizeURL  } from 'ionic-angular';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 
 import { FormBuilder, FormGroup, Validators, AbstractControl, FormControl } from '@angular/forms';
@@ -288,8 +288,12 @@ export class UsedAddPage {
             this.imageNumber=this.imageNumber+1;   
           });
       } else {
-  
-
+        console.log(imagePath);
+        this.images_list.push(imagePath);
+        if(this.imageNumber != 0){
+          this.photos_list.push(imagePath);
+        }
+        this.imageNumber=this.imageNumber+1; 
       }
     }, (err) => {
       this.presentToast('Error while selecting image.');

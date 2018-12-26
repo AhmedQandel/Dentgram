@@ -47,7 +47,7 @@
               <ion-icon class="hearicon" name ="md-heart" ></ion-icon>
           </button>
 
-          <button ion-button clear small icon-start (click)="Share( name +'  '+description , mainFunc.encoder(slides_list[0].url.full))">
+          <button ion-button clear small icon-start (click)="Share( name   , slides_list.length > 0 ? mainFunc.encoder(slides_list[0].url.full):null )">
               <ion-icon class="hearicon" name ="md-share" ></ion-icon>
           </button>
 

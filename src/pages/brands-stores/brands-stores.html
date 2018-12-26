@@ -33,12 +33,12 @@
 <div class="wrapper">
   <div  *ngFor="let item of storelist; let i = index">
     <div class="box">
-      <div class="box2">
+      <div class="box2" (tap)="openItemDetails(item.id)">
         <div class="subTable1stDiv">
-          <img [src]="item.icon">
+          <img [src]="item.image.thumb">
         </div>
         <div class="centerVertical">
-            <div class="fontNormal maxsize">{{item.name}}</div>
+            <div class="fontNormal maxsize">{{ this.platform.dir() === "rtl" ? item.name_ar : item.name_en }}</div>
         </div>
         <!-- <div class="maxSubMap">
           

@@ -3,6 +3,7 @@ import { NavController, NavParams, ViewController, Platform, Events } from 'ioni
 import { MainFunctionsProvider } from '../../providers/main-functions/main-functions';
 import { TranslateService } from '@ngx-translate/core';
 import { Storage } from '@ionic/storage';
+import { ItemDetailsPage } from "../../pages/item-details/item-details";
 
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
@@ -58,8 +59,17 @@ export class BrandsStoresPage {
      recivedData.subscribe(data => {
       this.icon = data.icon;
       this.origin = data.origin;
-      this.storelist = data.stores;
+      this.storelist = data.products;
      });
+  }
+
+
+  openItemDetails(id) {
+    // this.navCtrl.push(ItemDetailsPage);
+
+    this.navCtrl.push(ItemDetailsPage, {
+      'id' : id
+    });
   }
 
 }

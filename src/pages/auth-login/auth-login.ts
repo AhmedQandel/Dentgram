@@ -87,7 +87,7 @@ export class AuthLoginPage {
   cloudState: any = "in";
   loginState: any = "in";
   formState: any = "in";
-  FB_APP_ID: number = 464365010729056;
+  FB_APP_ID: number = 1813440945427170;
   private login : FormGroup;
   dir: any;
   shouldAuth: boolean = false;
@@ -208,7 +208,7 @@ export class AuthLoginPage {
     });
 
  //the permissions your facebook app needs from the user
- permissions = ['public_profile','email','user_birthday','user_location','user_hometown'];
+ permissions = ['public_profile','email'];
 
  this.fb.login(permissions)
  .then((response) => {
